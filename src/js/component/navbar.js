@@ -1,15 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import HorizontalLogo from "../../img/h-logo.png";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
 export const Navbar = () => {
 	return (
-		<ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<ul
+			className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			style={{ height: "100%" }}
+			id="accordionSidebar">
 			<Link to={"/demo/"} className="sidebar-brand d-flex align-items-center justify-content-center">
-				<div className="sidebar-brand-icon rotate-n-15">
-					<i className="fas fa-gavel" />
+				<div className="sidebar-brand-icon">
+					<img src={HorizontalLogo} style={{ width: 150 }} />
 				</div>
-				<div className="sidebar-brand-text mx-3">LAW FIRM</div>
 			</Link>
 
 			<hr className="sidebar-divider my-0" />
@@ -33,8 +36,8 @@ export const Navbar = () => {
 					data-target="#collapseTwo"
 					aria-expanded="true"
 					aria-controls="collapseTwo">
-					<i className="fas fa-fw fa-cog" />
-					<span>Case</span>
+					<i className="fas fa-user" />
+					<span>Add New Case</span>
 				</a>
 				<div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div className="bg-white py-2 collapse-inner rounded">
@@ -45,7 +48,7 @@ export const Navbar = () => {
 						<Link className="collapse-item" to="/addInmigration">
 							Immigration
 						</Link>
-						<Link className="collapse-item" to="/addBio">
+						<Link className="collapse-item" to="/legalRecords">
 							Legal, Criminal Record
 						</Link>
 						<Link className="collapse-item" to="/addBio">
