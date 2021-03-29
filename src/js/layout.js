@@ -9,6 +9,7 @@ import { Dashboard } from "./views/dashboard";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { AddBio } from "./views/AddBio.js";
+import { AddInmigration } from "./views/AddInmigration.js";
 import { Clients } from "./views/Clients.js";
 import injectContext from "./store/appContext";
 import { useLocation } from "react-router-dom";
@@ -72,7 +73,13 @@ const Layout = () => {
 										<Home />
 									</Route>
 								)}
-
+								{isLoggedIn ? (
+									<Route exact path="/addInmigration" component={AddInmigration} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
 								<Route>
 									<h1>Not found!</h1>
 								</Route>
