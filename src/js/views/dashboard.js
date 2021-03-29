@@ -42,7 +42,7 @@ export const Home = () => {
 			</div>
 			<div className="d-flex flex-col position-relative" style={{ width: 700 }}>
 				<form className="position-absolute top-50 start-50 translate-middle">
-					<div className="mb-3">
+					<div className="mb-3 mt-4">
 						<input
 							type="email"
 							onChange={e => setEmail(e.target.value)}
