@@ -4,10 +4,11 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import Background from "../../img/login-background.png";
 import Logo from "../../img/logo.png";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
 
-export const Home = () => {
+export const Home = ({ validCredentials }) => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const history = useHistory();
@@ -21,13 +22,11 @@ export const Home = () => {
 	const checkLogin = (email, password) => {
 		for (let i in store.credentials) {
 			if (store.credentials[i].email === email && store.credentials[i].password === password) {
-				store.isLoggedIn = true;
-				return true;
-			} else {
-				store.isLoggedIn = false;
-				return false;
+				validCredentials();
+				break;
 			}
 		}
+		return false;
 	};
 	const navigate = () => history.push({ pathname: "/demo", state: { isLoggedIn: true } });
 
@@ -97,4 +96,8 @@ export const Home = () => {
 			</div>
 		</div>
 	);
+};
+
+Home.propTypes = {
+	validCredentials: PropTypes.func
 };

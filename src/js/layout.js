@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
@@ -23,13 +23,15 @@ const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
-	let isLoggedIn = true;
+	const [isLoggedIn, setLoggedIn] = useState(false);
 
+	// let isLoggedIn = true;
+	console.log("isLoggedIn", isLoggedIn);
 	return (
 		<div className="">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					{isLoggedIn ? <BarTop /> : ""}
+					{isLoggedIn ? <BarTop logOut={() => setLoggedIn(!isLoggedIn)} /> : ""}
 
 					<div className="row">
 						{isLoggedIn ? (
@@ -43,16 +45,17 @@ const Layout = () => {
 						<div className={isLoggedIn ? "mr-0 col-sm-10" : "mr-0 col-sm-12"}>
 							<Switch>
 								<Route exact path="/">
-									<Home />
+									<Home validCredentials={() => setLoggedIn(!isLoggedIn)} />
 								</Route>
 								{isLoggedIn ? (
 									<Route exact path="/demo">
 										<Demo />
 									</Route>
 								) : (
-									<Route exact path="/">
-										<Home />
-									</Route>
+									// <Route exact path="/">
+									// 	<Home />
+									// </Route>
+									""
 								)}
 								{isLoggedIn ? (
 									<Route exact path="/clients/:post">

@@ -3,10 +3,11 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
 import Background2 from "../../img/rigo-baby.jpg";
 
-export const BarTop = () => {
+export const BarTop = ({ logOut }) => {
 	let filter = "";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
@@ -66,7 +67,15 @@ export const BarTop = () => {
 							</a>
 
 							<div className="dropdown-divider" />
-							<a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+							<a
+								className="dropdown-item"
+								href="#"
+								data-toggle="modal"
+								data-target="#logoutModal"
+								onClick={() => {
+									logOut();
+									history.push("/");
+								}}>
 								<i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
 								Logout
 							</a>
@@ -76,4 +85,7 @@ export const BarTop = () => {
 			</nav>
 		</div>
 	);
+};
+BarTop.propTypes = {
+	logOut: PropTypes.func
 };
