@@ -16,11 +16,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			credentials: [
 				{
 					email: "abc@gmail.com",
-					password: "abc"
+					password: "abc",
+					username: "nameABC"
 				},
 				{
 					email: "123@gmail.com",
-					password: "123"
+					password: "123",
+					username: "name123"
 				}
 			],
 			User: null,

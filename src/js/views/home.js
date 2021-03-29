@@ -12,9 +12,6 @@ export const Home = ({ validCredentials }) => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const history = useHistory();
-	let yourData = "Finol";
-	// const { store } = useContext(Context);
-	//	console.log("store", store.credentials);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const credentialsList = store.credentials;
@@ -23,10 +20,13 @@ export const Home = ({ validCredentials }) => {
 		for (let i in store.credentials) {
 			if (store.credentials[i].email === email && store.credentials[i].password === password) {
 				validCredentials();
+				// store.User = store.credential[i].username;
+				return true;
 				break;
+			} else {
+				return false;
 			}
 		}
-		return false;
 	};
 	const navigate = () => history.push({ pathname: "/demo", state: { isLoggedIn: true } });
 
