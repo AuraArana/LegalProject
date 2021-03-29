@@ -22,10 +22,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					email: "123@gmail.com",
 					password: "123"
 				}
-			]
+			],
+			User: null,
+			isLoggedIn: false,
+			ListClients: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			getListClients: () => {
+				fetch("https://api.jsonbin.io/b/605fedb2418f307e25838a0c")
+					.then(res => res.json())
+					.then(response => {
+						//console.log(contacts);
+						setStore({ ListClients: response });
+					});
+			},
+
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},

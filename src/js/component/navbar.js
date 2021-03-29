@@ -1,152 +1,146 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+		<ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+			<Link to={"/demo/"} className="sidebar-brand d-flex align-items-center justify-content-center">
+				<div className="sidebar-brand-icon rotate-n-15">
+					<i className="fas fa-gavel" />
+				</div>
+				<div className="sidebar-brand-text mx-3">LAW FIRM</div>
 			</Link>
-			<div className="p-3 bg-white" style={{ width: 280 }}>
+
+			<hr className="sidebar-divider my-0" />
+
+			<li className="nav-item active">
+				<Link to={"/demo/"} className="nav-link">
+					<i className="fas fa-fw fa-tachometer-alt" />
+					<span>Dashboard</span>
+				</Link>
+			</li>
+
+			<hr className="sidebar-divider" />
+
+			<div className="sidebar-heading">Interface</div>
+
+			<li className="nav-item">
 				<a
-					href="/"
-					className="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-					<svg className="bi me-2" width="30" height="24">
-						<use xlinkHref="#bootstrap" />
-					</svg>
-					<span className="fs-5 fw-semibold">Collapsible</span>
+					className="nav-link collapsed"
+					href="#"
+					data-toggle="collapse"
+					data-target="#collapseTwo"
+					aria-expanded="true"
+					aria-controls="collapseTwo">
+					<i className="fas fa-fw fa-cog" />
+					<span>Case</span>
 				</a>
-				<ul className="list-unstyled ps-0">
-					<li className="mb-1">
-						<button
-							className="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse"
-							data-bs-target="#home-collapse"
-							aria-expanded="true">
-							Home
-						</button>
-						<div className="collapse show" id="home-collapse">
-							<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li>
-									<a href="#" className="link-dark rounded">
-										Overview
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Updates
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Reports
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li className="mb-1">
-						<button
-							className="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse"
-							data-bs-target="#dashboard-collapse"
-							aria-expanded="false">
-							Dashboard
-						</button>
-						<div className="collapse" id="dashboard-collapse">
-							<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li>
-									<a href="#" className="link-dark rounded">
-										Overview
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Weekly
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Monthly
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Annually
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li className="mb-1">
-						<button
-							className="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse"
-							data-bs-target="#orders-collapse"
-							aria-expanded="false">
-							Orders
-						</button>
-						<div className="collapse" id="orders-collapse">
-							<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li>
-									<a href="#" className="link-dark rounded">
-										New
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Processed
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Shipped
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Returned
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li className="border-top my-3" />
-					<li className="mb-1">
-						<button
-							className="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse"
-							data-bs-target="#account-collapse"
-							aria-expanded="false">
-							Account
-						</button>
-						<div className="collapse" id="account-collapse">
-							<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li>
-									<a href="#" className="link-dark rounded">
-										New...
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Profile
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Settings
-									</a>
-								</li>
-								<li>
-									<a href="#" className="link-dark rounded">
-										Sign out
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</nav>
+				<div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+					<div className="bg-white py-2 collapse-inner rounded">
+						<h6 className="collapse-header">Add Information:</h6>
+						<Link className="collapse-item" to="/addBio">
+							Biographical
+						</Link>
+						<Link className="collapse-item" to="/addBio">
+							Immigration
+						</Link>
+						<Link className="collapse-item" to="/addBio">
+							Legal, Criminal Record
+						</Link>
+						<Link className="collapse-item" to="/addBio">
+							Services
+						</Link>
+						<Link className="collapse-item" to="/addBio">
+							Case Documents
+						</Link>
+						<Link className="collapse-item" to="/addBio">
+							Ledger
+						</Link>
+					</div>
+				</div>
+			</li>
+
+			<li className="nav-item">
+				<a
+					className="nav-link collapsed"
+					href="#"
+					data-toggle="collapse"
+					data-target="#collapseUtilities"
+					aria-expanded="true"
+					aria-controls="collapseUtilities">
+					<i className="fas fa-fw fa-wrench" />
+					<span>Utilities</span>
+				</a>
+				<div
+					id="collapseUtilities"
+					className="collapse"
+					aria-labelledby="headingUtilities"
+					data-parent="#accordionSidebar">
+					<div className="bg-white py-2 collapse-inner rounded">
+						<h6 className="collapse-header">Custom Utilities:</h6>
+						<a className="collapse-item" href="utilities-color.html">
+							Colors
+						</a>
+						<a className="collapse-item" href="utilities-border.html">
+							Borders
+						</a>
+						<a className="collapse-item" href="utilities-animation.html">
+							Animations
+						</a>
+						<a className="collapse-item" href="utilities-other.html">
+							Other
+						</a>
+					</div>
+				</div>
+			</li>
+
+			<hr className="sidebar-divider" />
+
+			<div className="sidebar-heading">Addons</div>
+
+			<li className="nav-item">
+				<a className="nav-link" href="charts.html">
+					<i className="fas fa-fw fa-chart-area" />
+					<span>Charts</span>
+				</a>
+			</li>
+
+			<li className="nav-item">
+				<a
+					className="nav-link collapsed"
+					href="#"
+					data-toggle="collapse"
+					data-target="#collapseUtilitiesR"
+					aria-expanded="true"
+					aria-controls="collapseUtilitiesR">
+					<i className="fas fa-fw fa-table" />
+					<span>Reports</span>
+				</a>
+				<div
+					id="collapseUtilitiesR"
+					className="collapse"
+					aria-labelledby="headingUtilitiesR"
+					data-parent="#accordionSidebar">
+					<div className="bg-white py-2 collapse-inner rounded">
+						<h6 className="collapse-header">Custom Utilities:</h6>
+						<a className="collapse-item" href="utilities-color.html">
+							Colors
+						</a>
+						<a className="collapse-item" href="utilities-border.html">
+							Borders
+						</a>
+						<a className="collapse-item" href="utilities-animation.html">
+							Animations
+						</a>
+						<a className="collapse-item" href="utilities-other.html">
+							Other
+						</a>
+					</div>
+				</div>
+			</li>
+
+			<hr className="sidebar-divider d-none d-md-block" />
+		</ul>
 	);
 };
