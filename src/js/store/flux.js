@@ -25,7 +25,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			User: null,
 			isLoggedIn: false,
-			ListClients: []
+			ListClients: [],
+			inmigrationInfo: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,6 +38,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ ListClients: response });
 					});
 			},
+			//Inicio Heidys
+			addInmigrationInfo(
+				caseNo,
+				dateEntry,
+				portEntry,
+				transportation,
+				inmigrationStatus,
+				birthCountry,
+				birthCity,
+				birthProvince,
+				nationality,
+				nativeLanguage,
+				educationLevel,
+				familyInUsa,
+				lprStatus,
+				elegibityDate
+			) {
+				fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd", {
+					method: "post",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify({
+						CaseNo: caseNo,
+						DateEntryUSA: dateEntry,
+						PortEntry: portEntry,
+						Transportation: transportation,
+						ImmigrationStatus: inmigrationStatus,
+						BirthCountry: birthCountry,
+						BirthCity: birthCity,
+						BirthProvince: birthProvince,
+						Nationality: nationality,
+						NaitiveLanguage: nativeLanguage,
+						EducationLevel: educationLevel,
+						FamilyInUS: familyInUsa,
+						LPRStatus: lprStatus,
+						DCFEligibilityDate: elegibityDate
+					})
+				}).then(() => {
+					fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd")
+						.then(response => response.json())
+						.then(result => {
+							setStore({
+								inmigrationInfo: result
+							});
+						})
+						.catch(e => console.error(e));
+				});
+			},
+			//Fin Heidys
 
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
