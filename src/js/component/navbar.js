@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import HorizontalLogo from "../../img/h-logo.png";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<ul
 			className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
@@ -42,7 +44,12 @@ export const Navbar = () => {
 				<div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div className="bg-white py-2 collapse-inner rounded">
 						<h6 className="collapse-header">Add Information:</h6>
-						<Link className="collapse-item" to="/addBio">
+						<Link
+							className="collapse-item"
+							to="/addBio"
+							onClick={() => {
+								actions.setCurrentCase();
+							}}>
 							Biographical
 						</Link>
 						<Link className="collapse-item" to="/addImmigration">

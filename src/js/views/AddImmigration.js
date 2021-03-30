@@ -95,6 +95,9 @@ export const AddImmigration = () => {
 								type="text"
 								required
 								className={validationCaseNo ? "form-control is-invalid" : "form-control"}
+								className="form-control"
+								value={store.currentCase}
+								disabled
 								placeholder="Enter Case Number"
 								onChange={e => setCaseNo(e.target.value)}
 							/>

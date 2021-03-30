@@ -22,7 +22,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 			],
-			currentUser: null,
+			currentUser: "LAWF-1000",
+			count: 1000,
+			currentCase: null,
 			isLoggedIn: false,
 			ListClients: [],
 			immigrationInfo: []
@@ -31,6 +33,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			setCurrentUser: user => {
 				setStore({ currentUser: user });
+			},
+			setCurrentCase: () => {
+				const store = getStore();
+				let c = store.count + 1;
+				setStore({ count: c });
+				setStore({ currentCase: "LAWF-" + c });
 			},
 
 			getListClients: () => {
