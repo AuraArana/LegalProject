@@ -30,10 +30,10 @@ export const Home = ({ validCredentials }) => {
 	const navigate = () => history.push({ pathname: "/demo", state: { isLoggedIn: true } });
 
 	return (
-		<div className="container-fluid">
+		<div className="">
 			<div className="row">
-				<div className="card d-flex flex-col position-relative col-sm-8">
-					<img src={Background} className="card-img rounded-0" alt="..." />
+				<div className="card d-flex flex-col position-relative" style={{ height: "100%", width: "50%" }}>
+					<img src={Background} className="card-img rounded-0 ml-0" alt="..." />
 					<div className="card-img-overlay d-flex justify-content-center">
 						{/* // style={{ width: 200, height: 200, marginRight: 0, marginLeft: 0 }} */}
 						<img
@@ -53,44 +53,50 @@ export const Home = ({ validCredentials }) => {
 						/>
 					</div>
 				</div>
-				<div className="d-flex flex-col position-relative col-sm-4">
-					<form
-						className="user position-absolute top-50 start-50 translate-middle"
-						style={{
-							position: "absolute",
-							top: "35%",
-							marginRight: "10%"
-						}}>
-						<div className="mb-3">
-							<input
-								type="email"
-								onChange={e => setEmail(e.target.value)}
-								className="form-control form-control-user"
-								placeholder="Enter Email"
-							/>
-						</div>
-						<div className="mb-3">
-							<input
-								type="password"
-								onChange={e => setPassword(e.target.value)}
-								className="form-control form-control-user"
-								placeholder="Enter Password"
-							/>
-						</div>
-						<div className="mb-3 form-check">
-							<input type="checkbox" className="form-check-input" id="exampleCheck1" />
-							<label className="form-check-label" form="exampleCheck1">
-								Check me out
-							</label>
-						</div>
-						<button
-							className="btn btn-primary"
-							onClick={() =>
-								checkLogin(email, password) == true ? navigate() : alert("wrong credentials")
-							}>
-							Submit
-						</button>
-					</form>
+				<div className="d-flex flex-col position-relative col-6">
+					<div
+						className="position-absolute top-50 start-50 translate-middle mt-5"
+						style={{ paddingTop: "30%", paddingLeft: "30%" }}>
+						<h2 className="text-center" style={{ color: "#1d3652", alignItems: "center" }}>
+							SIGN IN
+						</h2>
+						<form
+							className="user"
+							style={{
+								width: 300,
+								position: "absolute"
+							}}>
+							<div className="mb-3 mt-3">
+								<input
+									type="email"
+									onChange={e => setEmail(e.target.value)}
+									className="form-control form-control-user"
+									placeholder="Enter Email"
+								/>
+							</div>
+							<div className="mb-3">
+								<input
+									type="password"
+									onChange={e => setPassword(e.target.value)}
+									className="form-control form-control-user"
+									placeholder="Enter Password"
+								/>
+							</div>
+							<div className="mb-3 form-check">
+								<input type="checkbox" className="form-check-input" id="exampleCheck1" />
+								<label className="form-check-label" form="exampleCheck1">
+									Remember Me
+								</label>
+							</div>
+							<button
+								className="btn btn-primary col-12"
+								onClick={() =>
+									checkLogin(email, password) == true ? navigate() : alert("wrong credentials")
+								}>
+								Sign In
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
