@@ -9,7 +9,7 @@ import "../../styles/home.scss";
 export const Home = () => {
 	const history = useHistory();
 	const { store } = useContext(Context);
-	console.log("store", store.credentials);
+	//	console.log("store", store.credentials);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const credentialsList = store.credentials;

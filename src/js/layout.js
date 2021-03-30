@@ -26,7 +26,7 @@ const Layout = () => {
 	const [isLoggedIn, setLoggedIn] = useState(false);
 
 	// let isLoggedIn = true;
-	console.log("isLoggedIn", isLoggedIn);
+	//console.log("isLoggedIn", isLoggedIn);
 	return (
 		<div className="">
 			<BrowserRouter basename={basename}>

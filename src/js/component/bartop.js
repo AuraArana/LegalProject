@@ -8,15 +8,13 @@ import PropTypes from "prop-types";
 import Background2 from "../../img/rigo-baby.jpg";
 
 export const BarTop = ({ logOut }) => {
-	let filter = "";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 	const [NameText, setNameText] = useState(".");
 	const [state, setState] = useState({
 		//initialize state here
-		fill2: ""
 	});
-	console.log("CurrentUser", store.user);
+
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
@@ -51,7 +49,7 @@ export const BarTop = ({ logOut }) => {
 							data-toggle="dropdown"
 							aria-haspopup="true">
 							<span className="mr-2 d-none d-lg-inline text-gray-600 small">
-								{store.currentUser.firstName}
+								{store.currentUser.firstName + " " + store.currentUser.lastName}
 							</span>
 							<img className="img-profile rounded-circle" src={Background2} />
 						</a>

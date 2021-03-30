@@ -1,31 +1,25 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 			credentials: [
 				{
 					email: "abc@gmail.com",
 					password: "abc",
 					user: {
-						firstName: "Abc",
-						lastName: "Def"
+						firstName: "William",
+						lastName: "Lopez",
+						userType: 2
 					}
 				},
 				{
 					email: "123@gmail.com",
 					password: "123",
-					user: "name123"
+					user: "name123",
+					user: {
+						firstName: "Jeffrey",
+						lastName: "Smith",
+						userType: 1
+					}
 				}
 			],
 			currentUser: null,
@@ -91,10 +85,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 								immigrationInfo: result
 							});
 						})
-						.catch(e => console.error(e));
+						.catch();
 				});
 			},
 			//Fin Heidys
+
+			//Inicio Aura
+
+			//Fin Aura
+
+			//Inicio Jose
+
+			//Fin Jose
 
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
