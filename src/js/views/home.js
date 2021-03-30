@@ -57,7 +57,7 @@ export const Home = ({ validCredentials }) => {
 					<div
 						className="position-absolute top-50 start-50 translate-middle mt-5"
 						style={{ paddingTop: "30%", paddingLeft: "30%" }}>
-						<h2 className="text-center" style={{ color: "#1d3652", alignItems: "center" }}>
+						<h2 className="text-center" style={{ color: "#1d3652", marginLeft: 90 }}>
 							SIGN IN
 						</h2>
 						<form
@@ -70,7 +70,7 @@ export const Home = ({ validCredentials }) => {
 								<input
 									type="email"
 									onChange={e => setEmail(e.target.value)}
-									className="form-control form-control-user"
+									className="form-control form-control-user rounded"
 									placeholder="Enter Email"
 								/>
 							</div>
@@ -78,7 +78,7 @@ export const Home = ({ validCredentials }) => {
 								<input
 									type="password"
 									onChange={e => setPassword(e.target.value)}
-									className="form-control form-control-user"
+									className="form-control form-control-user rounded"
 									placeholder="Enter Password"
 								/>
 							</div>
@@ -89,12 +89,15 @@ export const Home = ({ validCredentials }) => {
 								</label>
 							</div>
 							<button
-								className="btn btn-primary col-12"
+								className="btn btn-primary col-12 rounded-pill"
 								onClick={() =>
 									checkLogin(email, password) == true ? navigate() : alert("wrong credentials")
 								}>
 								Sign In
 							</button>
+							<p className="text-center mt-2" style={{ color: "#50bfc3" }}>
+								Create an Account
+							</p>
 						</form>
 					</div>
 				</div>
