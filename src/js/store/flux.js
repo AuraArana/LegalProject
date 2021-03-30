@@ -17,21 +17,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					email: "abc@gmail.com",
 					password: "abc",
-					username: "nameABC"
+					user: {
+						firstName: "Abc",
+						lastName: "Def"
+					}
 				},
 				{
 					email: "123@gmail.com",
 					password: "123",
-					username: "name123"
+					user: "name123"
 				}
 			],
-			User: null,
+			currentUser: null,
 			isLoggedIn: false,
 			ListClients: [],
 			inmigrationInfo: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			setCurrentUser: user => {
+				setStore({ currentUser: user });
+			},
+
 			getListClients: () => {
 				fetch("https://api.jsonbin.io/b/605fedb2418f307e25838a0c")
 					.then(res => res.json())

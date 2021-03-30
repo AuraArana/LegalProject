@@ -16,7 +16,7 @@ export const BarTop = ({ logOut }) => {
 		//initialize state here
 		fill2: ""
 	});
-
+	console.log("CurrentUser", store.user);
 	return (
 		<div>
 			<nav className="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
@@ -50,7 +50,9 @@ export const BarTop = ({ logOut }) => {
 							role="button"
 							data-toggle="dropdown"
 							aria-haspopup="true">
-							<span className="mr-2 d-none d-lg-inline text-gray-600 small">{store.user}</span>
+							<span className="mr-2 d-none d-lg-inline text-gray-600 small">
+								{store.currentUser.firstName}
+							</span>
 							<img className="img-profile rounded-circle" src={Background2} />
 						</a>
 

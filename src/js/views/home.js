@@ -19,14 +19,13 @@ export const Home = ({ validCredentials }) => {
 	const checkLogin = (email, password) => {
 		for (let i in store.credentials) {
 			if (store.credentials[i].email === email && store.credentials[i].password === password) {
+				actions.setCurrentUser(store.credentials[i].user);
 				validCredentials();
-				// store.User = store.credential[i].username;
+
 				return true;
-				break;
-			} else {
-				return false;
 			}
 		}
+		return false;
 	};
 	const navigate = () => history.push({ pathname: "/demo", state: { isLoggedIn: true } });
 
