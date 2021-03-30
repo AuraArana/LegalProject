@@ -20,33 +20,68 @@ export const AddImmigration = () => {
 	const [lprStatus, setLprStatus] = useState("");
 	const [elegibityDate, setElegibityDate] = useState("");
 	const [caseNo, setCaseNo] = useState("");
-	/*const [validationDateEntry, setValidationDateEntry] = useState(false);
-    const [validationPortEntry, setValidationPortEntry] = useState(false);
-    const [validationImmigrationStatus, setValidationImmigrationStatus] = useState(false);
-    const [validationTransportation, setValidationTransportation] = useState(false);
-    const [validationBirthCountry, setValidationBirthCountry] = useState(false);
-    const [validationBirthCity, setValidationBirthCity] = useState(false);
-    const [validationBirthProvince, setValidationBirthProvince] = useState(false);
-    const [validationNationality, setValidationNationality] = useState(false);
-    const [validationEducationLevel, setValidationEducationLevel] = useState(false);
-    const [validationNativeLanguage, setValidationNativeLanguage] = useState(false);
-    const [validationFamilyInUsa, setValidationFamilyInUsa] = useState(false);
-    const [validationLprStatus, setValidationLprStatus] = useState(false);
-    const [validationElegibityDate, setValidationElegibityDate] = useState(false);
-    const [validation, setValidation] = useState(false);*/
+	const [validationCaseNo, setValidationCaseNo] = useState(false);
+	const [validationDateEntry, setValidationDateEntry] = useState(false);
+	const [validationPortEntry, setValidationPortEntry] = useState(false);
+	const [validationImmigrationStatus, setValidationImmigrationStatus] = useState(false);
+	const [validationTransportation, setValidationTransportation] = useState(false);
+	const [validationBirthCountry, setValidationBirthCountry] = useState(false);
+	const [validationBirthCity, setValidationBirthCity] = useState(false);
+	const [validationBirthProvince, setValidationBirthProvince] = useState(false);
+	const [validationNationality, setValidationNationality] = useState(false);
+	const [validationEducationLevel, setValidationEducationLevel] = useState(false);
+	const [validationNativeLanguage, setValidationNativeLanguage] = useState(false);
+	const [validationFamilyInUsa, setValidationFamilyInUsa] = useState(false);
+	const [validationLprStatus, setValidationLprStatus] = useState(false);
+	const [validationElegibityDate, setValidationElegibityDate] = useState(false);
+	const [validation, setValidation] = useState(false);
 
-	/* const checkInput = input => {
-        return input === null || !input;
-    };
-    useEffect(() => {
-        if (!validationBirthCity && !validationBirthCountry && !validationBirthProvince && !validationDateEntry && !validationEducationLevel && !validationElegibityDate && !validationFamilyInUsa && !validationImmigrationStatus && !validationLprStatus && !validationNationality && !validationNativeLanguage && !validationPortEntry && !validationTransportation && validation) {
-            actions.addInmigrationInfo(dateEntry, portEntry, transportation, inmigrationStatus, birthCountry, birthCity, birthProvince, nationality, nativeLanguage, educationLevel, familyInUsa, lprStatus, elegibityDate);
-            history.push("/");
-            setValidation(false);
-        } else {
-            setValidation(false);
-        }
-    }, [validation]);*/
+	const checkInput = input => {
+		return input === null || !input;
+	};
+	useEffect(
+		() => {
+			if (
+				!validationCaseNo &&
+				!validationBirthCity &&
+				!validationBirthCountry &&
+				!validationBirthProvince &&
+				!validationDateEntry &&
+				!validationEducationLevel &&
+				!validationElegibityDate &&
+				!validationFamilyInUsa &&
+				!validationImmigrationStatus &&
+				!validationLprStatus &&
+				!validationNationality &&
+				!validationNativeLanguage &&
+				!validationPortEntry &&
+				!validationTransportation &&
+				validation
+			) {
+				actions.addImmigrationInfo(
+					caseNo,
+					dateEntry,
+					portEntry,
+					transportation,
+					immigrationStatus,
+					birthCountry,
+					birthCity,
+					birthProvince,
+					nationality,
+					nativeLanguage,
+					educationLevel,
+					familyInUsa,
+					lprStatus,
+					elegibityDate
+				);
+				history.push("/");
+				setValidation(false);
+			} else {
+				setValidation(false);
+			}
+		},
+		[validation]
+	);
 
 	return (
 		<div className="container">
@@ -59,14 +94,16 @@ export const AddImmigration = () => {
 							<input
 								type="text"
 								required
-								className="form-control"
+								className={validationCaseNo ? "form-control is-invalid" : "form-control"}
 								placeholder="Enter Case Number"
 								onChange={e => setCaseNo(e.target.value)}
 							/>
 						</div>
 						<div className="col-sm-6">
 							<label>Immigration Status</label>
-							<select className="form-control" onChange={e => setImmigrationStatus(e.target.value)}>
+							<select
+								className={validationImmigrationStatus ? "form-control is-invalid" : "form-control"}
+								onChange={e => setImmigrationStatus(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">U.S. Citizens</option>
 								<option value="2">Permanent or Conditional Residents</option>
@@ -80,7 +117,7 @@ export const AddImmigration = () => {
 							<input
 								type="text"
 								required
-								className="form-control"
+								className={validationDateEntry ? "form-control is-invalid" : "form-control"}
 								placeholder="Enter Date of Entry to USA"
 								onChange={e => setDateEntry(e.target.value)}
 							/>
@@ -90,7 +127,7 @@ export const AddImmigration = () => {
 							<input
 								type="text"
 								required
-								className="form-control"
+								className={validationElegibityDate ? "form-control is-invalid" : "form-control"}
 								placeholder="Enter DCF Elegibility Date"
 								onChange={e => setElegibityDate(e.target.value)}
 							/>
@@ -99,7 +136,9 @@ export const AddImmigration = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<label>Port of Entry to USA</label>
-							<select className="form-control" onChange={e => setPortEntry(e.target.value)}>
+							<select
+								className={validationPortEntry ? "form-control is-invalid" : "form-control"}
+								onChange={e => setPortEntry(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Key West, Florida - 5202</option>
 								<option value="2">Miami International Airport, Florida - 5206</option>
@@ -111,7 +150,9 @@ export const AddImmigration = () => {
 						</div>
 						<div className="col-sm-6">
 							<label>Transportation</label>
-							<select className="form-control" onChange={e => setTransportation(e.target.value)}>
+							<select
+								className={validationTransportation ? "form-control is-invalid" : "form-control"}
+								onChange={e => setTransportation(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Maritime</option>
 								<option value="2">Airplane</option>
@@ -121,7 +162,9 @@ export const AddImmigration = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<label>Country of Birth</label>
-							<select className="form-control" onChange={e => setBirthCountry(e.target.value)}>
+							<select
+								className={validationBirthCountry ? "form-control is-invalid" : "form-control"}
+								onChange={e => setBirthCountry(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Afghanistan</option>
 								<option value="2">Albania</option>
@@ -133,7 +176,9 @@ export const AddImmigration = () => {
 						</div>
 						<div className="col-sm-6">
 							<label>Province of Birth</label>
-							<select className="form-control" onChange={e => setBirthProvince(e.target.value)}>
+							<select
+								className={validationBirthProvince ? "form-control is-invalid" : "form-control"}
+								onChange={e => setBirthProvince(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Habana</option>
 								<option value="2">Santiago</option>
@@ -147,7 +192,9 @@ export const AddImmigration = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<label>City of Birth</label>
-							<select className="form-control" onChange={e => setBirthCity(e.target.value)}>
+							<select
+								className={validationBirthCity ? "form-control is-invalid" : "form-control"}
+								onChange={e => setBirthCity(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Tokyo</option>
 								<option value="2">Delhi</option>
@@ -159,7 +206,9 @@ export const AddImmigration = () => {
 						</div>
 						<div className="col-sm-6">
 							<label>Nationality</label>
-							<select className="form-control" onChange={e => setNationality(e.target.value)}>
+							<select
+								className={validationNationality ? "form-control is-invalid" : "form-control"}
+								onChange={e => setNationality(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Afghans</option>
 								<option value="2">Albanians</option>
@@ -173,7 +222,9 @@ export const AddImmigration = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<label>Native Language</label>
-							<select className="form-control" onChange={e => setNativeLanguage(e.target.value)}>
+							<select
+								className={validationNativeLanguage ? "form-control is-invalid" : "form-control"}
+								onChange={e => setNativeLanguage(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Mandarin Chinese</option>
 								<option value="2">Spanish</option>
@@ -185,7 +236,9 @@ export const AddImmigration = () => {
 						</div>
 						<div className="col-sm-6">
 							<label>Education Level</label>
-							<select className="form-control" onChange={e => setEducationLevel(e.target.value)}>
+							<select
+								className={validationEducationLevel ? "form-control is-invalid" : "form-control"}
+								onChange={e => setEducationLevel(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">High school </option>
 								<option value="2">Associate Degree</option>
@@ -198,7 +251,9 @@ export const AddImmigration = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<label>Valid LPR Card</label>
-							<select className="form-control" onChange={e => setLprStatus(e.target.value)}>
+							<select
+								className={validationLprStatus ? "form-control is-invalid" : "form-control"}
+								onChange={e => setLprStatus(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Yes</option>
 								<option value="2">No</option>
@@ -206,7 +261,9 @@ export const AddImmigration = () => {
 						</div>
 						<div className="col-sm-6">
 							<label>Family in USA</label>
-							<select className="form-control" onChange={e => setFamilyInUsa(e.target.value)}>
+							<select
+								className={validationFamilyInUsa ? "form-control is-invalid" : "form-control"}
+								onChange={e => setFamilyInUsa(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">Yes</option>
 								<option value="2">No</option>
@@ -217,23 +274,21 @@ export const AddImmigration = () => {
 						type="button"
 						className="btn btn-primary form-control"
 						onClick={() => {
-							actions.addImmigrationInfo(
-								caseNo,
-								dateEntry,
-								portEntry,
-								transportation,
-								immigrationStatus,
-								birthCountry,
-								birthCity,
-								birthProvince,
-								nationality,
-								nativeLanguage,
-								educationLevel,
-								familyInUsa,
-								lprStatus,
-								elegibityDate
-							);
-							history.push("/");
+							setValidationBirthCity(checkInput(birthCity));
+							setValidationBirthCountry(checkInput(birthCountry));
+							setValidationBirthProvince(checkInput(birthProvince));
+							setValidationCaseNo(checkInput(caseNo));
+							setValidationDateEntry(checkInput(dateEntry));
+							setValidationEducationLevel(checkInput(educationLevel));
+							setValidationElegibityDate(checkInput(elegibityDate));
+							setValidationFamilyInUsa(checkInput(familyInUsa));
+							setValidationImmigrationStatus(checkInput(immigrationStatus));
+							setValidationLprStatus(checkInput(lprStatus));
+							setValidationNationality(checkInput(nationality));
+							setValidationNativeLanguage(checkInput(nativeLanguage));
+							setValidationPortEntry(checkInput(portEntry));
+							setValidationTransportation(checkInput(transportation));
+							setValidation(true);
 						}}>
 						Save
 					</button>
