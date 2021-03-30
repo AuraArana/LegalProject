@@ -2,13 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const AddInmigration = () => {
-	let addInmigrationInfo = "Inmigration Information";
+export const AddImmigration = () => {
+	let addImmigrationInfo = "Immigration Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 	const [dateEntry, setDateEntry] = useState("");
 	const [portEntry, setPortEntry] = useState("");
-	const [inmigrationStatus, setInmigrationStatus] = useState("");
+	const [immigrationStatus, setImmigrationStatus] = useState("");
 	const [transportation, setTransportation] = useState("");
 	const [birthCountry, setBirthCountry] = useState("");
 	const [birthCity, setBirthCity] = useState("");
@@ -22,7 +22,7 @@ export const AddInmigration = () => {
 	const [caseNo, setCaseNo] = useState("");
 	/*const [validationDateEntry, setValidationDateEntry] = useState(false);
     const [validationPortEntry, setValidationPortEntry] = useState(false);
-    const [validationInmigrationStatus, setValidationInmigrationStatus] = useState(false);
+    const [validationImmigrationStatus, setValidationImmigrationStatus] = useState(false);
     const [validationTransportation, setValidationTransportation] = useState(false);
     const [validationBirthCountry, setValidationBirthCountry] = useState(false);
     const [validationBirthCity, setValidationBirthCity] = useState(false);
@@ -39,7 +39,7 @@ export const AddInmigration = () => {
         return input === null || !input;
     };
     useEffect(() => {
-        if (!validationBirthCity && !validationBirthCountry && !validationBirthProvince && !validationDateEntry && !validationEducationLevel && !validationElegibityDate && !validationFamilyInUsa && !validationInmigrationStatus && !validationLprStatus && !validationNationality && !validationNativeLanguage && !validationPortEntry && !validationTransportation && validation) {
+        if (!validationBirthCity && !validationBirthCountry && !validationBirthProvince && !validationDateEntry && !validationEducationLevel && !validationElegibityDate && !validationFamilyInUsa && !validationImmigrationStatus && !validationLprStatus && !validationNationality && !validationNativeLanguage && !validationPortEntry && !validationTransportation && validation) {
             actions.addInmigrationInfo(dateEntry, portEntry, transportation, inmigrationStatus, birthCountry, birthCity, birthProvince, nationality, nativeLanguage, educationLevel, familyInUsa, lprStatus, elegibityDate);
             history.push("/");
             setValidation(false);
@@ -51,7 +51,7 @@ export const AddInmigration = () => {
 	return (
 		<div className="container">
 			<div>
-				<h1 className="text-center mt-5">{addInmigrationInfo}</h1>
+				<h1 className="text-center mt-5">{addImmigrationInfo}</h1>
 				<form>
 					<div className="form-group row">
 						<div className="col-sm-6">
@@ -65,8 +65,8 @@ export const AddInmigration = () => {
 							/>
 						</div>
 						<div className="col-sm-6">
-							<label>Inmigration Status</label>
-							<select className="form-control" onChange={e => setInmigrationStatus(e.target.value)}>
+							<label>Immigration Status</label>
+							<select className="form-control" onChange={e => setImmigrationStatus(e.target.value)}>
 								<option selected>Open this select menu</option>
 								<option value="1">U.S. Citizens</option>
 								<option value="2">Permanent or Conditional Residents</option>
@@ -217,12 +217,12 @@ export const AddInmigration = () => {
 						type="button"
 						className="btn btn-primary form-control"
 						onClick={() => {
-							actions.addInmigrationInfo(
+							actions.addImmigrationInfo(
 								caseNo,
 								dateEntry,
 								portEntry,
 								transportation,
-								inmigrationStatus,
+								immigrationStatus,
 								birthCountry,
 								birthCity,
 								birthProvince,

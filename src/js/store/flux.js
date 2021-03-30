@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentUser: null,
 			isLoggedIn: false,
 			ListClients: [],
-			inmigrationInfo: []
+			immigrationInfo: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -48,12 +48,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			//Inicio Heidys
-			addInmigrationInfo(
+			addImmigrationInfo(
 				caseNo,
 				dateEntry,
 				portEntry,
 				transportation,
-				inmigrationStatus,
+				immigrationStatus,
 				birthCountry,
 				birthCity,
 				birthProvince,
@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						DateEntryUSA: dateEntry,
 						PortEntry: portEntry,
 						Transportation: transportation,
-						ImmigrationStatus: inmigrationStatus,
+						ImmigrationStatus: immigrationStatus,
 						BirthCountry: birthCountry,
 						BirthCity: birthCity,
 						BirthProvince: birthProvince,
@@ -88,7 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.then(response => response.json())
 						.then(result => {
 							setStore({
-								inmigrationInfo: result
+								immigrationInfo: result
 							});
 						})
 						.catch(e => console.error(e));

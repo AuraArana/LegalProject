@@ -9,7 +9,7 @@ import { Dashboard } from "./views/dashboard";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { AddBio } from "./views/AddBio.js";
-import { AddInmigration } from "./views/AddInmigration.js";
+import { AddImmigration } from "./views/AddImmigration.js";
 import { AddLegal } from "./views/legalRecords.js";
 import { Clients } from "./views/Clients.js";
 import injectContext from "./store/appContext";
@@ -78,7 +78,7 @@ const Layout = () => {
 									</Route>
 								)}
 								{isLoggedIn ? (
-									<Route exact path="/addInmigration" component={AddInmigration} />
+									<Route exact path="/addImmigration" component={AddImmigration} />
 								) : (
 									<Route exact path="/">
 										<Home />
