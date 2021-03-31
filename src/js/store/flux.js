@@ -95,6 +95,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch();
 				});
 			},
+
+			addClientUser(email, password, firstName, lastName, userType) {
+				fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd", {
+					method: "post",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify({
+						email: email,
+						password: password,
+						firstName: firstName,
+						lastName: lastName,
+						userType: userType
+					})
+				}).then(() => {
+					fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd")
+						.then(response => response.json())
+						.then(result => {
+							setStore({
+								credentials: result
+							});
+						})
+						.catch();
+				});
+			},
 			//Fin Heidys
 
 			//Inicio Aura

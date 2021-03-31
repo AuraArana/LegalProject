@@ -94,10 +94,9 @@ export const AddImmigration = () => {
 							<input
 								type="text"
 								required
-								className={validationCaseNo ? "form-control is-invalid" : "form-control"}
+								className="form-control"
 								disabled
 								value={store.currentCase}
-								placeholder="Enter Case Number"
 								onChange={e => setCaseNo(e.target.value)}
 							/>
 						</div>
@@ -106,7 +105,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationImmigrationStatus ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationStatus(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">U.S. Citizens</option>
 								<option value="2">Permanent or Conditional Residents</option>
 								<option value="3">Undocumented</option>
@@ -120,7 +119,6 @@ export const AddImmigration = () => {
 								type="text"
 								required
 								className={validationDateEntry ? "form-control is-invalid" : "form-control"}
-								placeholder="Enter Date of Entry to USA"
 								onChange={e => setDateEntry(e.target.value)}
 							/>
 						</div>
@@ -130,7 +128,6 @@ export const AddImmigration = () => {
 								type="text"
 								required
 								className={validationElegibityDate ? "form-control is-invalid" : "form-control"}
-								placeholder="Enter DCF Elegibility Date"
 								onChange={e => setElegibityDate(e.target.value)}
 							/>
 						</div>
@@ -141,7 +138,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationPortEntry ? "form-control is-invalid" : "form-control"}
 								onChange={e => setPortEntry(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Key West, Florida - 5202</option>
 								<option value="2">Miami International Airport, Florida - 5206</option>
 								<option value="3">Port Everglades/Fort Lauderdale, Florida - 5203</option>
@@ -155,7 +152,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationTransportation ? "form-control is-invalid" : "form-control"}
 								onChange={e => setTransportation(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Maritime</option>
 								<option value="2">Airplane</option>
 							</select>
@@ -167,7 +164,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationBirthCountry ? "form-control is-invalid" : "form-control"}
 								onChange={e => setBirthCountry(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Afghanistan</option>
 								<option value="2">Albania</option>
 								<option value="3">Algeria</option>
@@ -181,7 +178,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationBirthProvince ? "form-control is-invalid" : "form-control"}
 								onChange={e => setBirthProvince(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Habana</option>
 								<option value="2">Santiago</option>
 								<option value="3">Matanzas</option>
@@ -197,7 +194,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationBirthCity ? "form-control is-invalid" : "form-control"}
 								onChange={e => setBirthCity(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Tokyo</option>
 								<option value="2">Delhi</option>
 								<option value="3">Shanghai</option>
@@ -211,7 +208,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationNationality ? "form-control is-invalid" : "form-control"}
 								onChange={e => setNationality(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Afghans</option>
 								<option value="2">Albanians</option>
 								<option value="3">Algerians</option>
@@ -227,7 +224,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationNativeLanguage ? "form-control is-invalid" : "form-control"}
 								onChange={e => setNativeLanguage(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Mandarin Chinese</option>
 								<option value="2">Spanish</option>
 								<option value="3">English</option>
@@ -241,7 +238,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationEducationLevel ? "form-control is-invalid" : "form-control"}
 								onChange={e => setEducationLevel(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">High school </option>
 								<option value="2">Associate Degree</option>
 								<option value="3">Bachelor Degree</option>
@@ -256,7 +253,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationLprStatus ? "form-control is-invalid" : "form-control"}
 								onChange={e => setLprStatus(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Yes</option>
 								<option value="2">No</option>
 							</select>
@@ -266,7 +263,7 @@ export const AddImmigration = () => {
 							<select
 								className={validationFamilyInUsa ? "form-control is-invalid" : "form-control"}
 								onChange={e => setFamilyInUsa(e.target.value)}>
-								<option selected>Open this select menu</option>
+								<option selected />
 								<option value="1">Yes</option>
 								<option value="2">No</option>
 							</select>
