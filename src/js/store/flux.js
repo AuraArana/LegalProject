@@ -22,9 +22,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 			],
-			currentUser: "LAWF-1000",
+			currentUser: null,
 			count: 1000,
-			currentCase: null,
+			currentCase: "LAWF-1000",
 			isLoggedIn: false,
 			ListClients: [],
 			immigrationInfo: []
