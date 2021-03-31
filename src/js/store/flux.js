@@ -8,17 +8,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					user: {
 						firstName: "William",
 						lastName: "Lopez",
-						userType: 2
+						userType: "Staff"
 					}
 				},
 				{
 					email: "123@gmail.com",
 					password: "123",
-					user: "name123",
 					user: {
 						firstName: "Jeffrey",
 						lastName: "Smith",
-						userType: 1
+						userType: "Client"
 					}
 				}
 			],

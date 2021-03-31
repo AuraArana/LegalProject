@@ -7,6 +7,7 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
+import { AddClientUser } from "../views/AddClientUser.js";
 
 export const Home = ({ validCredentials }) => {
 	const { store, actions } = useContext(Context);
@@ -95,7 +96,12 @@ export const Home = ({ validCredentials }) => {
 								}>
 								Sign In
 							</button>
-							<p className="text-center mt-2" style={{ color: "#50bfc3" }}>
+							<p
+								className="text-center mt-2"
+								style={{ color: "#50bfc3" }}
+								onClick={() => {
+									history.push("/addClientUser");
+								}}>
 								Create an Account
 							</p>
 						</form>
