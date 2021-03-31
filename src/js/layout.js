@@ -17,6 +17,7 @@ import { useLocation } from "react-router-dom";
 import { Navbar } from "./component/navbar";
 import { BarTop } from "./component/bartop";
 import { Footer } from "./component/footer";
+import { AddClientUser } from "./views/AddClientUser";
 
 //create your first component
 const Layout = () => {
@@ -70,6 +71,7 @@ const Layout = () => {
 								<Route exact path="/single/:theid">
 									<Single />
 								</Route>
+
 								{isLoggedIn ? (
 									<Route exact path="/addBio" component={AddBio} />
 								) : (
@@ -91,6 +93,9 @@ const Layout = () => {
 										<Home />
 									</Route>
 								)}
+								<Route exact path="/addClientUser">
+									<AddClientUser />
+								</Route>
 								<Route>
 									<h1>Not found!</h1>
 								</Route>
