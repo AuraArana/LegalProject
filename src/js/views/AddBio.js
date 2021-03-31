@@ -78,10 +78,12 @@ export const AddBio = () => {
 								<label>Case number</label>
 								<input
 									type="text"
+									value={store.currentCase}
+									disabled
 									className={
 										validationCaseNo
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded "
 									}
 									placeholder="Case Number"
 									onChange={e => setCaseNo(e.target.value)}
@@ -96,8 +98,8 @@ export const AddBio = () => {
 									type="text"
 									className={
 										validationAlienNo
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user  rounded"
 									}
 									placeholder="Enter Alien number"
 									onChange={e => setAlienNo(e.target.value)}
@@ -115,8 +117,8 @@ export const AddBio = () => {
 									type="text"
 									className={
 										validationLastName
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded"
 									}
 									placeholder="Enter Last Name"
 									onChange={e => setLastName(e.target.value)}
@@ -131,8 +133,8 @@ export const AddBio = () => {
 									type="text"
 									className={
 										validationFirstName
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded"
 									}
 									placeholder="Enter First Name"
 									onChange={e => setFirstName(e.target.value)}
@@ -148,7 +150,7 @@ export const AddBio = () => {
 								<label>Middle Name</label>
 								<input
 									type="text"
-									className="form-control form-control-user"
+									className="form-control form-control-user rounded"
 									placeholder="Enter Middle Name"
 									onChange={e => setMiddleName(e.target.value)}
 									required
@@ -160,7 +162,7 @@ export const AddBio = () => {
 								<label>Other Names</label>
 								<input
 									type="text"
-									className="form-control form-control-user"
+									className="form-control form-control-user rounded"
 									placeholder="Enter Other Names"
 									onChange={e => setOtherNames(e.target.value)}
 									required
@@ -172,7 +174,10 @@ export const AddBio = () => {
 					<div className="form-group row">
 						<div className="col-sm-4">
 							<label>Gender</label>
-							<select className="form-control " id="Gender" onChange={e => setGender(e.target.value)}>
+							<select
+								className="form-control form-control-user rounded  "
+								id="Gender"
+								onChange={e => setGender(e.target.value)}>
 								<option value="">Select a Gender</option>
 								<option value="M">Male</option>
 								<option value="F">Female</option>
@@ -182,7 +187,7 @@ export const AddBio = () => {
 						<div className="col-sm-4">
 							<label>Marital Status</label>
 							<select
-								className="form-control "
+								className="form-control form-control-user rounded "
 								id="Gender"
 								onChange={e => setMaritalStatus(e.target.value)}>
 								<option value="">Select a Marital Status</option>
@@ -199,8 +204,8 @@ export const AddBio = () => {
 									type="text"
 									className={
 										validationDOB
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded"
 									}
 									placeholder="Enter DOB"
 									onChange={e => setDOB(e.target.value)}
@@ -218,8 +223,8 @@ export const AddBio = () => {
 									type="phone"
 									className={
 										validationHomePhone
-											? "form-control is-invalid form-control-user"
-											: "form-control form-control-user"
+											? "form-control is-invalid form-control-user rounded"
+											: "form-control form-control-user rounded"
 									}
 									placeholder="Enter Home Phone"
 									onChange={e => setHomePhone(e.target.value)}
@@ -232,7 +237,7 @@ export const AddBio = () => {
 								<label>Work Phone</label>
 								<input
 									type="phone"
-									className="form-control form-control-user"
+									className="form-control form-control-user rounded"
 									placeholder="Enter Work Phone"
 									onChange={e => setWorkPhone(e.target.value)}
 									required
@@ -247,8 +252,8 @@ export const AddBio = () => {
 							type="email"
 							className={
 								validationEmail
-									? "form-control form-control-user is-invalid"
-									: "form-control form-control-user"
+									? "form-control form-control-user rounded  is-invalid"
+									: "form-control form-control-user rounded"
 							}
 							placeholder="Enter Email"
 							onChange={e => setEmail(e.target.value)}
@@ -262,8 +267,8 @@ export const AddBio = () => {
 							type="text"
 							className={
 								validationAddress
-									? "form-control form-control-user is-invalid"
-									: "form-control form-control-user"
+									? "form-control form-control-user rounded  is-invalid"
+									: "form-control form-control-user rounded"
 							}
 							placeholder="Enter address"
 							onChange={e => setAddress(e.target.value)}
@@ -279,8 +284,8 @@ export const AddBio = () => {
 									type="text"
 									className={
 										validationCity
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded"
 									}
 									placeholder="Enter City"
 									onChange={e => setCity(e.target.value)}
@@ -295,8 +300,8 @@ export const AddBio = () => {
 									type="text"
 									className={
 										validationState
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded"
 									}
 									placeholder="Enter State"
 									onChange={e => setState(e.target.value)}
@@ -311,8 +316,8 @@ export const AddBio = () => {
 									type="text"
 									className={
 										validationZipCode
-											? "form-control form-control-user is-invalid"
-											: "form-control form-control-user"
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded"
 									}
 									placeholder="Enter Zip Code"
 									onChange={e => setZipCode(e.target.value)}
@@ -342,10 +347,6 @@ export const AddBio = () => {
 						}}>
 						save
 					</button>
-
-					<Link className="mt-3 w-100 text-center" to="/">
-						or get back to contacts
-					</Link>
 				</form>
 			</div>
 		</div>
