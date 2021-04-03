@@ -9,6 +9,8 @@ import { Dashboard } from "./views/dashboard";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { AddBio } from "./views/AddBio.js";
+import { Services } from "./views/services.js";
+import { Ledger } from "./views/ledger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
 import { AddLegal } from "./views/legalRecords.js";
 import { Clients } from "./views/Clients.js";
@@ -79,6 +81,23 @@ const Layout = () => {
 										<Home />
 									</Route>
 								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/services" component={Services} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/ledger" component={Ledger} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
 								{isLoggedIn ? (
 									<Route exact path="/addImmigration" component={AddImmigration} />
 								) : (
