@@ -1,3 +1,4 @@
+const url = "https://assets.breatheco.de/apis/fake/contact/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -26,13 +27,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentCase: "LAWF-1000",
 			isLoggedIn: false,
 			ListClients: [],
-			immigrationInfo: []
+			agenda: [],
+			Ledger: [],
+			immigrationInfo: [],
+			TableServices: [],
+			listOfServices: []
 		},
+
 		actions: {
 			// Use getActions to call a function within a fuction
 			setCurrentUser: user => {
 				setStore({ currentUser: user });
 			},
+
 			setCurrentCase: () => {
 				const store = getStore();
 				let c = store.count + 1;
@@ -48,6 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ ListClients: response });
 					});
 			},
+
 			//Inicio Heidys
 			addImmigrationInfo(
 				caseNo,
@@ -125,6 +133,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Fin Aura
 
 			//Inicio Jose
+			updateTableServices: (var1, var2, var3, var4, var5, var6, var7) => {
+				const store = getStore();
+				let amount = 0;
+				const obj = {
+					contract: var1,
+					intakeDate: var2,
+					reviewDate: var3,
+					filingDate: var4,
+					resolutionDate: var5,
+					resolutionOutcome: var6,
+					comments: var7
+				};
+				store.TableServices.push(obj);
+
+				for (let i in store.listOfServices) {
+					if (store.listOfServices[i].Desc === var1) {
+						amount = store.listOfServices[i].Amount;
+					}
+				}
+				const obj2 = {
+					ServiceType: var1,
+					intakeDate: var2,
+					Transaction: "Service Fee",
+					Amount: amount
+				};
+				store.Ledger.push(obj2);
+			},
+			getlistOfServices: () => {
+				fetch("https://api.jsonbin.io/b/6064d5f5f2163e5ad3f6e798")
+					.then(res => res.json())
+					.then(response => {
+						//console.log(contacts);
+						setStore({ listOfServices: response });
+					});
+			},
 
 			//Fin Jose
 

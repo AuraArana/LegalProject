@@ -58,13 +58,13 @@ export const Navbar = () => {
 						<Link className="collapse-item" to="/legalRecords">
 							Legal, Criminal Record
 						</Link>
-						<Link className="collapse-item" to="/addBio">
+						<Link className="collapse-item" to="/services">
 							Services
 						</Link>
 						<Link className="collapse-item" to="/addBio">
 							Case Documents
 						</Link>
-						<Link className="collapse-item" to="/addBio">
+						<Link className="collapse-item" to="/ledger">
 							Ledger
 						</Link>
 					</div>
