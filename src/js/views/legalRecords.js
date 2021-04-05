@@ -11,12 +11,106 @@ export const AddLegal = () => {
 	const [CaseGoal, setCaseGoal] = useState("");
 	const [FollowUp, setFollowUp] = useState("");
 	const [ArrestRecord, setArrestRecord] = useState("");
+	const [value, setValue] = useState(0);
+	const [chars, setChars] = useState(0);
+	const [maxChars, setMaxChars] = useState(500);
+	const [chars2, setChars2] = useState(0);
+	const [maxChars2, setMaxChars2] = useState(500);
+	const [chars3, setChars3] = useState(0);
+	const [maxChars3, setMaxChars3] = useState(500);
+	const [chars4, setChars4] = useState(0);
+	const [maxChars4, setMaxChars4] = useState(500);
+	const [color, setColor] = useState("grey");
+	const [color2, setColor2] = useState("grey");
+	const [color3, setColor3] = useState("grey");
+	const [color4, setColor4] = useState("grey");
+
 	// const [AttorneyName, setAttorneyName] = useState("");
 	// const [AttorneyPhone, setAttorneyPhone] = useState("");
 
 	const checkInput = input => {
 		return input === null || !input;
 	};
+
+	const handleChange = e => {
+		var input = e.target.value;
+		setChars(input.length);
+	};
+
+	useEffect(
+		() => {
+			if (chars < 500 && chars > 490) {
+				setColor("red");
+			}
+			if (chars < 489 && chars > 480) {
+				setColor("orange");
+			}
+			if (chars < 479 && chars > 0) {
+				setColor("grey");
+			}
+		},
+		[chars]
+	);
+
+	const handleChange2 = e => {
+		var input = e.target.value;
+		setChars2(input.length);
+	};
+
+	useEffect(
+		() => {
+			if (chars2 < 500 && chars2 > 490) {
+				setColor2("red");
+			}
+			if (chars2 < 489 && chars2 > 480) {
+				setColor2("orange");
+			}
+			if (chars2 < 479 && chars2 > 0) {
+				setColor2("grey");
+			}
+		},
+		[chars2]
+	);
+
+	const handleChange3 = e => {
+		var input = e.target.value;
+		setChars3(input.length);
+	};
+
+	useEffect(
+		() => {
+			if (chars3 < 500 && chars3 > 490) {
+				setColor3("red");
+			}
+			if (chars3 < 489 && chars3 > 480) {
+				setColor3("orange");
+			}
+			if (chars3 < 479 && chars3 > 0) {
+				setColor3("grey");
+			}
+		},
+		[chars3]
+	);
+
+	const handleChange4 = e => {
+		var input = e.target.value;
+		setChars4(input.length);
+	};
+
+	useEffect(
+		() => {
+			if (chars4 < 500 && setChars4 > 490) {
+				setColor4("red");
+			}
+			if (chars4 < 489 && chars4 > 480) {
+				setColor4("orange");
+			}
+			if (chars4 < 479 && chars4 > 0) {
+				setColor4("grey");
+			}
+		},
+		[chars4]
+	);
 
 	return (
 		<div className="container">
@@ -37,11 +131,18 @@ export const AddLegal = () => {
 									challenges to obtaining judicial relief.
 								</p>
 								<textarea
+									onChange={handleChange}
 									className="form-control ml-4"
 									id="exampleFormControlTextarea1"
 									rows="3"
-									onChange={e => setLegalProblem(e.target.value)}
+									maxLength="500"
 								/>
+								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
+									<span id="current" style={{ color: color }}>
+										{chars}
+									</span>
+									<span id="maximum"> / {maxChars}</span>
+								</div>
 							</div>
 						</div>
 						<div className="col-sm-11">
@@ -57,11 +158,19 @@ export const AddLegal = () => {
 									obtaining final relief, list them in order.
 								</p>
 								<textarea
+									onChange={handleChange2}
 									className="form-control ml-4"
 									id="exampleFormControlTextarea1"
 									rows="3"
-									onChange={e => setCaseGoal(e.target.value)}
+									maxLength="500"
+									// onChange={e => setCaseGoal(e.target.value)}
 								/>
+								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
+									<span id="current" style={{ color: color2 }}>
+										{chars2}
+									</span>
+									<span id="maximum"> / {maxChars2}</span>
+								</div>
 							</div>
 						</div>
 						<div className="col-sm-11">
@@ -76,10 +185,18 @@ export const AddLegal = () => {
 								</p>
 								<textarea
 									className="form-control ml-4"
+									onChange={handleChange3}
 									id="exampleFormControlTextarea1"
 									rows="3"
-									onChange={e => setFollowUp(e.target.value)}
+									maxLength="500"
+									// onChange={e => setFollowUp(e.target.value)}
 								/>
+								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
+									<span id="current" style={{ color: color3 }}>
+										{chars3}
+									</span>
+									<span id="maximum"> / {maxChars3}</span>
+								</div>
 							</div>
 						</div>
 						<div className="col-sm-11">
@@ -98,10 +215,18 @@ export const AddLegal = () => {
 								</p>
 								<textarea
 									className="form-control ml-4"
+									onChange={handleChange4}
 									id="exampleFormControlTextarea1"
 									rows="3"
-									onChange={e => setArrestRecord(e.target.value)}
+									maxLength="500"
+									// onChange={e => setArrestRecord(e.target.value)}
 								/>
+								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
+									<span id="current" style={{ color: color4 }}>
+										{chars4}
+									</span>
+									<span id="maximum"> / {maxChars4}</span>
+								</div>
 							</div>
 						</div>
 						<div className="col-sm-6">
