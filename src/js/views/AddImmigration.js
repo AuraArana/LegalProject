@@ -6,6 +6,11 @@ export const AddImmigration = () => {
 	let addImmigrationInfo = "Immigration Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	const [immigrationData, setImmigrationData] = useState({
+		dateEntry: "",
+		portEntry: "",
+		immigrationStatus: ""
+	});
 	const [dateEntry, setDateEntry] = useState("");
 	const [portEntry, setPortEntry] = useState("");
 	const [immigrationStatus, setImmigrationStatus] = useState("");
@@ -58,22 +63,24 @@ export const AddImmigration = () => {
 				!validationTransportation &&
 				validation
 			) {
-				actions.addImmigrationInfo(
-					caseNo,
-					dateEntry,
-					portEntry,
-					transportation,
-					immigrationStatus,
-					birthCountry,
-					birthCity,
-					birthProvince,
-					nationality,
-					nativeLanguage,
-					educationLevel,
-					familyInUsa,
-					lprStatus,
-					elegibityDate
-				);
+				// actions.addImmigrationInfo(
+				// 	caseNo,
+				// 	dateEntry,
+				// 	portEntry,
+				// 	transportation,
+				// 	immigrationStatus,
+				// 	birthCountry,
+				// 	birthCity,
+				// 	birthProvince,
+				// 	nationality,
+				// 	nativeLanguage,
+				// 	educationLevel,
+				// 	familyInUsa,
+				// 	lprStatus,
+				// 	elegibityDate
+				// );
+
+				actions.addImmigrationData(immigrationData);
 				history.push("/");
 				setValidation(false);
 			} else {
@@ -82,7 +89,7 @@ export const AddImmigration = () => {
 		},
 		[validation]
 	);
-
+	console.log("store", store.immigrationArr);
 	return (
 		<div className="container">
 			<div>
@@ -104,10 +111,14 @@ export const AddImmigration = () => {
 							<label>Immigration Status</label>
 							<select
 								className={validationImmigrationStatus ? "form-control is-invalid" : "form-control"}
-								onChange={e => setImmigrationStatus(e.target.value)}>
-								<option selected />
-								<option value="1">U.S. Citizens</option>
-								<option value="2">Permanent or Conditional Residents</option>
+								onChange={e =>
+									setImmigrationData({ ...immigrationData, immigrationStatus: e.target.value })
+								}>
+								<option selecte />
+								<option value="U.S. Citizens">U.S. Citizens</option>
+								<option value="Permanent or Conditional Residents">
+									Permanent or Conditional Residents
+								</option>
 								<option value="3">Undocumented</option>
 							</select>
 						</div>
@@ -119,7 +130,7 @@ export const AddImmigration = () => {
 								type="text"
 								required
 								className={validationDateEntry ? "form-control is-invalid" : "form-control"}
-								onChange={e => setDateEntry(e.target.value)}
+								onChange={e => setImmigrationData({ ...immigrationData, dateEntry: e.target.value })}
 							/>
 						</div>
 						<div className="col-sm-6">
@@ -137,10 +148,12 @@ export const AddImmigration = () => {
 							<label>Port of Entry to USA</label>
 							<select
 								className={validationPortEntry ? "form-control is-invalid" : "form-control"}
-								onChange={e => setPortEntry(e.target.value)}>
+								onChange={e => setImmigrationData({ ...immigrationData, portEntry: e.target.value })}>
 								<option selected />
-								<option value="1">Key West, Florida - 5202</option>
-								<option value="2">Miami International Airport, Florida - 5206</option>
+								<option value="Key West, Florida - 5202">Key West, Florida - 5202</option>
+								<option value="Miami International Airport, Florida - 5206">
+									Miami International Airport, Florida - 5206
+								</option>
 								<option value="3">Port Everglades/Fort Lauderdale, Florida - 5203</option>
 								<option value="4">Key West, Florida - 5202</option>
 								<option value="5">West Palm Beach, Florida - 5204</option>
@@ -273,6 +286,7 @@ export const AddImmigration = () => {
 						type="button"
 						className="btn btn-primary form-control"
 						onClick={() => {
+							actions.addImmigrationData(immigrationData);
 							setValidationBirthCity(checkInput(birthCity));
 							setValidationBirthCountry(checkInput(birthCountry));
 							setValidationBirthProvince(checkInput(birthProvince));
