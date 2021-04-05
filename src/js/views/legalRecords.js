@@ -94,18 +94,17 @@ export const AddLegal = () => {
 
 	const handleChange4 = e => {
 		var input = e.target.value;
+		console.log("input.length", input.length);
 		setChars4(input.length);
 	};
 
 	useEffect(
 		() => {
-			if (chars4 < 500 && setChars4 > 490) {
+			if (chars4 < 500 && chars4 > 490) {
 				setColor4("red");
-			}
-			if (chars4 < 489 && chars4 > 480) {
+			} else if (chars4 < 489 && chars4 > 480) {
 				setColor4("orange");
-			}
-			if (chars4 < 479 && chars4 > 0) {
+			} else if (chars4 < 479 && chars4 > 0) {
 				setColor4("grey");
 			}
 		},
