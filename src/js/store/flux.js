@@ -48,14 +48,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					FirstName: "Jose",
 					DOB: "1982-11-02",
 					Gender: "M",
-					MaritalStatus: "0",
+					MaritalStatus: "M",
 					address: "6055 NW",
 					City: "DORAL",
 					State: "FLORDA",
-					Zip: "33178",
-					EMail: "JFINOL@GMIAL.COM",
+					ZipCode: "33178",
+					Email: "jdiaz@GMIAL.COM",
 					HomePhone: "7867878987",
-					WorkPhone: null
+					WorkPhone: "3059842526"
 				},
 				{
 					caseNo: "LAWF-1000",
@@ -64,14 +64,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					FirstName: "Miguel",
 					DOB: "1987-12-07",
 					Gender: "M",
-					MaritalStatus: "0",
+					MaritalStatus: "S",
 					address: "7330 NW",
 					City: "DORAL",
 					State: "FLORDA",
-					Zip: "33178",
-					EMail: "JFINOL@GMIAL.COM",
+					ZipCode: "33178",
+					Email: "mdiaazL@GMIAL.COM",
 					HomePhone: "3059874657",
-					WorkPhone: null
+					WorkPhone: "305987662"
 				}
 			],
 			agenda: [],
