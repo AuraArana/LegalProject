@@ -30,10 +30,9 @@ export const AddClientUser = () => {
 		() => {
 			if (!validationEmail && !validationPassword && !validationLastName && !validationFirstName && validation) {
 				actions.addClientUserData(clientUserData);
-				history.push("/demo");
+				history.push("/");
 				setValidation(false);
 			} else {
-				alert("does not insert");
 				setValidation(false);
 			}
 		},
