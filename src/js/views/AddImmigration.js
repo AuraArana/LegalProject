@@ -15,7 +15,7 @@ export const AddImmigration = () => {
 		birthCountry: "",
 		birthCity: "",
 		nationality: "",
-		caseNo: ""
+		caseNo: store.currentCase
 	});
 
 	const [validationCaseNo, setValidationCaseNo] = useState(false);
@@ -44,8 +44,9 @@ export const AddImmigration = () => {
 				!validationTransportation &&
 				validation
 			) {
+				console.log("addNewData");
 				actions.addImmigrationData(immigrationData);
-				history.push("/");
+				history.push("/demo");
 				setValidation(false);
 			} else {
 				setValidation(false);
@@ -68,7 +69,7 @@ export const AddImmigration = () => {
 								className="form-control"
 								disabled
 								value={store.currentCase}
-								onChange={e => setCaseNo(e.target.value)}
+								// onChange={e => setImmigrationData({ ...immigrationData, caseNo: e.target.value })}
 							/>
 						</div>
 						<div className="col-sm-6">
@@ -161,7 +162,7 @@ export const AddImmigration = () => {
 							<label>Nationality</label>
 							<select
 								className={validationNationality ? "form-control is-invalid" : "form-control"}
-								onChange={e => setNationality(e.target.value)}>
+								onChange={e => setImmigrationData({ ...immigrationData, nationality: e.target.value })}>
 								<option selected />
 								<option value="1">Afghans</option>
 								<option value="2">Albanians</option>
@@ -177,9 +178,10 @@ export const AddImmigration = () => {
 						type="button"
 						className="btn btn-primary form-control"
 						onClick={() => {
+							// actions.addImmigrationData(immigrationData);
 							setValidationBirthCity(checkInput(immigrationData.birthCity));
 							setValidationBirthCountry(checkInput(immigrationData.birthCountry));
-							setValidationCaseNo(checkInput(immigrationData.caseNo));
+							// setValidationCaseNo(checkInput(immigrationData.caseNo));
 							setValidationDateEntry(checkInput(immigrationData.dateEntry));
 							setValidationImmigrationStatus(checkInput(immigrationData.immigrationStatus));
 							setValidationNationality(checkInput(immigrationData.nationality));

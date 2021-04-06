@@ -43,9 +43,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			// Use getActions to call a function within a fuction
-			addImmigrationData: obj => {
-				setStore({ immigrationArr: [...getStore().immigrationArr, obj] });
-			},
 			setCurrentUser: user => {
 				setStore({ currentUser: user });
 			},
@@ -67,75 +64,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			//Inicio Heidys
-			addImmigrationInfo(
-				caseNo,
-				dateEntry,
-				portEntry,
-				transportation,
-				immigrationStatus,
-				birthCountry,
-				birthCity,
-				birthProvince,
-				nationality,
-				nativeLanguage,
-				educationLevel,
-				familyInUsa,
-				lprStatus,
-				elegibityDate
-			) {
-				fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd", {
-					method: "post",
-					headers: { "Content-type": "application/json" },
-					body: JSON.stringify({
-						CaseNo: caseNo,
-						DateEntryUSA: dateEntry,
-						PortEntry: portEntry,
-						Transportation: transportation,
-						ImmigrationStatus: immigrationStatus,
-						BirthCountry: birthCountry,
-						BirthCity: birthCity,
-						BirthProvince: birthProvince,
-						Nationality: nationality,
-						NaitiveLanguage: nativeLanguage,
-						EducationLevel: educationLevel,
-						FamilyInUS: familyInUsa,
-						LPRStatus: lprStatus,
-						DCFEligibilityDate: elegibityDate
-					})
-				}).then(() => {
-					fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd")
-						.then(response => response.json())
-						.then(result => {
-							setStore({
-								immigrationInfo: result
-							});
-						})
-						.catch();
-				});
+			addImmigrationData: obj => {
+				console.log("addData");
+				setStore({ immigrationArr: [...getStore().immigrationArr, obj] });
 			},
 
-			addClientUser(email, password, firstName, lastName, userType) {
-				fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd", {
-					method: "post",
-					headers: { "Content-type": "application/json" },
-					body: JSON.stringify({
-						email: email,
-						password: password,
-						firstName: firstName,
-						lastName: lastName,
-						userType: userType
-					})
-				}).then(() => {
-					fetch("https://api.jsonbin.io/b/606139c0050d147e2b2fc1dd")
-						.then(response => response.json())
-						.then(result => {
-							setStore({
-								credentials: result
-							});
-						})
-						.catch();
-				});
-			},
 			//Fin Heidys
 
 			//Inicio Aura
