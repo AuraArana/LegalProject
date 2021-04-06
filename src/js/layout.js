@@ -162,9 +162,13 @@ const Layout = () => {
 										<Home />
 									</Route>
 								)}
-								<Route exact path="/addClientUser">
-									<AddClientUser />
-								</Route>
+								{!isLoggedIn ? (
+									<Route exact path="/addClientUser" component={AddClientUser} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
 								<Route>
 									<h1>Not found!</h1>
 								</Route>
