@@ -89,9 +89,9 @@ export const Navbar = () => {
 					data-parent="#accordionSidebar">
 					<div className="bg-white py-2 collapse-inner rounded">
 						<h6 className="collapse-header">Custom Utilities:</h6>
-						<a className="collapse-item" href="utilities-color.html">
-							Colors
-						</a>
+						<Link className="collapse-item" to="/servicescard">
+							By type of Services
+						</Link>
 						<a className="collapse-item" href="utilities-border.html">
 							Borders
 						</a>
@@ -134,9 +134,9 @@ export const Navbar = () => {
 					data-parent="#accordionSidebar">
 					<div className="bg-white py-2 collapse-inner rounded">
 						<h6 className="collapse-header">Custom Utilities:</h6>
-						<a className="collapse-item" href="utilities-color.html">
-							Colors
-						</a>
+						<Link className="collapse-item" to="/servicesform">
+							By type of Services
+						</Link>
 						<a className="collapse-item" href="utilities-border.html">
 							Borders
 						</a>

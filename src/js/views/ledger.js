@@ -33,16 +33,18 @@ export const Ledger = () => {
 									<tbody>
 										{store.Ledger &&
 											store.Ledger.map((item, index) => {
-												total = total + parseInt(item.Amount);
+												if (item.caseNo === store.currentCase) {
+													total = total + parseInt(item.Amount);
 
-												return (
-													<tr key={index}>
-														<td>{item.intakeDate}</td>
-														<td>{item.Transaction}</td>
-														<td>{item.ServiceType}</td>
-														<td>{item.Amount}</td>
-													</tr>
-												);
+													return (
+														<tr key={index}>
+															<td>{item.intakeDate}</td>
+															<td>{item.Transaction}</td>
+															<td>{item.ServiceType}</td>
+															<td>{item.Amount}</td>
+														</tr>
+													);
+												}
 											})}
 									</tbody>
 								</table>
