@@ -24,6 +24,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			immigrationArr: [
 				{
+					caseNo: "LAWF-999",
+					dateEntry: "05/20/1998",
+					portEntry: "Miami International Airport, Florida - 5206",
+					immigrationStatus: "Permanent or Conditional Residents"
+				},
+				{
+					caseNo: "LAWF-1000",
 					dateEntry: "05/20/2020",
 					portEntry: "Miami International Airport, Florida - 5206",
 					immigrationStatus: "Permanent or Conditional Residents"
@@ -33,7 +40,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 			count: 1000,
 			currentCase: "LAWF-1000",
 			isLoggedIn: false,
-			ListClients: [],
+			ListClients: [
+				{
+					caseNo: "LAWF-999",
+					AlienNo: "208568545",
+					LastName: "Diaz",
+					FirstName: "Jose",
+					DOB: "1982-11-02",
+					Gender: "M",
+					MaritalStatus: "0",
+					address: "6055 NW",
+					City: "DORAL",
+					State: "FLORDA",
+					Zip: "33178",
+					EMail: "JFINOL@GMIAL.COM",
+					HomePhone: "7867878987",
+					WorkPhone: null
+				},
+				{
+					caseNo: "LAWF-1000",
+					AlienNo: "202168941",
+					LastName: "Diaz",
+					FirstName: "Miguel",
+					DOB: "1987-12-07",
+					Gender: "M",
+					MaritalStatus: "0",
+					address: "7330 NW",
+					City: "DORAL",
+					State: "FLORDA",
+					Zip: "33178",
+					EMail: "JFINOL@GMIAL.COM",
+					HomePhone: "3059874657",
+					WorkPhone: null
+				}
+			],
 			agenda: [],
 			Ledger: [],
 			immigrationInfo: [],
@@ -53,19 +93,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ count: c });
 				setStore({ currentCase: "LAWF-" + c });
 			},
-
-			getListClients: () => {
-				fetch("https://api.jsonbin.io/b/605fedb2418f307e25838a0c")
-					.then(res => res.json())
-					.then(response => {
-						//console.log(contacts);
-						setStore({ ListClients: response });
-					});
-			},
-
 			//Inicio Heidys
 			addImmigrationData: obj => {
-				console.log("addData");
 				setStore({ immigrationArr: [...getStore().immigrationArr, obj] });
 			},
 
@@ -76,6 +105,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Fin Aura
 
 			//Inicio Jose
+
+			addIbioData: obj => {
+				setStore({ ListClients: [...getStore().ListClients, obj] });
+			},
+
 			updateTableServices: (var1, var2, var3, var4, var5, var6, var7) => {
 				const store = getStore();
 				let amount = 0;
@@ -107,7 +141,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://api.jsonbin.io/b/6064d5f5f2163e5ad3f6e798")
 					.then(res => res.json())
 					.then(response => {
-						//console.log(contacts);
 						setStore({ listOfServices: response });
 					});
 			},

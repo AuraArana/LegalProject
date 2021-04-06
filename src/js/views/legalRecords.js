@@ -94,7 +94,7 @@ export const AddLegal = () => {
 
 	const handleChange4 = e => {
 		var input = e.target.value;
-		console.log("input.length", input.length);
+		//console.log("input.length", input.length);
 		setChars4(input.length);
 	};
 

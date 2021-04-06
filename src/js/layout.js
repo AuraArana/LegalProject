@@ -9,6 +9,7 @@ import { Dashboard } from "./views/dashboard";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { AddBio } from "./views/AddBio.js";
+import { EditBio } from "./views/editBio.js";
 import { Services } from "./views/services.js";
 import { Ledger } from "./views/ledger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
@@ -63,6 +64,16 @@ const Layout = () => {
 								{isLoggedIn ? (
 									<Route exact path="/clients/:post">
 										<Clients />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/editbio/:case">
+										<EditBio />
 									</Route>
 								) : (
 									<Route exact path="/">

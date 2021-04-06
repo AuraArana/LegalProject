@@ -32,19 +32,41 @@ export const ClientsCard = props => {
 								</div>
 								<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 									<div className=" float-right">
-										<Link to={"/edit/" + item.id}>
+										<Link to={"/editBio/" + item.caseNo}>
 											<button className="btn">
 												<i className="fas fa-pencil-alt mr-3" />
 											</button>
 										</Link>
-										<button className="btn" onClick={() => actions.deleteBio(item.id)}>
-											<i className="fas fa-trash-alt" />
-										</button>
+										<Link to={"/editImmigration/" + item.caseNo}>
+											<button className="btn">
+												<i className="fas fa-pencil-alt mr-3" />
+											</button>
+										</Link>
+										<Link to={"/editLegalRecords/" + item.caseNo}>
+											<button className="btn">
+												<i className="fas fa-pencil-alt mr-3" />
+											</button>
+										</Link>
+										<Link to={"/editServices/" + item.caseNo}>
+											<button className="btn">
+												<i className="fas fa-pencil-alt mr-3" />
+											</button>
+										</Link>
+										<Link to={"/editDocuments/" + item.caseNo}>
+											<button className="btn">
+												<i className="fas fa-pencil-alt mr-3" />
+											</button>
+										</Link>
+										<Link to={"/editLedger/" + item.caseNo}>
+											<button className="btn">
+												<i className="fas fa-pencil-alt mr-3" />
+											</button>
+										</Link>
 									</div>
 									<label className="name lead">{item.FirstName + " " + item.LastName}</label>
 									<br />
 									<i className="fas fa-map-marker-alt text-muted mr-3" />
-									<span className="text-muted">{item.Address}</span>
+									<span className="text-muted">{item.DOB}</span>
 									<br />
 									<span
 										className="fa fa-phone fa-fw text-muted mr-3"
@@ -60,7 +82,7 @@ export const ClientsCard = props => {
 										data-original-title=""
 										title=""
 									/>
-									<span className="text-muted small text-truncate">{params.post}</span>
+									<span className="text-muted small text-truncate">{item.caseNo}</span>
 								</div>
 							</div>
 						);

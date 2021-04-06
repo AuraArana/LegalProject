@@ -44,7 +44,7 @@ export const AddImmigration = () => {
 				!validationTransportation &&
 				validation
 			) {
-				console.log("addNewData");
+				//console.log("addNewData");
 				actions.addImmigrationData(immigrationData);
 				history.push("/demo");
 				setValidation(false);
@@ -54,7 +54,7 @@ export const AddImmigration = () => {
 		},
 		[validation]
 	);
-	console.log("immigration data", immigrationData);
+	//	console.log("immigration data", immigrationData);
 	return (
 		<div className="container">
 			<div>

@@ -1,27 +1,39 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const AddBio = () => {
+export const EditBio = props => {
+	const params = useParams();
 	let addBio = "Biographical Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
+	let Case = params.case;
+	let pos = 0;
+
+	for (let i in store.ListClients) {
+		if (store.ListClients[i].caseNo === Case) {
+			pos = i;
+		}
+	}
+
+	let ListClients = store.ListClients[pos];
 	const [bioData, setbioData] = useState({
-		AlienNo: "",
-		LastName: "",
-		FirstName: "",
-		Gender: "",
-		DOB: "",
-		address: "",
-		MaritalStatus: "",
-		City: "",
-		State: "",
-		ZipCode: "",
-		HomePhone: "",
-		WorkPhone: "",
-		Email: "",
-		caseNo: store.currentCase
+		AlienNo: ListClients ? ListClients.AlienNo : "",
+		LastName: ListClients ? ListClients.LastName : "",
+		FirstName: ListClients ? ListClients.FirstName : "",
+		Gender: ListClients ? ListClients.Gender : "",
+		DOB: ListClients ? ListClients.DOB : "",
+		address: ListClients ? ListClients.address : "",
+		MaritalStatus: ListClients ? ListClients.MaritalStatus : "",
+		City: ListClients ? ListClients.City : "",
+		State: ListClients ? ListClients.State : "",
+		ZipCode: ListClients ? ListClients.ZipCode : "",
+		HomePhone: ListClients ? ListClients.HomePhone : "",
+		WorkPhone: ListClients ? ListClients.WorkPhone : "",
+		Email: ListClients ? ListClients.Email : "",
+		caseNo: ListClients ? ListClients.caseNo : ""
 	});
 
 	const [valEmail, setValEmail] = useState(false);
@@ -73,7 +85,7 @@ export const AddBio = () => {
 								<label>Case number</label>
 								<input
 									type="text"
-									value={store.currentCase}
+									value={bioData.caseNo}
 									disabled
 									className={"form-control form-control-user rounded"}
 									placeholder="Case Number"
@@ -85,6 +97,7 @@ export const AddBio = () => {
 								<label>Alien Number</label>
 								<input
 									type="text"
+									value={bioData.AlienNo}
 									className={"form-control form-control-user rounded"}
 									placeholder="Enter Alien number"
 									onChange={e => setbioData({ ...bioData, AlienNo: e.target.value })}
@@ -100,6 +113,7 @@ export const AddBio = () => {
 								<label>Last Name</label>
 								<input
 									type="text"
+									value={bioData.LastName}
 									className={
 										validationLastName
 											? "form-control form-control-user rounded  is-invalid"
@@ -116,6 +130,7 @@ export const AddBio = () => {
 								<label>First Name</label>
 								<input
 									type="text"
+									value={bioData.FirstName}
 									className={
 										validationFirstName
 											? "form-control form-control-user rounded  is-invalid"
@@ -133,7 +148,8 @@ export const AddBio = () => {
 						<div className="col-sm-4">
 							<label>Gender</label>
 							<select
-								className="form-control rounded  "
+								className="form-control rounded "
+								value={bioData.Gender}
 								id="Gender"
 								onChange={e => setbioData({ ...bioData, Gender: e.target.value })}>
 								<option value="">Select a Gender</option>
@@ -146,7 +162,8 @@ export const AddBio = () => {
 							<label>Marital Status</label>
 							<select
 								className="form-control rounded "
-								id="Gender"
+								id="MaritalStatus"
+								value={bioData.MaritalStatus}
 								onChange={e => setbioData({ ...bioData, MaritalStatus: e.target.value })}>
 								<option value="">Select a Marital Status</option>
 								<option value="S">Single</option>
@@ -160,6 +177,7 @@ export const AddBio = () => {
 								<label>DOB</label>
 								<input
 									type="text"
+									value={bioData.DOB}
 									className={"form-control form-control-user rounded"}
 									placeholder="Enter DOB"
 									onChange={e => setbioData({ ...bioData, DOB: e.target.value })}
@@ -175,6 +193,7 @@ export const AddBio = () => {
 								<label>HomePhone</label>
 								<input
 									type="phone"
+									value={bioData.HomePhone}
 									className={
 										validationHomePhone
 											? "form-control is-invalid form-control-user rounded"
@@ -191,6 +210,7 @@ export const AddBio = () => {
 								<label>Work Phone</label>
 								<input
 									type="phone"
+									value={bioData.WorkPhone}
 									className="form-control form-control-user rounded"
 									placeholder="Enter Work Phone"
 									onChange={e => setbioData({ ...bioData, WorkPhone: e.target.value })}
@@ -204,6 +224,7 @@ export const AddBio = () => {
 						<label>Email</label>
 						<input
 							type="email"
+							value={bioData.Email}
 							className={
 								validationEmail
 									? "form-control form-control-user rounded  is-invalid"
@@ -219,6 +240,7 @@ export const AddBio = () => {
 						<label>Address</label>
 						<input
 							type="text"
+							value={bioData.address}
 							className={
 								validationAddress
 									? "form-control form-control-user rounded  is-invalid"
@@ -236,6 +258,7 @@ export const AddBio = () => {
 								<label>City</label>
 								<input
 									type="text"
+									value={bioData.City}
 									className={
 										validationCity
 											? "form-control form-control-user rounded  is-invalid"
@@ -252,6 +275,7 @@ export const AddBio = () => {
 								<label>State</label>
 								<input
 									type="text"
+									value={bioData.State}
 									className={
 										validationState
 											? "form-control form-control-user rounded  is-invalid"
@@ -268,6 +292,7 @@ export const AddBio = () => {
 								<label>Zip Code</label>
 								<input
 									type="text"
+									value={bioData.ZipCode}
 									className={
 										validationZipCode
 											? "form-control form-control-user rounded  is-invalid"
@@ -302,4 +327,8 @@ export const AddBio = () => {
 			</div>
 		</div>
 	);
+};
+
+EditBio.propTypes = {
+	match: PropTypes.object
 };
