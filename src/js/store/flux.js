@@ -6,34 +6,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					email: "abc@gmail.com",
 					password: "abc",
-					user: {
-						firstName: "William",
-						lastName: "Lopez",
-						userType: "Staff"
-					}
+					firstName: "William",
+					lastName: "Lopez",
+					userType: "Staff"
 				},
 				{
 					email: "123@gmail.com",
 					password: "123",
-					user: {
-						firstName: "Jeffrey",
-						lastName: "Smith",
-						userType: "Client"
-					}
+					firstName: "Jeffrey",
+					lastName: "Smith",
+					userType: "Client"
 				}
 			],
 			immigrationArr: [
 				{
 					caseNo: "LAWF-999",
 					dateEntry: "05/20/1998",
-					portEntry: "Miami International Airport, Florida - 5206",
-					immigrationStatus: "Permanent or Conditional Residents"
+					portEntry: "Miami International Airport, Florida",
+					immigrationStatus: "Permanent or Conditional Residents",
+					transportation: "Airplane",
+					birthCountry: "Cuba",
+					birthCity: "La Habana",
+					nationality: "Cubana"
 				},
 				{
 					caseNo: "LAWF-1000",
 					dateEntry: "05/20/2020",
-					portEntry: "Miami International Airport, Florida - 5206",
-					immigrationStatus: "Permanent or Conditional Residents"
+					portEntry: "Miami International Airport, Florida",
+					immigrationStatus: "Permanent or Conditional Residents",
+					transportation: "Maritime",
+					birthCountry: "Cuba",
+					birthCity: "La Habana",
+					nationality: "Cubana"
 				}
 			],
 			legalArr: [
@@ -71,9 +75,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					MaritalStatus: "M",
 					address: "6055 NW",
 					City: "DORAL",
-					State: "FLORDA",
+					State: "FLORIDA",
 					ZipCode: "33178",
-					Email: "jdiaz@GMIAL.COM",
+					Email: "jdiaz@GMAIL.COM",
 					HomePhone: "7867878987",
 					WorkPhone: "3059842526"
 				},
@@ -87,9 +91,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					MaritalStatus: "S",
 					address: "7330 NW",
 					City: "DORAL",
-					State: "FLORDA",
+					State: "FLORIDA",
 					ZipCode: "33178",
-					Email: "mdiaazL@GMIAL.COM",
+					Email: "mdiaazL@GMAIL.COM",
 					HomePhone: "3059874657",
 					WorkPhone: "305987662"
 				}
@@ -138,6 +142,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addImmigrationData: obj => {
 				setStore({ immigrationArr: [...getStore().immigrationArr, obj] });
 			},
+			addClientUserData: obj => {
+				setStore({ credentials: [...getStore().credentials, obj] });
+			},
 
 			//Fin Heidys
 
@@ -180,7 +187,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ listOfServices: response });
 					});
 			},
-
 			//Fin Jose
 
 			exampleFunction: () => {

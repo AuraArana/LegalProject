@@ -16,6 +16,7 @@ import { ServicesForm } from "./views/ServicesForm.js";
 import { ServicesReport } from "./views/ServicesReport.js";
 import { Ledger } from "./views/ledger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
+import { EditImmigration } from "./views/EditImmigration.js";
 import { AddLegal } from "./views/legalRecords.js";
 import { Clients } from "./views/Clients.js";
 import injectContext from "./store/appContext";
@@ -143,6 +144,17 @@ const Layout = () => {
 										<Home />
 									</Route>
 								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/editImmigration/:case">
+										<EditImmigration />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
 								{isLoggedIn ? (
 									<Route exact path="/legalRecords" component={AddLegal} />
 								) : (

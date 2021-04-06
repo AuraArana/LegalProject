@@ -1,21 +1,30 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const AddImmigration = () => {
-	let addImmigrationInfo = "Immigration Information";
+export const EditImmigration = props => {
+	const params = useParams();
+	let ImmigrationInfo = "Immigration Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-
+	let Case = params.case;
+	let pos = 0;
+	for (let i in store.immigrationArr) {
+		if (store.immigrationArr[i].caseNo === Case) {
+			pos = i;
+		}
+	}
+	const immigrationArr = store.immigrationArr[pos];
 	const [immigrationData, setImmigrationData] = useState({
-		dateEntry: "",
-		portEntry: "",
-		immigrationStatus: "",
-		transportation: "",
-		birthCountry: "",
-		birthCity: "",
-		nationality: "",
-		caseNo: store.currentCase
+		dateEntry: immigrationArr ? immigrationArr.dateEntry : "",
+		portEntry: immigrationArr ? immigrationArr.portEntry : "",
+		immigrationStatus: immigrationArr ? immigrationArr.immigrationStatus : "",
+		transportation: immigrationArr ? immigrationArr.transportation : "",
+		birthCountry: immigrationArr ? immigrationArr.birthCountry : "",
+		birthCity: immigrationArr ? immigrationArr.birthCity : "",
+		nationality: immigrationArr ? immigrationArr.nationality : "",
+		caseNo: immigrationArr ? immigrationArr.caseNo : ""
 	});
 	const [validationDateEntry, setValidationDateEntry] = useState(false);
 	const [validationPortEntry, setValidationPortEntry] = useState(false);
@@ -54,17 +63,24 @@ export const AddImmigration = () => {
 	return (
 		<div className="container">
 			<div>
-				<h1 className="text-center mt-5">{addImmigrationInfo}</h1>
+				<h1 className="text-center mt-5">{ImmigrationInfo}</h1>
 				<form>
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<label>Case number</label>
-							<input type="text" required className="form-control" disabled value={store.currentCase} />
+							<input
+								type="text"
+								required
+								className="form-control"
+								disabled
+								value={immigrationData.caseNo}
+							/>
 						</div>
 						<div className="col-sm-6">
 							<label>Immigration Status</label>
 							<select
 								className={validationImmigrationStatus ? "form-control is-invalid" : "form-control"}
+								value={immigrationData.immigrationStatus}
 								onChange={e =>
 									setImmigrationData({ ...immigrationData, immigrationStatus: e.target.value })
 								}>
@@ -83,6 +99,7 @@ export const AddImmigration = () => {
 							<input
 								type="text"
 								required
+								value={immigrationData.dateEntry}
 								className={validationDateEntry ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationData({ ...immigrationData, dateEntry: e.target.value })}
 							/>
@@ -91,6 +108,7 @@ export const AddImmigration = () => {
 							<label>Port of Entry to USA</label>
 							<select
 								className={validationPortEntry ? "form-control is-invalid" : "form-control"}
+								value={immigrationData.portEntry}
 								onChange={e => setImmigrationData({ ...immigrationData, portEntry: e.target.value })}>
 								<option selected />
 								<option value="Key West, Florida">Key West, Florida</option>
@@ -111,6 +129,7 @@ export const AddImmigration = () => {
 							<label>Transportation</label>
 							<select
 								className={validationTransportation ? "form-control is-invalid" : "form-control"}
+								value={immigrationData.transportation}
 								onChange={e =>
 									setImmigrationData({ ...immigrationData, transportation: e.target.value })
 								}>
@@ -123,6 +142,7 @@ export const AddImmigration = () => {
 							<label>City of Birth</label>
 							<select
 								className={validationBirthCity ? "form-control is-invalid" : "form-control"}
+								value={immigrationData.birthCity}
 								onChange={e => setImmigrationData({ ...immigrationData, birthCity: e.target.value })}>
 								<option selected />
 								<option value="Tokyo">Tokyo</option>
@@ -139,6 +159,7 @@ export const AddImmigration = () => {
 							<label>Country of Birth</label>
 							<select
 								className={validationBirthCountry ? "form-control is-invalid" : "form-control"}
+								value={immigrationData.birthCountry}
 								onChange={e =>
 									setImmigrationData({ ...immigrationData, birthCountry: e.target.value })
 								}>
@@ -155,6 +176,7 @@ export const AddImmigration = () => {
 							<label>Nationality</label>
 							<select
 								className={validationNationality ? "form-control is-invalid" : "form-control"}
+								value={immigrationData.nationality}
 								onChange={e => setImmigrationData({ ...immigrationData, nationality: e.target.value })}>
 								<option selected />
 								<option value="Afghans">Afghans</option>
@@ -185,4 +207,7 @@ export const AddImmigration = () => {
 			</div>
 		</div>
 	);
+};
+EditImmigration.propTypes = {
+	match: PropTypes.object
 };
