@@ -22,6 +22,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 			],
+			immigrationArr: [
+				{
+					dateEntry: "05/20/2020",
+					portEntry: "Miami International Airport, Florida - 5206",
+					immigrationStatus: "Permanent or Conditional Residents"
+				}
+			],
 			currentUser: null,
 			count: 1000,
 			currentCase: "LAWF-1000",
@@ -36,6 +43,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			// Use getActions to call a function within a fuction
+			addImmigrationData: obj => {
+				setStore({ immigrationArr: [...getStore().immigrationArr, obj] });
+			},
 			setCurrentUser: user => {
 				setStore({ currentUser: user });
 			},
