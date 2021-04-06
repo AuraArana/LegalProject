@@ -36,6 +36,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					immigrationStatus: "Permanent or Conditional Residents"
 				}
 			],
+			legalArr: [
+				{
+					caseNo: "LAWF-999",
+					legalProblem: "sample of legal problem paragraph",
+					caseGoal: "sample of case goal paragraph",
+					followUp: "sample of follow up paragraph",
+					arrestRecord: "sample of arrest record paragraph",
+					criminalAttorney: "Michael Silva",
+					attorneyPhone: "3056779876"
+				},
+				{
+					caseNo: "LAWF-1000",
+					legalProblem: "sample of legal problem paragraph2",
+					caseGoal: "sample of case goal paragraph2",
+					followUp: "sample of follow up paragraph2",
+					arrestRecord: "sample of arrest record paragraph2",
+					criminalAttorney: "Peter Williams",
+					attorneyPhone: "3053987067"
+				}
+			],
 			currentUser: null,
 			count: 1000,
 			currentCase: "LAWF-1000",
@@ -101,7 +121,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Fin Heidys
 
 			//Inicio Aura
-
+			addLegalData: obj => {
+				setStore({ legalArr: [...getStore().legalArr, obj] });
+			},
 			//Fin Aura
 
 			//Inicio Jose

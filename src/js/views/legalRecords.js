@@ -7,6 +7,16 @@ export const AddLegal = () => {
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
+	const [legalData, setLegalData] = useState({
+		legalProblem: "",
+		caseGoal: "",
+		followUp: "",
+		arrestRecord: "",
+		criminalAttorney: "",
+		attorneyPhone: "",
+		caseNo: store.currentCase
+	});
+
 	const [LegalProblem, setLegalProblem] = useState("");
 	const [CaseGoal, setCaseGoal] = useState("");
 	const [FollowUp, setFollowUp] = useState("");
@@ -117,11 +127,23 @@ export const AddLegal = () => {
 				<h1 className="text-center mt-5">{addLegal}</h1>
 				<form className="user">
 					<div className="form-group row">
-						<div className="col-sm-11">
+						<div className="col-sm-6">
+							<div className="form-group">
+								<label>Case number</label>
+								<input
+									type="text"
+									value={store.currentCase}
+									disabled
+									className={"form-control form-control-user rounded pl-4"}
+									placeholder="Case Number"
+								/>
+							</div>
+						</div>
+						<div className="col-sm-12">
 							<div className="form-group">
 								<label>Legal Problem</label>
 								<p
-									className="pl-4"
+									className=""
 									style={{
 										fontSize: 12
 									}}>
@@ -130,11 +152,12 @@ export const AddLegal = () => {
 									challenges to obtaining judicial relief.
 								</p>
 								<textarea
-									onChange={handleChange}
-									className="form-control ml-4"
+									// onChange={handleChange}
+									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
+									onChange={e => setLegalData({ ...legalData, legalProblem: e.target.value })}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color }}>
@@ -144,11 +167,11 @@ export const AddLegal = () => {
 								</div>
 							</div>
 						</div>
-						<div className="col-sm-11">
+						<div className="col-sm-12">
 							<div className="form-group">
 								<label>Case Goal</label>
 								<p
-									className="pl-4"
+									className=""
 									style={{
 										fontSize: 12
 									}}>
@@ -157,12 +180,12 @@ export const AddLegal = () => {
 									obtaining final relief, list them in order.
 								</p>
 								<textarea
-									onChange={handleChange2}
-									className="form-control ml-4"
+									// onChange={handleChange2}
+									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									// onChange={e => setCaseGoal(e.target.value)}
+									onChange={e => setLegalData({ ...legalData, caseGoal: e.target.value })}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color2 }}>
@@ -172,23 +195,23 @@ export const AddLegal = () => {
 								</div>
 							</div>
 						</div>
-						<div className="col-sm-11">
+						<div className="col-sm-12">
 							<div className="form-group">
 								<label>Follow-Up</label>
 								<p
-									className="pl-4"
+									className=""
 									style={{
 										fontSize: 12
 									}}>
 									Briefly describe relevant follow-up activities as the case progresses.
 								</p>
 								<textarea
-									className="form-control ml-4"
-									onChange={handleChange3}
+									className="form-control"
+									// onChange={handleChange3}
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									// onChange={e => setFollowUp(e.target.value)}
+									onChange={e => setLegalData({ ...legalData, followUp: e.target.value })}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color3 }}>
@@ -198,11 +221,11 @@ export const AddLegal = () => {
 								</div>
 							</div>
 						</div>
-						<div className="col-sm-11">
+						<div className="col-sm-12">
 							<div className="form-group">
 								<label>Arrest Record</label>
 								<p
-									className="pl-4"
+									className=""
 									style={{
 										fontSize: 12
 									}}>
@@ -213,12 +236,12 @@ export const AddLegal = () => {
 									attorneys contact information.
 								</p>
 								<textarea
-									className="form-control ml-4"
-									onChange={handleChange4}
+									className="form-control"
+									// onChange={handleChange4}
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									// onChange={e => setArrestRecord(e.target.value)}
+									onChange={e => setLegalData({ ...legalData, arrestRecord: e.target.value })}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color4 }}>
@@ -229,26 +252,46 @@ export const AddLegal = () => {
 							</div>
 						</div>
 						<div className="col-sm-6">
-							<div className="form-group ml-4">
+							<div className="form-group">
 								<label>Criminal Attorneys Name</label>
-								<input type="text" className="form-control" aria-describedby="basic-addon1" />
+								<input
+									type="text"
+									className="form-control"
+									aria-describedby="basic-addon1"
+									onChange={e => setLegalData({ ...legalData, criminalAttorney: e.target.value })}
+								/>
 							</div>
 						</div>
-						<div className="col-sm-5">
+						<div className="col-sm-6">
 							<div className="form-group">
 								<label>Criminal Attorney Phone</label>
-								<input type="text" className="form-control" aria-describedby="basic-addon1" />
+								<input
+									type="text"
+									className="form-control"
+									aria-describedby="basic-addon1"
+									onChange={e => setLegalData({ ...legalData, attorneyPhone: e.target.value })}
+								/>
 							</div>
 						</div>
 					</div>
-					<button type="button" className="btn col-11 btn-primary form-control">
-						save
-					</button>
-					<div>
-						<Link className="mt-3 w-100 text-center" to="/">
-							Go back to Immigration Information
-						</Link>{" "}
-					</div>
+					<Link
+						type="button"
+						className="btn btn-primary form-control col-3 mb-5"
+						style={{ float: "left" }}
+						to="/AddImmigration">
+						Go Back: Immigration
+					</Link>
+					<Link to={"/services"}>
+						<button
+							type="button"
+							className="btn btn-primary form-control col-3 mb-5"
+							style={{ float: "right" }}
+							onClick={() => {
+								actions.addLegalData(legalData);
+							}}>
+							Save + Next Page: Services
+						</button>
+					</Link>
 				</form>
 			</div>
 		</div>
