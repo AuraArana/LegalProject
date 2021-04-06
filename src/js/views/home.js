@@ -20,9 +20,8 @@ export const Home = ({ validCredentials }) => {
 	const checkLogin = (email, password) => {
 		for (let i in store.credentials) {
 			if (store.credentials[i].email === email && store.credentials[i].password === password) {
-				actions.setCurrentUser(store.credentials[i].user);
+				actions.setCurrentUser(store.credentials[i]);
 				validCredentials();
-
 				return true;
 			}
 		}

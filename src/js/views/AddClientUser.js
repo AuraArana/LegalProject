@@ -10,11 +10,13 @@ import { Link, useParams } from "react-router-dom";
 export const AddClientUser = () => {
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [userType, setUsertype] = useState("Client");
+	const [clientUserData, setClientUserData] = useState({
+		email: "",
+		password: "",
+		firstName: "",
+		lastName: "",
+		userType: "Client"
+	});
 	const [validationEmail, setValidationEmail] = useState(false);
 	const [validationPassword, setValidationPassword] = useState(false);
 	const [validationFirstName, setValidationFirstName] = useState(false);
@@ -27,10 +29,11 @@ export const AddClientUser = () => {
 	useEffect(
 		() => {
 			if (!validationEmail && !validationPassword && !validationLastName && !validationFirstName && validation) {
-				actions.addClientUser(email, password, firstName, lastName, userType);
+				actions.addClientUserData(clientUserData);
 				history.push("/demo");
 				setValidation(false);
 			} else {
+				alert("does not insert");
 				setValidation(false);
 			}
 		},
@@ -82,7 +85,7 @@ export const AddClientUser = () => {
 								<input
 									type="text"
 									className={validationFirstName ? "form-control is-invalid" : "form-control"}
-									onChange={e => setFirstName(e.target.value)}
+									onChange={e => setClientUserData({ ...clientUserData, firstName: e.target.value })}
 									placeholder="First Name"
 								/>
 							</div>
@@ -90,7 +93,7 @@ export const AddClientUser = () => {
 								<input
 									type="text"
 									className={validationLastName ? "form-control is-invalid" : "form-control"}
-									onChange={e => setLastName(e.target.value)}
+									onChange={e => setClientUserData({ ...clientUserData, lastName: e.target.value })}
 									placeholder="Last Name"
 								/>
 							</div>
@@ -98,14 +101,14 @@ export const AddClientUser = () => {
 								<input
 									type="email"
 									className={validationEmail ? "form-control is-invalid" : "form-control"}
-									onChange={e => setEmail(e.target.value)}
+									onChange={e => setClientUserData({ ...clientUserData, email: e.target.value })}
 									placeholder="Email"
 								/>
 							</div>
 							<div className="mb-3 mt-3">
 								<input
 									type="password"
-									onChange={e => setPassword(e.target.value)}
+									onChange={e => setClientUserData({ ...clientUserData, password: e.target.value })}
 									className={validationPassword ? "form-control is-invalid" : "form-control"}
 									placeholder="Password"
 								/>
@@ -113,10 +116,10 @@ export const AddClientUser = () => {
 							<button
 								className="btn btn-primary col-12 rounded-pill"
 								onClick={() => {
-									setValidationFirstName(checkInput(firstName));
-									setValidationLastName(checkInput(lastName));
-									setValidationEmail(checkInput(email));
-									setValidationPassword(checkInput(password));
+									setValidationFirstName(checkInput(clientUserData.firstName));
+									setValidationLastName(checkInput(clientUserData.lastName));
+									setValidationEmail(checkInput(clientUserData.email));
+									setValidationPassword(checkInput(clientUserData.password));
 									setValidation(true);
 								}}>
 								Create Account
