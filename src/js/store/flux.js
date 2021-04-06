@@ -97,7 +97,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 			agenda: [],
 			Ledger: [],
 			immigrationInfo: [],
-			TableServices: [],
+			TableServices: [
+				{
+					Contract: "I-944 Declaration of Self-Sufficiency",
+					IntakeDate: "03/01/2021",
+					ReviewDate: "03/01/2021",
+					FilingDate: "03/01/2021",
+					ResolutionDate: "",
+					ResolutionOutcome: "",
+					Comments: "",
+					caseNo: "LAWF-1000"
+				},
+				{
+					Contract: "I-944 Declaration of Self-Sufficiency",
+					IntakeDate: "05/01/2020",
+					ReviewDate: "05/01/2020",
+					FilingDate: "05/01/2020",
+					ResolutionDate: "",
+					ResolutionOutcome: "",
+					Comments: "",
+					caseNo: "LAWF-999"
+				}
+			],
 			listOfServices: []
 		},
 
@@ -132,33 +153,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ ListClients: [...getStore().ListClients, obj] });
 			},
 
-			updateTableServices: (var1, var2, var3, var4, var5, var6, var7) => {
+			addServices: obj => {
+				setStore({ TableServices: [...getStore().TableServices, obj] });
+
 				const store = getStore();
 				let amount = 0;
-				const obj = {
-					contract: var1,
-					intakeDate: var2,
-					reviewDate: var3,
-					filingDate: var4,
-					resolutionDate: var5,
-					resolutionOutcome: var6,
-					comments: var7
-				};
-				store.TableServices.push(obj);
-
 				for (let i in store.listOfServices) {
-					if (store.listOfServices[i].Desc === var1) {
+					if (store.listOfServices[i].Desc === obj.Contract) {
 						amount = store.listOfServices[i].Amount;
 					}
 				}
 				const obj2 = {
-					ServiceType: var1,
-					intakeDate: var2,
+					ServiceType: obj.Contract,
+					intakeDate: obj.IntakeDate,
 					Transaction: "Service Fee",
-					Amount: amount
+					Amount: amount,
+					caseNo: obj.caseNo
 				};
-				store.Ledger.push(obj2);
+				setStore({ Ledger: [...getStore().Ledger, obj2] });
 			},
+
 			getlistOfServices: () => {
 				fetch("https://api.jsonbin.io/b/6064d5f5f2163e5ad3f6e798")
 					.then(res => res.json())

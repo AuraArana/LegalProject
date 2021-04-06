@@ -1,31 +1,28 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const Services = () => {
+export const ServicesReport = () => {
 	let addBio = "Services";
+	const params = useParams();
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
-	//console.log("store.TableServices", store.TableServices);
+	let id = params.contract;
+	let pos = 0;
+	let Contract = "";
+
+	for (let i in store.listOfServices) {
+		if (store.listOfServices[i].TableID === id) {
+			Contract = store.listOfServices[i].Desc;
+		}
+	}
 
 	return (
 		<div className="container">
 			<div>
-				<h1 className="text-center mt-5">{addBio}</h1>
-
-				<nav className="navbar ">
-					<div className="ml-auto text-dark">
-						<button
-							type="button"
-							className="btn btn-primary"
-							onClick={() => {
-								history.push("/addservices");
-							}}>
-							Add services
-						</button>
-					</div>
-				</nav>
+				<h1 className="text-center mt-5">{Contract}</h1>
 
 				<div className="container-fluid">
 					<div className="card shadow mb-4">
@@ -37,29 +34,35 @@ export const Services = () => {
 								<table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
 									<thead>
 										<tr>
+											<th>Case Nro</th>
 											<th>Contract</th>
 											<th>Intake Date</th>
-											<th>Review Date</th>
+
 											<th>Filing Date</th>
 											<th>Resolution Date</th>
 											<th>Resolution Outcome</th>
-											<th>Comments</th>
 										</tr>
 									</thead>
 
 									<tbody>
 										{store.TableServices &&
 											store.TableServices.reverse().map((item, index) => {
-												if (item.caseNo === store.currentCase) {
+												if (item.Contract === Contract) {
 													return (
 														<tr key={index}>
+															<td>
+																<Link
+																	to={"/clients/" + item.caseNo}
+																	className="btn btn-primary">
+																	{item.caseNo}
+																</Link>
+															</td>
 															<td>{item.Contract}</td>
 															<td>{item.IntakeDate}</td>
-															<td>{item.ReviewDate}</td>
+
 															<td>{item.FilingDate}</td>
 															<td>{item.ResolutionDate}</td>
 															<td>{item.ResolutionOutcome}</td>
-															<td>{item.Comments}</td>
 														</tr>
 													);
 												}

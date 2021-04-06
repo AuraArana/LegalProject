@@ -19,6 +19,7 @@ export const ClientsCard = props => {
 				store.ListClients.reverse().map((item, index) => {
 					if (
 						item.LastName.toLowerCase() === params.post.toLowerCase() ||
+						item.caseNo.toLowerCase() === params.post.toLowerCase() ||
 						item.FirstName.toLowerCase() === params.post.toLowerCase()
 					) {
 						return (

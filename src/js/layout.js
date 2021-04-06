@@ -11,6 +11,9 @@ import { Single } from "./views/single";
 import { AddBio } from "./views/AddBio.js";
 import { EditBio } from "./views/editBio.js";
 import { Services } from "./views/services.js";
+import { AddServices } from "./views/AddServices.js";
+import { ServicesForm } from "./views/ServicesForm.js";
+import { ServicesReport } from "./views/ServicesReport.js";
 import { Ledger } from "./views/ledger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
 import { AddLegal } from "./views/legalRecords.js";
@@ -94,7 +97,31 @@ const Layout = () => {
 								)}
 
 								{isLoggedIn ? (
+									<Route exact path="/addservices" component={AddServices} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
 									<Route exact path="/services" component={Services} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/servicesform" component={ServicesForm} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/servicesreport/:contract" component={ServicesReport} />
 								) : (
 									<Route exact path="/">
 										<Home />
