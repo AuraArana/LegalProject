@@ -4,6 +4,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import Background from "../../img/login-background.png";
 import Logo from "../../img/logo.png";
 import { Context } from "../store/appContext";
+import { signIn } from "../utilities/signIn";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
@@ -16,18 +17,36 @@ export const Home = ({ validCredentials }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const credentialsList = store.credentials;
+	let FirstName = "";
+	let LastName = "";
+	let UserType = "";
 
-	const checkLogin = (email, password) => {
-		for (let i in store.credentials) {
-			if (store.credentials[i].email === email && store.credentials[i].password === password) {
-				actions.setCurrentUser(store.credentials[i]);
-				validCredentials();
-				return true;
+	const checkLogin = async (email, password) => {
+		try {
+			await signIn(email, password);
+			for (let i in store.credentials) {
+				if (store.credentials[i].email === email) {
+					FirstName = store.credentials[i].firstName;
+					LastName = store.credentials[i].lastName;
+					UserType = store.credentials[i].userType;
+				}
 			}
+
+			const obj = {
+				firstName: FirstName,
+				lastName: LastName,
+				userType: UserType
+			};
+
+			actions.setCurrentUser(obj);
+			validCredentials();
+			history.push("/demo");
+			return true;
+		} catch (e) {
+			alert(e.message);
+			return false;
 		}
-		return false;
 	};
-	const navigate = () => history.push({ pathname: "/demo", state: { isLoggedIn: true } });
 
 	return (
 		<div className="">
@@ -90,9 +109,10 @@ export const Home = ({ validCredentials }) => {
 							</div>
 							<button
 								className="btn btn-primary col-12 rounded-pill"
-								onClick={() =>
-									checkLogin(email, password) == true ? navigate() : alert("wrong credentials")
-								}>
+								onClick={e => {
+									checkLogin(email, password);
+									e.preventDefault();
+								}}>
 								Sign In
 							</button>
 							<p

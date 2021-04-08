@@ -3,11 +3,14 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Context } from "../store/appContext";
+import { signOut } from "../utilities/signOut";
 import PropTypes from "prop-types";
 
 import Background2 from "../../img/rigo-baby.jpg";
 
 export const BarTop = ({ logOut }) => {
+	// 	logOut();
+	// history.push("/");
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 	const [NameText, setNameText] = useState(".");
@@ -73,8 +76,13 @@ export const BarTop = ({ logOut }) => {
 								data-toggle="modal"
 								data-target="#logoutModal"
 								onClick={() => {
-									logOut();
-									history.push("/");
+									try {
+										signOut();
+										logOut();
+										history.push("/");
+									} catch (e) {
+										alert(e.message);
+									}
 								}}>
 								<i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
 								Logout
