@@ -62,17 +62,17 @@ export const AddClientUser = () => {
 				<div className="d-flex flex-col position-relative col-6">
 					<div
 						className="position-absolute top-50 start-50 translate-middle mt-5"
-						style={{ paddingTop: "30%", paddingLeft: "30%" }}>
-						<h2 className="text-center" style={{ color: "#1d3652" }}>
+						style={{ paddingTop: "20%", paddingLeft: "30%" }}>
+						<h2 className="text-center" style={{ color: "#1d3652", width: 300 }}>
 							CREATE NEW ACCOUNT
 						</h2>
 						<p
 							className="text-center mt-2"
-							style={{ color: "#50bfc3" }}
+							style={{ color: "#50bfc3", width: 300 }}
 							onClick={() => {
 								history.push("/");
 							}}>
-							Already have an account? Log in Here
+							Already have an account? Click Here
 						</p>
 						<form
 							className="user"
