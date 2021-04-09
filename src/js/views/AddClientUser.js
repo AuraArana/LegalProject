@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Background from "../../img/login-background.png";
 import Logo from "../../img/logo.png";
 import { Context } from "../store/appContext";
+import { createAccount } from "../utilities/createAccount";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
@@ -30,7 +31,8 @@ export const AddClientUser = () => {
 		() => {
 			if (!validationEmail && !validationPassword && !validationLastName && !validationFirstName && validation) {
 				actions.addClientUserData(clientUserData);
-				history.push("/");
+				createAcc(clientUserData.email, clientUserData.password);
+				//  history.push("/");
 				setValidation(false);
 			} else {
 				setValidation(false);
@@ -38,6 +40,17 @@ export const AddClientUser = () => {
 		},
 		[validation]
 	);
+	const createAcc = async (email, password) => {
+		try {
+			await createAccount(email, password);
+			history.push("/");
+			alert("Cuenta creada");
+			return true;
+		} catch (e) {
+			alert(e.message);
+			return false;
+		}
+	};
 
 	return (
 		<div className="">
@@ -114,12 +127,13 @@ export const AddClientUser = () => {
 							</div>
 							<button
 								className="btn btn-primary col-12 rounded-pill"
-								onClick={() => {
+								onClick={e => {
 									setValidationFirstName(checkInput(clientUserData.firstName));
 									setValidationLastName(checkInput(clientUserData.lastName));
 									setValidationEmail(checkInput(clientUserData.email));
 									setValidationPassword(checkInput(clientUserData.password));
 									setValidation(true);
+									e.preventDefault();
 								}}>
 								Create Account
 							</button>
