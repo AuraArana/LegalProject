@@ -66,7 +66,7 @@ const Layout = () => {
 									""
 								)}
 								{isLoggedIn ? (
-									<Route exact path="/clients/">
+									<Route exact path="/clients">
 										<Clients />
 									</Route>
 								) : (

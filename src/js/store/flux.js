@@ -66,8 +66,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					caseNo: "LAWF-999",
 					AlienNo: "208568545",
-					LastName: "Diaz",
-					FirstName: "Jose",
+					lastName: "Diaz",
+					firstName: "Jose",
 					DOB: "1982-11-02",
 					Gender: "M",
 					MaritalStatus: "M",
@@ -82,8 +82,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					caseNo: "LAWF-1000",
 					AlienNo: "202168941",
-					LastName: "Diaz",
-					FirstName: "Miguel",
+					lastName: "Diaz",
+					firstName: "Miguel",
 					DOB: "1987-12-07",
 					Gender: "M",
 					MaritalStatus: "S",
@@ -121,7 +121,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					caseNo: "LAWF-999"
 				}
 			],
-			listOfServices: []
+			listOfServices: [],
+			filteredClients: []
 		},
 
 		actions: {
@@ -208,6 +209,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			filterClients: arr => {
+				setStore({ filteredClients: arr });
 			}
 		}
 	};
