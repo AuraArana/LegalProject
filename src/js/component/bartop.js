@@ -5,6 +5,7 @@ import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Context } from "../store/appContext";
 import { signOut } from "../utilities/signOut";
 import PropTypes from "prop-types";
+import { Clients } from "../views/Clients.js";
 
 import Background2 from "../../img/rigo-baby.jpg";
 
@@ -13,10 +14,16 @@ export const BarTop = ({ logOut }) => {
 	// history.push("/");
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-	const [NameText, setNameText] = useState(".");
-	const [state, setState] = useState({
-		//initialize state here
-	});
+	const [nameText, setNameText] = useState(".");
+	const [state, setState] = useState(null);
+	const listClients = store.ListClients;
+
+	const searchCase = () => {
+		alert(listClients);
+		setState(listClients.filter(clients => clients.caseNo.includes(nameText)));
+	};
+
+	console.log("Search case", state);
 
 	return (
 		<div>
@@ -34,10 +41,11 @@ export const BarTop = ({ logOut }) => {
 							onChange={e => setNameText(e.target.value)}
 							aria-describedby="basic-addon2"
 						/>
-						<div className="input-group-append">
-							<Link to={"/clients/" + NameText} className="btn btn-primary">
-								<i className="fas fa-search fa-sm" />
-							</Link>
+						<div className="input-group-append btn btn-primary">
+							{/* <Link field={"Some value"} to={"/clients/"} className="btn btn-primary"> */}
+							<i onClick={() => searchCase()} className="fas fa-search fa-sm" />
+
+							{/* </Link> */}
 						</div>
 					</div>
 				</form>

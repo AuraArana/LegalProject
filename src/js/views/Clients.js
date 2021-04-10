@@ -11,9 +11,7 @@ export const Clients = props => {
 			<div>
 				<p className="text-right my-3" />
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
-					<ul className="list-group pull-down" id="contact-list">
-						<ClientsCard fill={"Some value"} />
-					</ul>
+					{props.field} jose finol
 				</div>
 			</div>
 		</div>
@@ -21,6 +19,5 @@ export const Clients = props => {
 };
 
 Clients.propTypes = {
-	fill2: PropTypes.string,
-	fill: PropTypes.string
+	field: PropTypes.string
 };
