@@ -14,6 +14,7 @@ import { Services } from "./views/services.js";
 import { AddServices } from "./views/AddServices.js";
 import { ServicesForm } from "./views/ServicesForm.js";
 import { ServicesReport } from "./views/ServicesReport.js";
+import { CaseReport } from "./views/caseReport.js";
 import { Ledger } from "./views/ledger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
 import { EditImmigration } from "./views/EditImmigration.js";
@@ -123,6 +124,14 @@ const Layout = () => {
 
 								{isLoggedIn ? (
 									<Route exact path="/servicesreport/:contract" component={ServicesReport} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/casereport/:case" component={CaseReport} />
 								) : (
 									<Route exact path="/">
 										<Home />

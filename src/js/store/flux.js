@@ -61,6 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentUser: null,
 			count: 1000,
 			currentCase: "LAWF-1000",
+			currentSearch: null,
 			isLoggedIn: false,
 			ListClients: [
 				{
@@ -69,8 +70,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					LastName: "Diaz",
 					FirstName: "Jose",
 					DOB: "1982-11-02",
-					Gender: "M",
-					MaritalStatus: "M",
+					Gender: "Male",
+					MaritalStatus: "Married",
 					address: "6055 NW",
 					City: "DORAL",
 					State: "FLORIDA",
@@ -85,8 +86,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					LastName: "Diaz",
 					FirstName: "Miguel",
 					DOB: "1987-12-07",
-					Gender: "M",
-					MaritalStatus: "S",
+					Gender: "Male",
+					MaritalStatus: "Single",
 					address: "7330 NW",
 					City: "DORAL",
 					State: "FLORIDA",
@@ -121,7 +122,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					caseNo: "LAWF-999"
 				}
 			],
-			listOfServices: []
+			listOfServices: [],
+			filteredClients: []
 		},
 
 		actions: {
@@ -135,6 +137,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let c = store.count + 1;
 				setStore({ count: c });
 				setStore({ currentCase: "LAWF-" + c });
+			},
+			setCurrentSearch: search => {
+				const store = getStore();
+				setStore({ currentSearch: search });
 			},
 			//Inicio Heidys
 			addImmigrationData: obj => {
@@ -208,6 +214,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			filterClients: arr => {
+				setStore({ filteredClients: arr });
 			}
 		}
 	};

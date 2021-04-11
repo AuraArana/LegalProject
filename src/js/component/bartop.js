@@ -10,20 +10,11 @@ import { Clients } from "../views/Clients.js";
 import Background2 from "../../img/rigo-baby.jpg";
 
 export const BarTop = ({ logOut }) => {
-	// 	logOut();
-	// history.push("/");
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-	const [nameText, setNameText] = useState(".");
 	const [state, setState] = useState(null);
+	const [valName, setValName] = useState(false);
 	const listClients = store.ListClients;
-
-	const searchCase = () => {
-		alert(listClients);
-		setState(listClients.filter(clients => clients.caseNo.includes(nameText)));
-	};
-
-	console.log("Search case", state);
 
 	return (
 		<div>
@@ -38,12 +29,20 @@ export const BarTop = ({ logOut }) => {
 							className="form-control bg-light border-0 small"
 							placeholder="Search for..."
 							aria-label="Search"
-							onChange={e => setNameText(e.target.value)}
+							onChange={e => {
+								setValName(e.target.value);
+							}}
 							aria-describedby="basic-addon2"
 						/>
 						<div className="input-group-append btn btn-primary">
 							{/* <Link field={"Some value"} to={"/clients/"} className="btn btn-primary"> */}
-							<i onClick={() => searchCase()} className="fas fa-search fa-sm" />
+							<i
+								onClick={() => {
+									actions.setCurrentSearch(valName);
+									history.push("/clients");
+								}}
+								className="fas fa-search fa-sm"
+							/>
 
 							{/* </Link> */}
 						</div>
