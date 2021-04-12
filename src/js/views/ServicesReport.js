@@ -52,7 +52,7 @@ export const ServicesReport = () => {
 														<tr key={index}>
 															<td>
 																<Link
-																	to={"/clients/" + item.caseNo}
+																	to={"/caseReport/" + item.caseNo}
 																	className="btn btn-primary">
 																	{item.caseNo}
 																</Link>
