@@ -38,7 +38,7 @@ export const ClientsCard = props => {
 											<i className="fas fa-passport" />
 										</button>
 									</Link>
-									<Link to={"/editLegalRecords/" + item.caseNo}>
+									<Link to={"/editLegal/" + item.caseNo}>
 										<button className="btn" title="Edit Legal Records">
 											<i className="fas fa-balance-scale" />
 										</button>

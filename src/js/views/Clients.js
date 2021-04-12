@@ -12,7 +12,7 @@ export const Clients = () => {
 	// {store.currentSearch}
 	if (store.currentSearch != "") {
 		return (
-			<div className="container">
+			<div className="container mt-5">
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
 						<li className="list-group-item">
@@ -45,7 +45,7 @@ export const Clients = () => {
 																<i className="fas fa-passport" />
 															</button>
 														</Link>
-														<Link to={"/editLegalRecords/" + item.caseNo}>
+														<Link to={"/editLegal/" + item.caseNo}>
 															<button className="btn" title="Edit Legal Records">
 																<i className="fas fa-balance-scale" />
 															</button>
@@ -130,7 +130,7 @@ export const Clients = () => {
 															<i className="fas fa-passport" />
 														</button>
 													</Link>
-													<Link to={"/editLegalRecords/" + item.caseNo}>
+													<Link to={"/editLegal/" + item.caseNo}>
 														<button className="btn" title="Edit Legal Records">
 															<i className="fas fa-balance-scale" />
 														</button>

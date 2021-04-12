@@ -19,6 +19,7 @@ import { Ledger } from "./views/ledger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
 import { EditImmigration } from "./views/EditImmigration.js";
 import { AddLegal } from "./views/legalRecords.js";
+import { EditLegal } from "./views/editLegal.js";
 import { Clients } from "./views/Clients.js";
 import injectContext from "./store/appContext";
 import { useLocation } from "react-router-dom";
@@ -171,6 +172,17 @@ const Layout = () => {
 										<Home />
 									</Route>
 								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/editLegal/:case">
+										<EditLegal />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
 								{!isLoggedIn ? (
 									<Route exact path="/addClientUser" component={AddClientUser} />
 								) : (
