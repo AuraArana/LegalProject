@@ -88,7 +88,7 @@ export const CaseReport = () => {
 			<div>
 				<h1 className="h3 text-gray-800 text-center mt-5">{params.case}</h1>
 
-				<div className="col-lg-7 mb-4 mt-4 mx-auto">
+				<div className="col-lg-10 mb-4 mt-4 mx-auto">
 					<div className="card shadow mb-4">
 						<div className="card-header center py-3">
 							<h6 className="m-0 font-weight-bold text-primary">Biographical Information</h6>
@@ -184,7 +184,7 @@ export const CaseReport = () => {
 					</div>
 				</div>
 
-				<div className="col-lg-7 mb-4 mt-4 mx-auto">
+				<div className="col-lg-10 mb-4 mt-4 mx-auto">
 					<div className="card shadow mb-4">
 						<div className="card-header center py-3">
 							<h6 className="m-0 font-weight-bold text-primary">Immigration Information</h6>
@@ -238,7 +238,7 @@ export const CaseReport = () => {
 					</div>
 				</div>
 
-				<div className="col-lg-7 mb-5 mt-4 mx-auto">
+				<div className="col-lg-10 mb-5 mt-4 mx-auto">
 					<div className="card shadow mb-4">
 						<div className="card-header center py-3">
 							<h6 className="m-0 font-weight-bold text-primary">Legal Criminal Record</h6>
