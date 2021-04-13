@@ -153,9 +153,9 @@ export const EditBio = props => {
 								id="Gender"
 								onChange={e => setbioData({ ...bioData, Gender: e.target.value })}>
 								<option value="">Select a Gender</option>
-								<option value="M">Male</option>
-								<option value="F">Female</option>
-								<option value="O">Other*</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Other">Other*</option>
 							</select>
 						</div>
 						<div className="col-sm-4">
@@ -166,10 +166,10 @@ export const EditBio = props => {
 								value={bioData.MaritalStatus}
 								onChange={e => setbioData({ ...bioData, MaritalStatus: e.target.value })}>
 								<option value="">Select a Marital Status</option>
-								<option value="S">Single</option>
-								<option value="M">Married</option>
-								<option value="D">Divorced</option>
-								<option value="O">Other*</option>
+								<option value="Single">Single</option>
+								<option value="Married">Married</option>
+								<option value="Divorced">Divorced</option>
+								<option value="Other">Other*</option>
 							</select>
 						</div>
 						<div className="col-sm-4">
