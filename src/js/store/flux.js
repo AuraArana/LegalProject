@@ -1,127 +1,23 @@
+import firebase from "firebase/app";
+import "firebase/firestore";
+
 const url = "https://assets.breatheco.de/apis/fake/contact/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			credentials: [
-				{
-					email: "william@gmail.com",
-					firstName: "William",
-					lastName: "Lopez",
-					userType: "Staff"
-				},
-				{
-					email: "jeffrey@gmail.com",
-					firstName: "Jeffrey",
-					lastName: "Smith",
-					userType: "Client"
-				}
-			],
-			immigrationArr: [
-				{
-					caseNo: "LAWF-999",
-					dateEntry: "05/20/1998",
-					portEntry: "Miami International Airport, Florida",
-					immigrationStatus: "Permanent or Conditional Residents",
-					transportation: "Airplane",
-					birthCountry: "Cuba",
-					birthCity: "La Habana",
-					nationality: "Cubana"
-				},
-				{
-					caseNo: "LAWF-1000",
-					dateEntry: "05/20/2020",
-					portEntry: "Miami International Airport, Florida",
-					immigrationStatus: "Permanent or Conditional Residents",
-					transportation: "Maritime",
-					birthCountry: "Cuba",
-					birthCity: "La Habana",
-					nationality: "Cubana"
-				}
-			],
-			legalArr: [
-				{
-					caseNo: "LAWF-999",
-					legalProblem: "sample of legal problem paragraph",
-					caseGoal: "sample of case goal paragraph",
-					followUp: "sample of follow up paragraph",
-					arrestRecord: "sample of arrest record paragraph",
-					criminalAttorney: "Michael Silva",
-					attorneyPhone: "3056779876"
-				},
-				{
-					caseNo: "LAWF-1000",
-					legalProblem: "sample of legal problem paragraph2",
-					caseGoal: "sample of case goal paragraph2",
-					followUp: "sample of follow up paragraph2",
-					arrestRecord: "sample of arrest record paragraph2",
-					criminalAttorney: "Peter Williams",
-					attorneyPhone: "3053987067"
-				}
-			],
+			credentials: [],
+			immigrationArr: [],
+			legalArr: [],
 			currentUser: null,
 			count: 1000,
 			currentCase: "LAWF-1000",
 			currentSearch: null,
 			isLoggedIn: false,
-			ListClients: [
-				{
-					caseNo: "LAWF-999",
-					AlienNo: "208568545",
-					LastName: "Diaz",
-					FirstName: "Jose",
-					DOB: "1982-11-02",
-					Gender: "Male",
-					MaritalStatus: "Married",
-					address: "6055 NW",
-					City: "DORAL",
-					State: "FLORIDA",
-					ZipCode: "33178",
-					Email: "jdiaz@GMAIL.COM",
-					HomePhone: "7867878987",
-					WorkPhone: "3059842526"
-				},
-				{
-					caseNo: "LAWF-1000",
-					AlienNo: "202168941",
-					LastName: "Diaz",
-					FirstName: "Miguel",
-					DOB: "1987-12-07",
-					Gender: "Male",
-					MaritalStatus: "Single",
-					address: "7330 NW",
-					City: "DORAL",
-					State: "FLORIDA",
-					ZipCode: "33178",
-					Email: "mdiaazL@GMAIL.COM",
-					HomePhone: "3059874657",
-					WorkPhone: "305987662"
-				}
-			],
+			ListClients: [],
 			agenda: [],
 			Ledger: [],
 			immigrationInfo: [],
-			TableServices: [
-				{
-					Contract: "I-944 Declaration of Self-Sufficiency",
-					IntakeDate: "03/01/2021",
-					ReviewDate: "03/01/2021",
-					FilingDate: "03/01/2021",
-					ResolutionDate: "",
-					ResolutionOutcome: "",
-					Comments: "",
-					caseNo: "LAWF-1000"
-				},
-				{
-					Contract: "I-944 Declaration of Self-Sufficiency",
-					IntakeDate: "05/01/2020",
-					ReviewDate: "05/01/2020",
-					FilingDate: "05/01/2020",
-					ResolutionDate: "",
-					ResolutionOutcome: "",
-					Comments: "",
-					caseNo: "LAWF-999"
-				}
-			],
+			TableServices: [],
 			listOfServices: [],
 			filteredClients: []
 		},
@@ -150,11 +46,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ credentials: [...getStore().credentials, obj] });
 			},
 
+			getimmigrationArr: async () => {
+				try {
+					const getContact = firebase.firestore().collection("immigrationArr");
+					const response = await getContact.get();
+					response.forEach(contact => {
+						setStore({
+							immigrationArr: [...getStore().immigrationArr, { ...contact.data(), id: contact.id }]
+						});
+					});
+				} catch (e) {
+				} finally {
+				}
+			},
+
 			//Fin Heidys
 
 			//Inicio Aura
 			addLegalData: obj => {
 				setStore({ legalArr: [...getStore().legalArr, obj] });
+			},
+
+			getlegalArr: async () => {
+				try {
+					const getContact = firebase.firestore().collection("legalArr");
+					const response = await getContact.get();
+					response.forEach(contact => {
+						setStore({
+							legalArr: [...getStore().legalArr, { ...contact.data(), id: contact.id }]
+						});
+					});
+				} catch (e) {
+				} finally {
+				}
 			},
 			//Fin Aura
 
@@ -181,6 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					Amount: amount,
 					caseNo: obj.caseNo
 				};
+				//getActions().addTableServices(obj2);
 				setStore({ Ledger: [...getStore().Ledger, obj2] });
 			},
 
@@ -190,6 +115,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => {
 						setStore({ listOfServices: response });
 					});
+			},
+			getTableServices: async () => {
+				try {
+					const getContact = firebase.firestore().collection("TableServices");
+					const response = await getContact.get();
+					response.forEach(contact => {
+						setStore({
+							TableServices: [...getStore().TableServices, { ...contact.data(), id: contact.id }]
+						});
+					});
+				} catch (e) {
+				} finally {
+				}
+			},
+			getCredentials: async () => {
+				try {
+					const getContact = firebase.firestore().collection("credentials");
+					const response = await getContact.get();
+					response.forEach(contact => {
+						setStore({ credentials: [...getStore().credentials, { ...contact.data(), id: contact.id }] });
+					});
+				} catch (e) {
+				} finally {
+				}
+			},
+			getListClients: async () => {
+				try {
+					const getContact = firebase.firestore().collection("ListClients");
+					const response = await getContact.get();
+					response.forEach(contact => {
+						setStore({ ListClients: [...getStore().ListClients, { ...contact.data(), id: contact.id }] });
+					});
+				} catch (e) {
+				} finally {
+				}
+			},
+			getLedger: async () => {
+				try {
+					const getContact = firebase.firestore().collection("Ledger");
+					const response = await getContact.get();
+					response.forEach(contact => {
+						setStore({ Ledger: [...getStore().Ledger, { ...contact.data(), id: contact.id }] });
+					});
+				} catch (e) {
+				} finally {
+				}
 			},
 			//Fin Jose
 
