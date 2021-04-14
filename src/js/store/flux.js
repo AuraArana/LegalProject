@@ -63,6 +63,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addClientUserData: obj => {
 				setStore({ credentials: [...getStore().credentials, obj] });
 			},
+			addUserData: obj => {
+				setStore({ credentials: [...getStore().credentials, obj] });
+			},
 
 			getimmigrationArr: async () => {
 				try {
