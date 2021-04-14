@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Background from "../../img/login-background.png";
 import Logo from "../../img/logo.png";
 import { Context } from "../store/appContext";
-import { createAccount } from "../utilities/createAccount";
+import { CreateUser } from "../utilities/CreateUser";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
@@ -39,7 +39,7 @@ export const AddUser = () => {
 				validation
 			) {
 				actions.addUserData(userData);
-				// createAcc(userData.email, userData.password);
+				createAcc(userData.email, userData.password, userData.firstName, userData.lastName, userData.userType);
 				//  history.push("/");
 				setValidation(false);
 			} else {
@@ -48,16 +48,16 @@ export const AddUser = () => {
 		},
 		[validation]
 	);
-	// const createAcc = async (email, password) => {
-	// 	try {
-	// 		await createAccount(email, password);
-	// 		history.push("/");
-	// 		return true;
-	// 	} catch (e) {
-	// 		alert(e.message);
-	// 		return false;
-	// 	}
-	// };
+	const createAcc = (email, password, firstName, lastName, userType) => {
+		try {
+			CreateUser(email, password, firstName, lastName, userType);
+			history.push("/");
+			return true;
+		} catch (e) {
+			alert(e.message);
+			return false;
+		}
+	};
 
 	return (
 		<div className="">
