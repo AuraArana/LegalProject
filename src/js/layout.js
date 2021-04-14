@@ -9,6 +9,8 @@ import { Dashboard } from "./views/dashboard";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { AddBio } from "./views/AddBio.js";
+import { ReportBio } from "./views/reportBio.js";
+import { RepBio } from "./views/repBio.js";
 import { EditBio } from "./views/editBio.js";
 import { Services } from "./views/services.js";
 import { AddServices } from "./views/AddServices.js";
@@ -70,6 +72,25 @@ const Layout = () => {
 								{isLoggedIn ? (
 									<Route exact path="/clients/">
 										<Clients />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/reportbio/">
+										<ReportBio />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+								{isLoggedIn ? (
+									<Route exact path="/repbio/">
+										<RepBio />
 									</Route>
 								) : (
 									<Route exact path="/">
