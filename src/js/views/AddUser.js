@@ -63,7 +63,7 @@ export const AddUser = () => {
 		<div className="">
 			<div
 				className="position-absolute top-50 start-50 translate-middle"
-				style={{ paddingTop: "20%", paddingLeft: "30%" }}>
+				style={{ paddingTop: "8%", paddingLeft: "35%" }}>
 				<h2 className="text-center" style={{ color: "#1d3652", width: 300 }}>
 					CREATE NEW ACCOUNT
 				</h2>
@@ -106,11 +106,10 @@ export const AddUser = () => {
 						/>
 					</div>
 					<div className="mb-3 mt-3">
-						<label>User Type</label>
 						<select
 							className={validationUserType ? "form-control is-invalid" : "form-control"}
 							onChange={e => setUserData({ ...userData, userType: e.target.value })}>
-							<option selected />
+							<option value="">User Type</option>
 							<option value="Client">Client</option>
 							<option value="Staff">Staff</option>
 							<option value="Admin">Admin</option>
@@ -127,7 +126,7 @@ export const AddUser = () => {
 							setValidation(true);
 							e.preventDefault();
 						}}>
-						Create Account
+						Save
 					</button>
 				</form>
 			</div>
