@@ -39,9 +39,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ currentMaritalStatus: maritalStatus });
 			},
 
-			setCurrentReportImmigration: (dateEntry, immigrationStatus, nationality) => {
+			setCurrentReportImmigration: (portEntry, immigrationStatus, nationality) => {
 				const store = getStore();
-				setStore({ currentDateEntry: dateEntry });
+				setStore({ currentPortEntry: portEntry });
 				setStore({ currentImmigrationStatus: immigrationStatus });
 				setStore({ currentNationality: nationality });
 			},
