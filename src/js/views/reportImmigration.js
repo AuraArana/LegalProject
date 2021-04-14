@@ -8,7 +8,7 @@ export const ReportImmigration = () => {
 	const { store, actions } = useContext(Context);
 
 	const [immigrationData, setImmigrationData] = useState({
-		dateEntry: "",
+		portEntry: "",
 		immigrationStatus: "",
 		nationality: ""
 	});
@@ -73,7 +73,7 @@ export const ReportImmigration = () => {
 						className="btn btn-primary"
 						onClick={() => {
 							actions.setCurrentReportImmigration(
-								immigrationData.dateEntry,
+								immigrationData.portEntry,
 								immigrationData.immigrationStatus,
 								immigrationData.nationality
 							);
