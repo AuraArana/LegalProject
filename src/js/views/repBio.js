@@ -4,13 +4,11 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const RepBio = () => {
-	let addBio = "Services";
+	let addBio = "Biographical";
 	const params = useParams();
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-
-	let pos = 0;
-	let Contract = "";
+	const [state, setState] = useState(null);
 
 	return (
 		<div className="container">
@@ -20,7 +18,7 @@ export const RepBio = () => {
 				<div className="container-fluid">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">List of services</h6>
+							<h6 className="m-0 font-weight-bold text-primary" />
 						</div>
 						<div className="card-body">
 							<div className="table-responsive">
@@ -38,7 +36,7 @@ export const RepBio = () => {
 
 									<tbody>
 										{store.ListClients &&
-											store.ListClients.reverse().map((item, index) => {
+											store.ListClients.map((item, index) => {
 												if (
 													item.MaritalStatus === store.currentMaritalStatus ||
 													item.Gender === store.currentGender
