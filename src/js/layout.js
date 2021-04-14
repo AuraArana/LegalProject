@@ -20,6 +20,8 @@ import { CaseReport } from "./views/caseReport.js";
 import { Ledger } from "./views/ledger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
 import { EditImmigration } from "./views/EditImmigration.js";
+import { ReportImmigration } from "./views/reportImmigration.js";
+import { RepImmigration } from "./views/repImmigration.js";
 import { AddLegal } from "./views/legalRecords.js";
 import { EditLegal } from "./views/editLegal.js";
 import { Clients } from "./views/Clients.js";
@@ -211,6 +213,26 @@ const Layout = () => {
 										<Home />
 									</Route>
 								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/reportImmigration">
+										<ReportImmigration />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+								{isLoggedIn ? (
+									<Route exact path="/repImmigration">
+										<RepImmigration />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
 								<Route>
 									<h1>Not found!</h1>
 								</Route>

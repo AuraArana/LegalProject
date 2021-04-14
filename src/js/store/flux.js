@@ -36,6 +36,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ currentMaritalStatus: maritalStatus });
 			},
 
+			setCurrentReportImmigration: (dateEntry, immigrationStatus, nationality) => {
+				const store = getStore();
+				setStore({ currentDateEntry: dateEntry });
+				setStore({ currentImmigrationStatus: immigrationStatus });
+				setStore({ currentNationality: nationality });
+			},
+
 			setCurrentCase: () => {
 				const store = getStore();
 				let c = store.count + 1;

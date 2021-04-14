@@ -140,9 +140,9 @@ export const Navbar = () => {
 						<Link className="collapse-item" to="/reportbio">
 							Biographical
 						</Link>
-						<a className="collapse-item" href="utilities-animation.html">
-							Animations
-						</a>
+						<Link className="collapse-item" to="/reportImmigration">
+							Immigration Information
+						</Link>
 						<a className="collapse-item" href="utilities-other.html">
 							Other
 						</a>
