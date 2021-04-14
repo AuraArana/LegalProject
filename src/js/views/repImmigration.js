@@ -25,10 +25,10 @@ export const RepImmigration = () => {
 								<table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
 									<thead>
 										<tr>
-											<th>Case number</th>
+											<th>Case Number</th>
+											<th>Date Entry</th>
+											<th>Port Entry</th>
 											<th>Immigration Status</th>
-											<th>Date of Entry</th>
-											<th>Port of Entry</th>
 											<th>Nationality</th>
 										</tr>
 									</thead>
@@ -37,9 +37,9 @@ export const RepImmigration = () => {
 										{store.immigrationArr &&
 											store.immigrationArr.map((item, index) => {
 												if (
-													item.dateEntry === store.dateEntry ||
-													item.immigrationStatus === store.immigrationStatus ||
-													item.nationality === store.nationality
+													item.portEntry === store.currentPortEntry ||
+													item.immigrationStatus === store.currentImmigrationStatus ||
+													item.nationality === store.currentNationality
 												) {
 													return (
 														<tr key={index}>
@@ -50,15 +50,24 @@ export const RepImmigration = () => {
 																	{item.caseNo}
 																</Link>
 															</td>
-															<td>{item.FirstName}</td>
-															<td>{item.LastName}</td>
-															<td>{item.DOB}</td>
+															<td>{item.dateEntry}</td>
+															<td>{item.portEntry}</td>
+															<td>{item.immigrationStatus}</td>
+															<td>{item.nationality}</td>
 														</tr>
 													);
 												}
 											})}
 									</tbody>
 								</table>
+								<button
+									type="button"
+									className="btn btn-primary"
+									onClick={() => {
+										history.push("/reportImmigration");
+									}}>
+									Go back
+								</button>
 							</div>
 						</div>
 					</div>
