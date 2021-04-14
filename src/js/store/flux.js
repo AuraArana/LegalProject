@@ -9,6 +9,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			immigrationArr: [],
 			legalArr: [],
 			currentUser: null,
+			currentGender: "",
+			currentMaritalStatus: "",
 			count: 1000,
 			currentCase: "LAWF-1000",
 			currentSearch: null,
@@ -26,6 +28,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			setCurrentUser: user => {
 				setStore({ currentUser: user });
+			},
+
+			setCurrentReportBio: (gender, maritalStatus) => {
+				const store = getStore();
+				setStore({ currentGender: gender });
+				setStore({ currentMaritalStatus: maritalStatus });
 			},
 
 			setCurrentCase: () => {
