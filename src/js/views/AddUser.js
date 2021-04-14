@@ -64,9 +64,7 @@ export const AddUser = () => {
 			<div
 				className="position-absolute top-50 start-50 translate-middle"
 				style={{ paddingTop: "8%", paddingLeft: "35%" }}>
-				<h2 className="text-center" style={{ color: "#1d3652", width: 300 }}>
-					CREATE NEW ACCOUNT
-				</h2>
+				<h1 className="text-center">Create New User</h1>
 				<form
 					className="user"
 					style={{
