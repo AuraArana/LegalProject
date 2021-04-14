@@ -71,6 +71,10 @@ export const BarTop = ({ logOut }) => {
 								<i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
 								Profile
 							</a>
+							<a className="dropdown-item" href="#" onClick={() => history.push("/addUser")}>
+								<i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
+								Add User
+							</a>
 							<a className="dropdown-item" href="#">
 								<i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
 								Settings
