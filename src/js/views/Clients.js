@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { ClientsCard } from "../component/ClientsCard.js";
-import MikePhoto from "../../img/Untitled.png";
+import female from "../../img/Untitled.png";
+import male from "../../img/male.png";
 import { Button } from "react-bootstrap";
 
 export const Clients = () => {
@@ -28,7 +29,7 @@ export const Clients = () => {
 											<div key={index} className="row w-100 mb-4 mt-4">
 												<div className="col-12 col-sm-6 col-md-3 px-0">
 													<img
-														src={MikePhoto}
+														src={item.Gender === "Male" ? male : female}
 														alt="Mike Anamendolla"
 														className="rounded-circle mx-auto d-block img-fluid"
 													/>
@@ -113,7 +114,7 @@ export const Clients = () => {
 										<div key={index} className="row w-100 mb-4 mt-4">
 											<div className="col-12 col-sm-6 col-md-3 px-0">
 												<img
-													src={MikePhoto}
+													src={item.Gender === "Male" ? male : female}
 													alt="Mike Anamendolla"
 													className="rounded-circle mx-auto d-block img-fluid"
 												/>
