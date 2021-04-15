@@ -28,7 +28,7 @@ export const EditLegal = props => {
 	const [color4, setColor4] = useState("grey");
 
 	let Case = params.case;
-	let pos = 0;
+	let pos = 1000000000000;
 
 	for (let i in store.legalArr) {
 		if (store.legalArr[i].caseNo === Case) {
@@ -43,7 +43,7 @@ export const EditLegal = props => {
 		arrestRecord: legalArr ? legalArr.arrestRecord : "",
 		criminalAttorney: legalArr ? legalArr.criminalAttorney : "",
 		attorneyPhone: legalArr ? legalArr.attorneyPhone : "",
-		caseNo: legalArr ? legalArr.caseNo : ""
+		caseNo: legalArr ? legalArr.caseNo : Case
 	});
 
 	const checkInput = input => {

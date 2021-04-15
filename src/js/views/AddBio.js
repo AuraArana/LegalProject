@@ -52,8 +52,8 @@ export const AddBio = () => {
 				!validationEmail &&
 				validation
 			) {
-				actions.addIbioData(bioData);
-				history.push("/demo");
+				actions.addBioData(bioData);
+				history.push("/addImmigration");
 				setValidation(false);
 			} else {
 				setValidation(false);

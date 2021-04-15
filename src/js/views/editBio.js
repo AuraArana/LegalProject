@@ -10,7 +10,7 @@ export const EditBio = props => {
 	const { store, actions } = useContext(Context);
 
 	let Case = params.case;
-	let pos = 0;
+	let pos = 1000000000000;
 
 	for (let i in store.ListClients) {
 		if (store.ListClients[i].caseNo === Case) {
@@ -35,6 +35,8 @@ export const EditBio = props => {
 		Email: ListClients ? ListClients.Email : "",
 		caseNo: ListClients ? ListClients.caseNo : ""
 	});
+
+	const [id, setId] = useState(ListClients ? ListClients.id : "");
 
 	const [valEmail, setValEmail] = useState(false);
 	const [validationEmail, setValidationEmail] = useState(false);
@@ -64,8 +66,8 @@ export const EditBio = props => {
 				!validationEmail &&
 				validation
 			) {
-				actions.addIbioData(bioData);
-				history.push("/demo");
+				actions.addBioData(bioData, id);
+				history.push("/clients");
 				setValidation(false);
 			} else {
 				setValidation(false);
