@@ -134,8 +134,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(() => getActions().getListClients());
 			},
 
-			addServices: obj => {
-				setStore({ TableServices: [...getStore().TableServices, obj] });
+			addServices: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("TableServices")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getTableServices());
 
 				const store = getStore();
 				let amount = 0;
@@ -151,8 +159,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					Amount: amount,
 					caseNo: obj.caseNo
 				};
-				//getActions().addTableServices(obj2);
-				setStore({ Ledger: [...getStore().Ledger, obj2] });
+
+				firebase
+					.firestore()
+					.collection("Ledger")
+					.doc(id)
+					.set(obj2)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getLedger());
 			},
 
 			getlistOfServices: () => {
