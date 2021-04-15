@@ -63,6 +63,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addClientUserData: obj => {
 				setStore({ credentials: [...getStore().credentials, obj] });
 			},
+
+			addClientUserData: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("credentials")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getCredentials());
+			},
+
 			addUserData: obj => {
 				setStore({ credentials: [...getStore().credentials, obj] });
 			},
@@ -71,10 +84,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const getContact = firebase.firestore().collection("immigrationArr");
 					const response = await getContact.get();
+
+					let array = [];
 					response.forEach(contact => {
-						setStore({
-							immigrationArr: [...getStore().immigrationArr, { ...contact.data(), id: contact.id }]
-						});
+						array.push({ ...contact.data(), id: contact.id });
+					});
+					setStore({
+						immigrationArr: array
 					});
 				} catch (e) {
 				} finally {
@@ -92,11 +108,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const getContact = firebase.firestore().collection("legalArr");
 					const response = await getContact.get();
+					let array = [];
 					response.forEach(contact => {
-						setStore({
-							legalArr: [...getStore().legalArr, { ...contact.data(), id: contact.id }]
-						});
+						array.push({ ...contact.data(), id: contact.id });
 					});
+
+					setStore({ legalArr: array });
 				} catch (e) {
 				} finally {
 				}
@@ -105,8 +122,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Inicio Jose
 
-			addIbioData: obj => {
-				setStore({ ListClients: [...getStore().ListClients, obj] });
+			addBioData: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("ListClients")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getListClients());
 			},
 
 			addServices: obj => {
@@ -141,10 +166,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const getContact = firebase.firestore().collection("TableServices");
 					const response = await getContact.get();
+
+					let array = [];
 					response.forEach(contact => {
-						setStore({
-							TableServices: [...getStore().TableServices, { ...contact.data(), id: contact.id }]
-						});
+						array.push({ ...contact.data(), id: contact.id });
+					});
+					setStore({
+						TableServices: array
 					});
 				} catch (e) {
 				} finally {
@@ -154,9 +182,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const getContact = firebase.firestore().collection("credentials");
 					const response = await getContact.get();
+					let array = [];
 					response.forEach(contact => {
-						setStore({ credentials: [...getStore().credentials, { ...contact.data(), id: contact.id }] });
+						array.push({ ...contact.data(), id: contact.id });
 					});
+					setStore({ credentials: array });
 				} catch (e) {
 				} finally {
 				}
@@ -165,9 +195,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const getContact = firebase.firestore().collection("ListClients");
 					const response = await getContact.get();
+					let array = [];
 					response.forEach(contact => {
-						setStore({ ListClients: [...getStore().ListClients, { ...contact.data(), id: contact.id }] });
+						array.push({ ...contact.data(), id: contact.id });
 					});
+					setStore({ ListClients: array });
 				} catch (e) {
 				} finally {
 				}
@@ -176,9 +208,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const getContact = firebase.firestore().collection("Ledger");
 					const response = await getContact.get();
+					let array = [];
 					response.forEach(contact => {
-						setStore({ Ledger: [...getStore().Ledger, { ...contact.data(), id: contact.id }] });
+						array.push({ ...contact.data(), id: contact.id });
 					});
+					setStore({ Ledger: array });
 				} catch (e) {
 				} finally {
 				}

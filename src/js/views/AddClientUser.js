@@ -18,6 +18,7 @@ export const AddClientUser = () => {
 		lastName: "",
 		userType: "Client"
 	});
+
 	const [validationEmail, setValidationEmail] = useState(false);
 	const [validationPassword, setValidationPassword] = useState(false);
 	const [validationFirstName, setValidationFirstName] = useState(false);
@@ -30,8 +31,8 @@ export const AddClientUser = () => {
 	useEffect(
 		() => {
 			if (!validationEmail && !validationPassword && !validationLastName && !validationFirstName && validation) {
-				actions.addClientUserData(clientUserData);
 				createAcc(clientUserData.email, clientUserData.password);
+
 				//  history.push("/");
 				setValidation(false);
 			} else {
@@ -43,6 +44,7 @@ export const AddClientUser = () => {
 	const createAcc = async (email, password) => {
 		try {
 			await createAccount(email, password);
+			actions.addClientUserData(clientUserData);
 			history.push("/");
 			alert("Cuenta creada");
 			return true;
