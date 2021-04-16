@@ -13,8 +13,8 @@ export const Clients = () => {
 	// {store.currentSearch}
 	if (store.currentSearch != "") {
 		return (
-			<div className="container mt-5">
-				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
+			<div className="col-lg-10 mb-4 mt-5 mx-auto">
+				<div id="contacts" className="card shadow mb-4" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
 						<li className="list-group-item">
 							{store.ListClients &&
@@ -104,7 +104,7 @@ export const Clients = () => {
 		);
 	} else {
 		return (
-			<div className="container">
+			<div className="container mt-5">
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
 						<li className="list-group-item">
