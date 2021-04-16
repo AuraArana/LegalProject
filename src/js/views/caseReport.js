@@ -196,7 +196,60 @@ export const CaseReport = () => {
 					</div>
 				</div>
 
-				<ul className="nav nav-tabs mx-auto small font-weight-bold col-lg-9" id="myTab" role="tablist">
+				<ul className="nav nav-tabs" id="myTab" role="tablist">
+					<li className="nav-item" role="presentation">
+						<button
+							className="nav-link active"
+							id="home-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#home"
+							type="button"
+							role="tab"
+							aria-controls="home"
+							aria-selected="true">
+							Home
+						</button>
+					</li>
+					<li className="nav-item" role="presentation">
+						<button
+							className="nav-link"
+							id="profile-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#profile"
+							type="button"
+							role="tab"
+							aria-controls="profile"
+							aria-selected="false">
+							Profile
+						</button>
+					</li>
+					<li className="nav-item" role="presentation">
+						<button
+							className="nav-link"
+							id="contact-tab"
+							data-bs-toggle="tab"
+							data-bs-target="#contact"
+							type="button"
+							role="tab"
+							aria-controls="contact"
+							aria-selected="false">
+							Contact
+						</button>
+					</li>
+				</ul>
+				<div className="tab-content" id="myTabContent">
+					<div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						...
+					</div>
+					<div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+						...
+					</div>
+					<div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+						...
+					</div>
+				</div>
+
+				{/* <ul className="nav nav-tabs mx-auto small font-weight-bold col-lg-9" id="myTab" role="tablist">
 					<li className="nav-item" role="presentation">
 						<button
 							className="nav-link active"
@@ -262,9 +315,9 @@ export const CaseReport = () => {
 							Ledger
 						</button>
 					</li>
-				</ul>
+				</ul> */}
 
-				<div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
+				{/* <div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
 					<div
 						className="tab-pane fade show active card shadow mb-4"
 						id="immigration"
@@ -320,7 +373,6 @@ export const CaseReport = () => {
 							</table>
 						</div>
 					</div>
-
 					<div
 						className="card shadow mb-4 tab-pane fade"
 						id="legal"
@@ -370,7 +422,7 @@ export const CaseReport = () => {
 							</table>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
 				{/* <h6 className="m-0 font-weight-bold text-primary">{caseNo}</h6>
 					<h6 className="m-0 font-weight-bold text-primary">{AlienNo}</h6>
