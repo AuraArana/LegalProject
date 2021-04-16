@@ -57,11 +57,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ currentSearch: search });
 			},
 			//Inicio Heidys
-			addImmigrationData: obj => {
-				setStore({ immigrationArr: [...getStore().immigrationArr, obj] });
-			},
-			addClientUserData: obj => {
-				setStore({ credentials: [...getStore().credentials, obj] });
+			addImmigrationData: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("immigrationArr")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getimmigrationArr());
 			},
 
 			addClientUserData: (obj, id) => {
@@ -76,8 +81,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(() => getActions().getCredentials());
 			},
 
-			addUserData: obj => {
-				setStore({ credentials: [...getStore().credentials, obj] });
+			addUserData: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("credentials")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getCredentials());
 			},
 
 			getimmigrationArr: async () => {
