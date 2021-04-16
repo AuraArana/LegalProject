@@ -166,30 +166,6 @@ export const AddImmigration = () => {
 							</select>
 						</div>
 					</div>
-					{/* <button
-						type="button"
-						className="btn btn-primary form-control"
-						onClick={() => {
-							setValidationBirthCity(checkInput(immigrationData.birthCity));
-							setValidationBirthCountry(checkInput(immigrationData.birthCountry));
-							setValidationDateEntry(checkInput(immigrationData.dateEntry));
-							setValidationImmigrationStatus(checkInput(immigrationData.immigrationStatus));
-							setValidationNationality(checkInput(immigrationData.nationality));
-							setValidationPortEntry(checkInput(immigrationData.portEntry));
-							setValidationTransportation(checkInput(immigrationData.transportation));
-							setValidation(true);
-						}}>
-						Save
-					</button> */}
-					<button
-						type="button"
-						className="btn btn-primary form-control col-3 mb-5"
-						style={{ float: "left" }}
-						onClick={() => {
-							history.push("addBio");
-						}}>
-						Go Back
-					</button>
 					<button
 						type="button"
 						className="btn btn-primary form-control col-3 mb-5"
@@ -205,7 +181,7 @@ export const AddImmigration = () => {
 							setValidation(true);
 							history.push("/legalRecords");
 						}}>
-						Save and Next
+						Save
 					</button>
 				</form>
 			</div>
