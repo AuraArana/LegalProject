@@ -42,7 +42,6 @@ export const AddImmigration = () => {
 				validation
 			) {
 				actions.addImmigrationData(immigrationData);
-				history.push("/demo");
 				setValidation(false);
 			} else {
 				setValidation(false);
