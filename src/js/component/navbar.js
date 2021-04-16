@@ -92,9 +92,9 @@ export const Navbar = () => {
 						<Link className="collapse-item" to="/servicescard">
 							By type of Services
 						</Link>
-						<a className="collapse-item" href="utilities-border.html">
-							Borders
-						</a>
+						<Link className="collapse-item" to="/addUser">
+							Add New User
+						</Link>
 						<a className="collapse-item" href="utilities-animation.html">
 							Animations
 						</a>
@@ -142,9 +142,6 @@ export const Navbar = () => {
 						</Link>
 						<Link className="collapse-item" to="/reportImmigration">
 							Immigration Information
-						</Link>
-						<Link className="collapse-item" to="/addUser">
-							Add New User
 						</Link>
 						<a className="collapse-item" href="utilities-other.html">
 							Other

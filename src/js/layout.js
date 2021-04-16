@@ -32,6 +32,7 @@ import { BarTop } from "./component/bartop";
 import { Footer } from "./component/footer";
 import { AddClientUser } from "./views/AddClientUser";
 import { AddUser } from "./views/AddUser";
+import { EditUser } from "./views/EditUser";
 
 //create your first component
 const Layout = () => {
@@ -217,6 +218,14 @@ const Layout = () => {
 
 								{isLoggedIn ? (
 									<Route exact path="/addUser" component={AddUser} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/editUser" component={EditUser} />
 								) : (
 									<Route exact path="/">
 										<Home />
