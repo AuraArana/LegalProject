@@ -6,8 +6,11 @@ import { Table } from "react-bootstrap";
 import female from "../../img/Untitled.png";
 import male from "../../img/male.png";
 import MikePhoto from "../../img/Untitled.png";
+import Nav from "react-bootstrap/Nav";
 
 export const CaseReport = () => {
+	const [track, setTrack] = useState(true);
+
 	let addBio = "Case";
 	const params = useParams();
 	let history = useHistory();
@@ -86,13 +89,188 @@ export const CaseReport = () => {
 			attorneyPhone = store.legalArr[i].attorneyPhone;
 		}
 	}
+
+	const updatePills = () => {
+		if (track) {
+			return (
+				<div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
+					<div
+						className="tab-pane fade show active card shadow mb-4"
+						id="immigration"
+						role="tabpanel"
+						aria-labelledby="immigration-tab">
+						<div className="card-header center py-3">
+							<h6 className="m-0 font-weight-bold text-primary">Legal Criminal Record</h6>
+						</div>
+						<div className="card-body">
+							<table className="table">
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Immigration Status
+									</th>
+									<td className="small">{immigrationStatus}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Date of Entry to USA
+									</th>
+									<td className="small">{dateEntry}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Port of Entry to USA
+									</th>
+									<td className="small">{portEntry}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Transportation
+									</th>
+									<td className="small">{transportation}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										City of Birth
+									</th>
+									<td className="small">{birthCity}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Country of Birth
+									</th>
+									<td className="small">{birthCountry}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Nationality
+									</th>
+									<td className="small">{nationality}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				// <div className="card shadow mb-4 tab-pane fade" id="legal" role="tabpanel" aria-labelledby="legal-tab">
+				// 	<div className="card-header center py-3">
+				// 		<h6 className="m-0 font-weight-bold text-primary">Legal Criminal Record</h6>
+				// 	</div>
+				// 	<div className="card-body">
+				// 		<table className="table">
+				// 			<tr>
+				// 				<th scope="row" className="small font-weight-bold">
+				// 					Legal Problem
+				// 				</th>
+				// 				<td className="small">{legalProblem}</td>
+				// 			</tr>
+				// 			<tr>
+				// 				<th scope="row" className="small font-weight-bold">
+				// 					Case Goal
+				// 				</th>
+				// 				<td className="small">{caseGoal}</td>
+				// 			</tr>
+				// 			<tr>
+				// 				<th scope="row" className="small font-weight-bold">
+				// 					Follow-Up
+				// 				</th>
+				// 				<td className="small">{followUp}</td>
+				// 			</tr>
+				// 			<tr>
+				// 				<th scope="row" className="small font-weight-bold">
+				// 					Arrest Record
+				// 				</th>
+				// 				<td className="small">{arrestRecord}</td>
+				// 			</tr>
+				// 			<tr>
+				// 				<th scope="row" className="small font-weight-bold">
+				// 					Criminal Attorneys Name
+				// 				</th>
+				// 				<td className="small">{criminalAttorney}</td>
+				// 			</tr>
+				// 			<tr>
+				// 				<th scope="row" className="small font-weight-bold">
+				// 					Criminal Attorney Phone
+				// 				</th>
+				// 				<td className="small">{attorneyPhone}</td>
+				// 			</tr>
+				// 		</table>
+				// 	</div>
+				// </div>
+			);
+		} else {
+			return (
+				<div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
+					<div
+						className="tab-pane fade show active card shadow mb-4"
+						id="immigration"
+						role="tabpanel"
+						aria-labelledby="immigration-tab">
+						<div className="card-header center py-3">
+							<h6 className="m-0 font-weight-bold text-primary">Immigration Information</h6>
+						</div>
+						<div className="card-body">
+							<table className="table">
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Immigration Status
+									</th>
+									<td className="small">{immigrationStatus}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Date of Entry to USA
+									</th>
+									<td className="small">{dateEntry}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Port of Entry to USA
+									</th>
+									<td className="small">{portEntry}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Transportation
+									</th>
+									<td className="small">{transportation}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										City of Birth
+									</th>
+									<td className="small">{birthCity}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Country of Birth
+									</th>
+									<td className="small">{birthCountry}</td>
+								</tr>
+								<tr>
+									<th scope="row" className="small font-weight-bold">
+										Nationality
+									</th>
+									<td className="small">{nationality}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			);
+		}
+	};
+	useEffect(
+		() => {
+			updatePills();
+		},
+		[track]
+	);
 	return (
 		<div className="container">
 			<div>
 				<h1 className="h3 text-gray-800 mt-5 text-center">{params.case}</h1>
 				{/* <div className="border-bottom my-auto mx-auto mt-3 col-9" /> */}
 
-				<div className="col-lg-10 mb-4 mt-4 mx-auto">
+				{/* <div className="col-lg-10 mb-4 mt-4 mx-auto">
 					<div className="card shadow mb-4">
 						<div className="card-header center py-3">
 							<h6 className="m-0 font-weight-bold text-primary">Biographical Information</h6>
@@ -193,129 +371,61 @@ export const CaseReport = () => {
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+					</div> */}
+				{/* </div> */}
 
-				<ul className="nav nav-tabs" id="myTab" role="tablist">
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link active"
-							id="home-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#home"
-							type="button"
-							role="tab"
-							aria-controls="home"
-							aria-selected="true">
-							Home
-						</button>
-					</li>
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link"
-							id="profile-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#profile"
-							type="button"
-							role="tab"
-							aria-controls="profile"
-							aria-selected="false">
-							Profile
-						</button>
-					</li>
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link"
-							id="contact-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#contact"
-							type="button"
-							role="tab"
-							aria-controls="contact"
-							aria-selected="false">
-							Contact
-						</button>
-					</li>
-				</ul>
-				<div className="tab-content" id="myTabContent">
-					<div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-						...
-					</div>
-					<div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-						...
-					</div>
-					<div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-						...
-					</div>
-				</div>
+				{/*  */}
+				{/* <div className="col-2">
+					<ul className="nav nav-pills text-center" id="pills-tab" role="tablist">
+						<li className="nav-item text-center">
+							<button
+								className="btn nav-link active"
+								data-toggle="pill"
+								href="#pills-multi-view"
+								role="tab"
+								aria-selected="false">
+								Home
+							</button>
+						</li>
+						<li className="nav-item">
+							<button
+								className="btn nav-link"
+								data-toggle="pill"
+								href="#pills-single-view"
+								role="tab"
+								aria-selected="true">
+								profile
+							</button>
+						</li>
+					</ul>
+				</div> */}
+				<Nav variant="tabs">
+					<Nav.Item>
+						<Nav.Link>
+							<span
+								onClick={e => {
+									setTrack(true);
+									e.preventDefault();
+								}}>
+								Active
+							</span>
+						</Nav.Link>
+					</Nav.Item>
+					<Nav.Item>
+						<Nav.Link>
+							{" "}
+							<span
+								onClick={e => {
+									setTrack(false);
+									e.preventDefault();
+								}}>
+								Active
+							</span>
+						</Nav.Link>
+					</Nav.Item>
+				</Nav>
 
-				{/* <ul className="nav nav-tabs mx-auto small font-weight-bold col-lg-9" id="myTab" role="tablist">
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link active"
-							id="immigration-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#immigration"
-							type="button"
-							role="tab"
-							aria-controls="immigration"
-							aria-selected="true">
-							Immigration Information
-						</button>
-					</li>
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link"
-							id="legal-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#legal"
-							type="button"
-							role="tab"
-							aria-controls="legal"
-							aria-selected="false">
-							Legal, Criminal Record
-						</button>
-					</li>
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link"
-							id="services-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#services"
-							type="button"
-							role="tab"
-							aria-controls="services"
-							aria-selected="false">
-							Services
-						</button>
-					</li>
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link"
-							id="documents-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#documents"
-							type="button"
-							role="tab"
-							aria-controls="documents"
-							aria-selected="false">
-							Documents
-						</button>
-					</li>
-					<li className="nav-item" role="presentation">
-						<button
-							className="nav-link"
-							id="ledger-tab"
-							data-bs-toggle="tab"
-							data-bs-target="#ledger"
-							type="button"
-							role="tab"
-							aria-controls="ledger"
-							aria-selected="false">
-							Ledger
-						</button>
-					</li>
-				</ul> */}
+				{updatePills()}
 
 				{/* <div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
 					<div
