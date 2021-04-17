@@ -6,6 +6,7 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
+import { createAccount } from "../utilities/createAccount";
 
 export const AddUser = () => {
 	let history = useHistory();
@@ -37,8 +38,7 @@ export const AddUser = () => {
 				!validationUserType &&
 				validation
 			) {
-				actions.addUserData(userData);
-				history.push("/demo");
+				createAcc(userData.email, userData.password);
 				setValidation(false);
 			} else {
 				setValidation(false);
@@ -46,6 +46,17 @@ export const AddUser = () => {
 		},
 		[validation]
 	);
+	const createAcc = async (email, password) => {
+		try {
+			await createAccount(email, password);
+			actions.addUserData(userData);
+			history.push("/demo");
+			return true;
+		} catch (e) {
+			alert(e.message);
+			return false;
+		}
+	};
 
 	return (
 		<div className="">
@@ -110,6 +121,7 @@ export const AddUser = () => {
 							setValidationPassword(checkInput(userData.password));
 							setValidationUserType(checkInput(userData.userType));
 							setValidation(true);
+							e.preventDefault();
 						}}>
 						Save
 					</button>
