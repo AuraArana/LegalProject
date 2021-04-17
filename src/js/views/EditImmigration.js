@@ -10,6 +10,7 @@ export const EditImmigration = props => {
 	const { store, actions } = useContext(Context);
 	let Case = params.case;
 	let pos = 1000000000;
+
 	for (let i in store.immigrationArr) {
 		if (store.immigrationArr[i].caseNo === Case) {
 			pos = i;
@@ -24,8 +25,9 @@ export const EditImmigration = props => {
 		birthCountry: immigrationArr ? immigrationArr.birthCountry : "",
 		birthCity: immigrationArr ? immigrationArr.birthCity : "",
 		nationality: immigrationArr ? immigrationArr.nationality : "",
-		caseNo: immigrationArr ? immigrationArr.caseNo : Case
+		caseNo: immigrationArr ? immigrationArr.caseNo : ""
 	});
+	const [id, setId] = useState(immigrationArr ? immigrationArr.id : "");
 	const [validationDateEntry, setValidationDateEntry] = useState(false);
 	const [validationPortEntry, setValidationPortEntry] = useState(false);
 	const [validationImmigrationStatus, setValidationImmigrationStatus] = useState(false);
@@ -50,8 +52,8 @@ export const EditImmigration = props => {
 				!validationTransportation &&
 				validation
 			) {
-				actions.addImmigrationData(immigrationData);
-				history.push("/demo");
+				actions.addImmigrationData(immigrationData, id);
+				history.push("/clients");
 				setValidation(false);
 			} else {
 				setValidation(false);
