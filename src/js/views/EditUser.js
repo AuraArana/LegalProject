@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { CreateUser } from "../utilities/CreateUser";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
@@ -25,6 +24,7 @@ export const EditUser = props => {
 		lastName: credentials ? credentials.lastName : "",
 		userType: credentials ? credentials.userType : ""
 	});
+	const [id, setId] = useState(credentials ? credentials.id : "");
 	const [validationEmail, setValidationEmail] = useState(false);
 	const [validationPassword, setValidationPassword] = useState(false);
 	const [validationFirstName, setValidationFirstName] = useState(false);
@@ -45,7 +45,7 @@ export const EditUser = props => {
 				!validationUserType &&
 				validation
 			) {
-				actions.addUserData(userData);
+				actions.addUserData(userData, id);
 				history.push("/demo");
 				setValidation(false);
 			} else {
@@ -123,7 +123,6 @@ export const EditUser = props => {
 							setValidationPassword(checkInput(userData.password));
 							setValidationUserType(checkInput(userData.userType));
 							setValidation(true);
-							e.preventDefault();
 						}}>
 						Save
 					</button>
