@@ -32,8 +32,6 @@ export const AddClientUser = () => {
 		() => {
 			if (!validationEmail && !validationPassword && !validationLastName && !validationFirstName && validation) {
 				createAcc(clientUserData.email, clientUserData.password);
-
-				//  history.push("/");
 				setValidation(false);
 			} else {
 				setValidation(false);
