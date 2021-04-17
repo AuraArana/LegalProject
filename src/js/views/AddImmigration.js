@@ -42,6 +42,8 @@ export const AddImmigration = () => {
 				validation
 			) {
 				actions.addImmigrationData(immigrationData);
+				history.push("/legalRecords");
+
 				setValidation(false);
 			} else {
 				setValidation(false);
@@ -178,7 +180,6 @@ export const AddImmigration = () => {
 							setValidationPortEntry(checkInput(immigrationData.portEntry));
 							setValidationTransportation(checkInput(immigrationData.transportation));
 							setValidation(true);
-							history.push("/legalRecords");
 						}}>
 						Save
 					</button>
