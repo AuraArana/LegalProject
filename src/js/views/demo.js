@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
@@ -6,28 +7,57 @@ import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
 
 export const Demo = props => {
+	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
 	let nroCase = store.ListClients.length;
 	let totalFee = 0;
 	let totalPayment = 0;
 	let pendingServices = 0;
+	let caseN = "";
 
-	for (let i in store.Ledger) {
-		if (store.Ledger[i].Transaction === "Service Fee") {
-			totalFee = totalFee + parseInt(store.Ledger[i].Amount);
+	for (let i in store.ListClients) {
+		if (store.ListClients[i].Email === store.currentUser.email) {
+			caseN = store.ListClients[i].caseNo;
 		}
 	}
 
-	for (let i in store.Ledger) {
-		if (store.Ledger[i].Transaction === "Payment") {
-			totalPayment = totalPayment + parseInt(store.Ledger[i].Amount);
+	if (store.currentUser.userType != "Client") {
+		for (let i in store.Ledger) {
+			if (store.Ledger[i].Transaction === "Service Fee") {
+				totalFee = totalFee + parseInt(store.Ledger[i].Amount);
+			}
 		}
-	}
 
-	for (let i in store.TableServices) {
-		if (store.TableServices[i].ResolutionOutcome === "Ongoing") {
-			pendingServices = pendingServices + 1;
+		for (let i in store.Ledger) {
+			if (store.Ledger[i].Transaction === "Payment") {
+				totalPayment = totalPayment + parseInt(store.Ledger[i].Amount);
+			}
+		}
+
+		for (let i in store.TableServices) {
+			if (store.TableServices[i].ResolutionOutcome === "Ongoing") {
+				pendingServices = pendingServices + 1;
+			}
+		}
+	} else {
+		nroCase = 1;
+		for (let i in store.Ledger) {
+			if (store.Ledger[i].Transaction === "Service Fee" && store.Ledger[i].caseNo === caseN) {
+				totalFee = totalFee + parseInt(store.Ledger[i].Amount);
+			}
+		}
+
+		for (let i in store.Ledger) {
+			if (store.Ledger[i].Transaction === "Payment" && store.Ledger[i].caseNo === caseN) {
+				totalPayment = totalPayment + parseInt(store.Ledger[i].Amount);
+			}
+		}
+
+		for (let i in store.TableServices) {
+			if (store.TableServices[i].ResolutionOutcome === "Ongoing" && store.TableServices[i].caseNo === caseN) {
+				pendingServices = pendingServices + 1;
+			}
 		}
 	}
 
@@ -36,9 +66,9 @@ export const Demo = props => {
 		<div className="container-fluid">
 			<div className="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
 				<h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-				<a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+				{/* <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
 					<i className="fas fa-download fa-sm text-white-50" /> Generate Report
-				</a>
+				</a> */}
 			</div>
 
 			<div className="row">

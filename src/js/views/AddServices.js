@@ -157,23 +157,16 @@ export const AddServices = () => {
 							</div>
 							<div className="row">
 								<div className="col-md-10">
-									<div className="input-group mb-3">
-										<input
-											type="text"
-											className="form-control"
-											placeholder="Resolution Outcome"
-											aria-label="Resolution Outcome"
-											onChange={e =>
-												setservicesData({ ...servicesData, ResolutionOutcome: e.target.value })
-											}
-											aria-describedby="basic-addon2"
-										/>
-										<div className="input-group-append">
-											<span className="input-group-text" id="basic-addon2">
-												<i className="fas fa-user" />
-											</span>
-										</div>
-									</div>
+									<select
+										className={"form-control mb-3"}
+										onChange={e =>
+											setservicesData({ ...servicesData, ResolutionOutcome: e.target.value })
+										}>
+										<option value="Ongoing">Ongoing</option>
+										<option value="Positive">Positive</option>
+										<option value="Deny">Deny</option>
+										<option value="Close">Close</option>
+									</select>
 								</div>
 							</div>
 

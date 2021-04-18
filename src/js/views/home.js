@@ -28,6 +28,7 @@ export const Home = ({ validCredentials }) => {
 				if (store.credentials[i].email === email) {
 					FirstName = store.credentials[i].firstName;
 					LastName = store.credentials[i].lastName;
+					email = store.credentials[i].email;
 					UserType = store.credentials[i].userType;
 				}
 			}
@@ -35,6 +36,7 @@ export const Home = ({ validCredentials }) => {
 			const obj = {
 				firstName: FirstName,
 				lastName: LastName,
+				email: email,
 				userType: UserType
 			};
 
@@ -101,12 +103,12 @@ export const Home = ({ validCredentials }) => {
 									placeholder="Enter Password"
 								/>
 							</div>
-							<div className="mb-3 form-check">
+							{/* <div className="mb-3 form-check">
 								<input type="checkbox" className="form-check-input" id="exampleCheck1" />
 								<label className="form-check-label" form="exampleCheck1">
 									Remember Me
 								</label>
-							</div>
+							</div> */}
 							<button
 								className="btn btn-primary col-12 rounded-pill"
 								onClick={e => {

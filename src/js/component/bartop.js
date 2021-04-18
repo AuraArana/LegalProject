@@ -22,32 +22,38 @@ export const BarTop = ({ logOut }) => {
 				<button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
 					<i className="fa fa-bars" />
 				</button>
-				<form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-					<div className="input-group">
-						<input
-							type="text"
-							className="form-control bg-light border-0 small"
-							placeholder="Search for..."
-							aria-label="Search"
-							onChange={e => {
-								setValName(e.target.value);
-							}}
-							aria-describedby="basic-addon2"
-						/>
-						<div className="input-group-append btn btn-primary">
-							{/* <Link field={"Some value"} to={"/clients/"} className="btn btn-primary"> */}
-							<i
-								onClick={() => {
-									actions.setCurrentSearch(valName);
-									history.push("/clients");
-								}}
-								className="fas fa-search fa-sm"
-							/>
 
-							{/* </Link> */}
+				{store.currentUser.userType != "Client" ? (
+					<div className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+						<div className="input-group">
+							<input
+								type="text"
+								className="form-control bg-light border-0 small"
+								placeholder="Search for..."
+								aria-label="Search"
+								onChange={e => {
+									setValName(e.target.value);
+								}}
+								aria-describedby="basic-addon2"
+							/>
+							<div className="input-group-append btn btn-primary">
+								{/* <Link field={"Some value"} to={"/clients/"} className="btn btn-primary"> */}
+								<i
+									onClick={e => {
+										e.preventDefault();
+										actions.setCurrentSearch(valName);
+										history.push("/clients");
+									}}
+									className="fas fa-search fa-sm"
+								/>
+
+								{/* </Link> */}
+							</div>
 						</div>
 					</div>
-				</form>
+				) : (
+					""
+				)}
 
 				<ul className="navbar-nav ml-auto">
 					<li className="nav-item dropdown no-arrow">
@@ -71,10 +77,10 @@ export const BarTop = ({ logOut }) => {
 								<i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
 								Profile
 							</a>
-							<a className="dropdown-item" href="#">
+							{/* <a className="dropdown-item" href="#">
 								<i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
 								Settings
-							</a>
+							</a> */}
 
 							<div className="dropdown-divider" />
 							<a

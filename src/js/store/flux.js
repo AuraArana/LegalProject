@@ -10,12 +10,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			legalArr: [],
 			currentUser: null,
 			currentPortEntry: "",
+			currentResolutionOutcome: "",
 			currentImmigrationStatus: "",
 			currentNationality: "",
 			currentMaritalStatus: "",
 			currentGender: "",
-			count: 1000,
-			currentCase: "LAWF-1000",
+			count: [],
+			currentCase: "",
 			currentSearch: null,
 			isLoggedIn: false,
 			ListClients: [],
@@ -39,6 +40,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ currentMaritalStatus: maritalStatus });
 			},
 
+			setCurrentReportSE: ResolutionOutcome => {
+				const store = getStore();
+				setStore({ currentResolutionOutcome: ResolutionOutcome });
+			},
+
 			setCurrentReportImmigration: (portEntry, immigrationStatus, nationality) => {
 				const store = getStore();
 				setStore({ currentPortEntry: portEntry });
@@ -48,10 +54,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			setCurrentCase: () => {
 				const store = getStore();
-				let c = store.count + 1;
-				setStore({ count: c });
+				const actions = getActions();
+				let c = store.count[0].count + 1;
+				const obj2 = {
+					count: c,
+					case: "LAWF-" + c
+				};
+
+				actions.updateCount(obj2, store.count[0].id);
 				setStore({ currentCase: "LAWF-" + c });
 			},
+
 			setCurrentSearch: search => {
 				const store = getStore();
 				setStore({ currentSearch: search });
@@ -206,6 +219,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (e) {
 				} finally {
 				}
+			},
+			getCount: async () => {
+				try {
+					const getContact = firebase.firestore().collection("count");
+					const response = await getContact.get();
+
+					let array = [];
+					response.forEach(contact => {
+						array.push({ ...contact.data(), id: contact.id });
+					});
+					setStore({
+						count: array
+					});
+					setStore({ currentCase: array[0].case });
+				} catch (e) {
+				} finally {
+				}
+			},
+
+			updateCount: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("count")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getCount());
 			},
 			getCredentials: async () => {
 				try {

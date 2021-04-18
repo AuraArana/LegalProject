@@ -7,6 +7,17 @@ export const AddBio = () => {
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
+	let caseN = "";
+
+	if (store.currentUser.userType === "Client") {
+		for (let i in store.ListClients) {
+			if (store.ListClients[i].Email === store.currentUser.email) {
+				history.push("/editBio/" + store.ListClients[i].caseNo);
+				break;
+			}
+		}
+	}
+
 	const [bioData, setbioData] = useState({
 		AlienNo: "",
 		LastName: "",

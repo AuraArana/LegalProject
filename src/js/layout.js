@@ -14,10 +14,16 @@ import { RepBio } from "./views/repBio.js";
 import { EditBio } from "./views/editBio.js";
 import { Services } from "./views/services.js";
 import { AddServices } from "./views/AddServices.js";
+import { EditServices } from "./views/editServices.js";
 import { ServicesForm } from "./views/ServicesForm.js";
 import { ServicesReport } from "./views/ServicesReport.js";
+
+import { ServiceStatusReport } from "./views/serviceStatusReport.js";
+import { ServiceStatusForm } from "./views/serviceStatusForm.js";
+
 import { CaseReport } from "./views/caseReport.js";
 import { Ledger } from "./views/ledger.js";
+import { EditLedger } from "./views/editLedger.js";
 import { AddImmigration } from "./views/AddImmigration.js";
 import { EditImmigration } from "./views/EditImmigration.js";
 import { ReportImmigration } from "./views/reportImmigration.js";
@@ -112,6 +118,26 @@ const Layout = () => {
 									</Route>
 								)}
 
+								{isLoggedIn ? (
+									<Route exact path="/editledger/:case">
+										<EditLedger />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/editServices/:case">
+										<EditServices />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
 								<Route exact path="/single/:theid">
 									<Single />
 								</Route>
@@ -142,6 +168,24 @@ const Layout = () => {
 
 								{isLoggedIn ? (
 									<Route exact path="/servicesform" component={ServicesForm} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/servicestatusform/">
+										<ServiceStatusForm />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/servicestatusreport" component={ServiceStatusReport} />
 								) : (
 									<Route exact path="/">
 										<Home />
