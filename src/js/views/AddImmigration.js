@@ -125,12 +125,12 @@ export const AddImmigration = () => {
 								className={validationBirthCity ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationData({ ...immigrationData, birthCity: e.target.value })}>
 								<option selected />
-								<option value="Tokyo">Tokyo</option>
-								<option value="Delhi">Delhi</option>
-								<option value="Shanghai">Shanghai</option>
+								<option value="Buenos Aires">Buenos Aires</option>
+								<option value="Bridgetown">Bridgetown</option>
+								<option value="Brasilia">Brasilia</option>
+								<option value="Caracas">Caracas</option>
 								<option value="La Habana">La Habana</option>
-								<option value="Mexico City">Mexico City</option>
-								<option value="Dhaka">Dhaka</option>
+								<option value="Montevideo">Montevideo</option>
 							</select>
 						</div>
 					</div>
@@ -143,12 +143,12 @@ export const AddImmigration = () => {
 									setImmigrationData({ ...immigrationData, birthCountry: e.target.value })
 								}>
 								<option selected />
-								<option value="Afghanistan">Afghanistan</option>
-								<option value="Albania">Albania</option>
-								<option value="Algeria">Algeria</option>
-								<option value="Cuba">Cuba</option>
-								<option value="Angola">Angola</option>
 								<option value="Argentina">Argentina</option>
+								<option value="Barbados">Barbados</option>
+								<option value="Brasil">Brasil</option>
+								<option value="Cuba">Cuba</option>
+								<option value="Uruguay">Uruguay</option>
+								<option value="Venezuela">Venezuela</option>
 							</select>
 						</div>
 						<div className="col-sm-6">
