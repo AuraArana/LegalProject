@@ -13,6 +13,19 @@ export const Ledger = () => {
 			<div>
 				<h1 className="text-center mt-5">{addBio}</h1>
 
+				<nav className="navbar ">
+					<div className="ml-auto text-dark">
+						<button
+							type="button"
+							className="btn btn-primary"
+							onClick={() => {
+								history.push("/addLedger");
+							}}>
+							Add Ledger
+						</button>
+					</div>
+				</nav>
+
 				<div className="container-fluid">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">

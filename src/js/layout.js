@@ -14,6 +14,7 @@ import { RepBio } from "./views/repBio.js";
 import { EditBio } from "./views/editBio.js";
 import { Services } from "./views/services.js";
 import { AddServices } from "./views/AddServices.js";
+import { AddLedger } from "./views/addLedger.js";
 import { EditServices } from "./views/editServices.js";
 import { ServicesForm } from "./views/ServicesForm.js";
 import { ServicesReport } from "./views/ServicesReport.js";
@@ -152,6 +153,14 @@ const Layout = () => {
 
 								{isLoggedIn ? (
 									<Route exact path="/addservices" component={AddServices} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/addLedger" component={AddLedger} />
 								) : (
 									<Route exact path="/">
 										<Home />
