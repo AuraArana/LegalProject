@@ -157,12 +157,12 @@ export const AddImmigration = () => {
 								className={validationNationality ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationData({ ...immigrationData, nationality: e.target.value })}>
 								<option selected />
-								<option value="Afghans">Afghans</option>
-								<option value="Albanians">Albanians</option>
-								<option value="Cubana">Cubana</option>
-								<option value="Americans">Americans</option>
-								<option value="Andorrans">Andorrans</option>
-								<option value="Angolans">Angolans</option>
+								<option value="Argentina">Argentina</option>
+								<option value="Barbadense">Barbadense</option>
+								<option value="Brasilero">Brasilero</option>
+								<option value="Cubano">Cubano</option>
+								<option value="Uruguayo">Uruguayo</option>
+								<option value="Venezolano">Venezolano</option>
 							</select>
 						</div>
 					</div>
