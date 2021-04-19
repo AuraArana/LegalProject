@@ -15,20 +15,18 @@ export const Clients = () => {
 		return (
 			<div className="mb-4 mt-5 mx-auto">
 				<div id="contacts" aria-expanded="true">
-					<ul className="" id="contact-list">
-						<li className="">
-							{store.ListClients &&
-								store.ListClients.reverse().map((item, index) => {
-									if (
-										item.caseNo.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
-										item.AlienNo.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
-										item.FirstName.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
-										item.LastName.toLowerCase().includes(store.currentSearch.toLowerCase())
-									) {
-										return (
-											<div
-												key={index}
-												className="row mb-4 mt-4 card shadow border-left-primary col-lg-9 mx-auto pt-5 pb-5">
+					<div className="" id="contact-list">
+						{store.ListClients &&
+							store.ListClients.reverse().map((item, index) => {
+								if (
+									item.caseNo.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
+									item.AlienNo.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
+									item.FirstName.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
+									item.LastName.toLowerCase().includes(store.currentSearch.toLowerCase())
+								) {
+									return (
+										<li key={index} className="search-list" style={{ listStyleType: "none" }}>
+											<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-9 mx-auto pt-5 pb-5">
 												<div className="container">
 													<div className="row">
 														<div className="col-3 my-auto">
@@ -69,12 +67,12 @@ export const Clients = () => {
 													</div>
 												</div>
 											</div>
-										);
-									}
-									// First
-								})}
-						</li>
-					</ul>
+										</li>
+									);
+								}
+								// First
+							})}
+					</div>
 				</div>
 			</div>
 		);
@@ -82,14 +80,12 @@ export const Clients = () => {
 		return (
 			<div className="mb-4 mt-5 mx-auto">
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
-					<ul className="" id="contact-list">
-						<li className="">
-							{store.ListClients &&
-								store.ListClients.reverse().map((item, index) => {
-									return (
-										<div
-											key={index}
-											className="row mb-4 mt-4 card shadow border-left-primary mb-4 col-lg-9 mx-auto pt-5 pb-5">
+					<div className="" id="contact-list">
+						{store.ListClients &&
+							store.ListClients.reverse().map((item, index) => {
+								return (
+									<li key={index} className="search-list" style={{ listStyleType: "none" }}>
+										<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-9 mx-auto pt-5 pb-5">
 											<div className="container">
 												<div className="row">
 													<div className="col-3 my-auto">
@@ -162,12 +158,12 @@ export const Clients = () => {
 												</div>
 											</div>
 										</div>
-									);
+									</li>
+								);
 
-									// First
-								})}
-						</li>
-					</ul>
+								// First
+							})}
+					</div>
 				</div>
 			</div>
 		);
