@@ -274,13 +274,13 @@ export const AddLegal = () => {
 							</div>
 						</div>
 					</div>
-					<Link
+					{/* <Link
 						type="button"
 						className="btn btn-primary form-control col-3 mb-5"
 						style={{ float: "left" }}
 						to="/AddImmigration">
 						Go Back: Immigration
-					</Link>
+					</Link> */}
 					<Link to={"/services"}>
 						<button
 							type="button"
