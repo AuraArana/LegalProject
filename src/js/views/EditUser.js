@@ -10,7 +10,7 @@ export const EditUser = props => {
 	const params = useParams();
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-	let Email = params.email;
+	let Email = store.currentUser.email;
 	let pos = 1000000000;
 
 	for (let i in store.credentials) {
@@ -21,7 +21,9 @@ export const EditUser = props => {
 	const credentials = store.credentials[pos];
 	const [userData, setUserData] = useState({
 		firstName: credentials ? credentials.firstName : "",
-		lastName: credentials ? credentials.lastName : ""
+		lastName: credentials ? credentials.lastName : "",
+		email: Email,
+		userType: store.currentUser.userType
 	});
 	const [id, setId] = useState(credentials ? credentials.id : "");
 	const [validationFirstName, setValidationFirstName] = useState(false);
@@ -33,9 +35,8 @@ export const EditUser = props => {
 	};
 	useEffect(
 		() => {
-			alert(Email);
 			if (!validationLastName && !validationFirstName && validation) {
-				store.addUserData(userData, id);
+				actions.addUserData(userData, id);
 				history.push("/demo");
 				setValidation(false);
 			} else {
@@ -82,7 +83,7 @@ export const EditUser = props => {
 							setValidationFirstName(checkInput(userData.firstName));
 							setValidationLastName(checkInput(userData.lastName));
 							setValidation(true);
-							//e.preventDefault();
+							e.preventDefault();
 						}}>
 						Save
 					</button>
