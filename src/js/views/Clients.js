@@ -17,7 +17,7 @@ export const Clients = () => {
 				<div id="contacts" aria-expanded="true">
 					<div className="" id="contact-list">
 						{store.ListClients &&
-							store.ListClients.reverse().map((item, index) => {
+							store.ListClients.map((item, index) => {
 								if (
 									item.caseNo.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
 									item.AlienNo.toLowerCase().includes(store.currentSearch.toLowerCase()) ||
@@ -64,6 +64,40 @@ export const Clients = () => {
 																</Link>
 															</span>
 														</div>
+														<div className="col-5">
+															<div className=" float-right">
+																<Link to={"/editBio/" + item.caseNo}>
+																	<button className="btn" title="Edit Biographical">
+																		<i className="fas fa-user-edit" />
+																	</button>
+																</Link>
+																<Link to={"/editImmigration/" + item.caseNo}>
+																	<button className="btn" title="Edit Immigration">
+																		<i className="fas fa-passport" />
+																	</button>
+																</Link>
+																<Link to={"/editLegal/" + item.caseNo}>
+																	<button className="btn" title="Edit Legal Records">
+																		<i className="fas fa-balance-scale" />
+																	</button>
+																</Link>
+																<Link to={"/editServices/" + item.caseNo}>
+																	<button className="btn" title="Edit Services">
+																		<i className="fas fa-gavel" />
+																	</button>
+																</Link>
+																<Link to={"/editDocuments/" + item.caseNo}>
+																	<button className="btn" title="Edit Documents">
+																		<i className="fas fa-file-alt" />
+																	</button>
+																</Link>
+																<Link to={"/editLedger/" + item.caseNo}>
+																	<button className="btn" title="Edit Ledger">
+																		<i className="fas fa-file-invoice-dollar" />
+																	</button>
+																</Link>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -82,7 +116,7 @@ export const Clients = () => {
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<div className="" id="contact-list">
 						{store.ListClients &&
-							store.ListClients.reverse().map((item, index) => {
+							store.ListClients.map((item, index) => {
 								return (
 									<li key={index} className="search-list" style={{ listStyleType: "none" }}>
 										<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-9 mx-auto pt-5 pb-5">
