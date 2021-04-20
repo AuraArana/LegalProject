@@ -35,9 +35,6 @@ export const AddLegal = () => {
 	const [color3, setColor3] = useState("grey");
 	const [color4, setColor4] = useState("grey");
 
-	// const [AttorneyName, setAttorneyName] = useState("");
-	// const [AttorneyPhone, setAttorneyPhone] = useState("");
-
 	const checkInput = input => {
 		return input === null || !input;
 	};
@@ -152,12 +149,14 @@ export const AddLegal = () => {
 									challenges to obtaining judicial relief.
 								</p>
 								<textarea
-									// onChange={handleChange}
 									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									onChange={e => setLegalData({ ...legalData, legalProblem: e.target.value })}
+									onChange={e => {
+										setLegalData({ ...legalData, legalProblem: e.target.value });
+										handleChange(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color }}>
@@ -180,12 +179,14 @@ export const AddLegal = () => {
 									obtaining final relief, list them in order.
 								</p>
 								<textarea
-									// onChange={handleChange2}
 									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									onChange={e => setLegalData({ ...legalData, caseGoal: e.target.value })}
+									onChange={e => {
+										setLegalData({ ...legalData, caseGoal: e.target.value });
+										handleChange2(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color2 }}>
@@ -207,11 +208,13 @@ export const AddLegal = () => {
 								</p>
 								<textarea
 									className="form-control"
-									// onChange={handleChange3}
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									onChange={e => setLegalData({ ...legalData, followUp: e.target.value })}
+									onChange={e => {
+										setLegalData({ ...legalData, followUp: e.target.value });
+										handleChange3(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color3 }}>
@@ -232,16 +235,18 @@ export const AddLegal = () => {
 									Having a criminal record has serious implications for the adjustment of immigration
 									status. However, having problems with the law is not an automatic disqualifier.
 									Therefore, it is important to describe in detail the nature and circumstances of any
-									arrests, judgemnets, etc. If the client hired a criminall attorney, provide the
-									attorneys contact information.
+									arrests, judgements, etc. If the client hired a criminal attorney, provide the
+									attorney&#180;s contact information.
 								</p>
 								<textarea
 									className="form-control"
-									// onChange={handleChange4}
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									onChange={e => setLegalData({ ...legalData, arrestRecord: e.target.value })}
+									onChange={e => {
+										setLegalData({ ...legalData, arrestRecord: e.target.value });
+										handleChange4(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color4 }}>
@@ -253,7 +258,7 @@ export const AddLegal = () => {
 						</div>
 						<div className="col-sm-6">
 							<div className="form-group">
-								<label>Criminal Attorneys Name</label>
+								<label>Criminal Attorney&#180;s Name</label>
 								<input
 									type="text"
 									className="form-control"
@@ -264,7 +269,7 @@ export const AddLegal = () => {
 						</div>
 						<div className="col-sm-6">
 							<div className="form-group">
-								<label>Criminal Attorney Phone</label>
+								<label>Criminal Attorney&#180;s Phone</label>
 								<input
 									type="text"
 									className="form-control"
@@ -274,13 +279,6 @@ export const AddLegal = () => {
 							</div>
 						</div>
 					</div>
-					{/* <Link
-						type="button"
-						className="btn btn-primary form-control col-3 mb-5"
-						style={{ float: "left" }}
-						to="/AddImmigration">
-						Go Back: Immigration
-					</Link> */}
 					<Link to={"/services"}>
 						<button
 							type="button"
