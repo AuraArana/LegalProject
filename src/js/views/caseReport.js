@@ -230,7 +230,7 @@ export const CaseReport = () => {
 										alt="Mike Anamendolla"
 										className="rounded-circle mx-auto d-block img-fluid"
 									/>
-									<p className="small font-weight-bold text-center mt-3">
+									<p className="small font-weight-bold text-center mt-3 text-uppercase">
 										{LastName}, {FirstName}
 									</p>
 								</div>
@@ -332,10 +332,14 @@ export const CaseReport = () => {
 					<Nav.Item>
 						<Nav.Link>
 							<span
+								style={{
+									color: "#2c7596"
+								}}
 								onClick={e => {
 									setTrack(true);
 									e.preventDefault();
 								}}>
+								{" "}
 								Immigration Information
 							</span>
 						</Nav.Link>
@@ -344,6 +348,9 @@ export const CaseReport = () => {
 						<Nav.Link>
 							{" "}
 							<span
+								style={{
+									color: "#2c7596"
+								}}
 								onClick={e => {
 									setTrack(false);
 									e.preventDefault();

@@ -81,13 +81,15 @@ export const EditLegal = props => {
 									challenges to obtaining judicial relief.
 								</p>
 								<textarea
-									// onChange={handleChange}
 									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
 									value={legalData.legalProblem}
-									onChange={e => setlegalData({ ...legalData, legalProblem: e.target.value })}
+									onChange={e => {
+										setlegalData({ ...legalData, legalProblem: e.target.value });
+										handleChange(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color }}>
@@ -110,13 +112,15 @@ export const EditLegal = props => {
 									obtaining final relief, list them in order.
 								</p>
 								<textarea
-									// onChange={handleChange2}
 									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									value={legalData.caseGoal}
 									maxLength="500"
-									onChange={e => setlegalData({ ...legalData, caseGoal: e.target.value })}
+									onChange={e => {
+										setlegalData({ ...legalData, caseGoal: e.target.value });
+										handleChange2(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color2 }}>
@@ -138,12 +142,14 @@ export const EditLegal = props => {
 								</p>
 								<textarea
 									className="form-control"
-									// onChange={handleChange3}
 									id="exampleFormControlTextarea1"
 									rows="3"
 									value={legalData.followUp}
 									maxLength="500"
-									onChange={e => setlegalData({ ...legalData, followUp: e.target.value })}
+									onChange={e => {
+										setlegalData({ ...legalData, followUp: e.target.value });
+										handleChange3(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color3 }}>
@@ -164,17 +170,19 @@ export const EditLegal = props => {
 									Having a criminal record has serious implications for the adjustment of immigration
 									status. However, having problems with the law is not an automatic disqualifier.
 									Therefore, it is important to describe in detail the nature and circumstances of any
-									arrests, judgemnets, etc. If the client hired a criminall attorney, provide the
-									attorneys contact information.
+									arrests, judgements, etc. If the client hired a criminal attorney, provide the
+									attorney&#180;s contact information.
 								</p>
 								<textarea
 									className="form-control"
-									// onChange={handleChange4}
 									id="exampleFormControlTextarea1"
 									rows="3"
 									value={legalData.arrestRecord}
 									maxLength="500"
-									onChange={e => setlegalData({ ...legalData, arrestRecord: e.target.value })}
+									onChange={e => {
+										setlegalData({ ...legalData, arrestRecord: e.target.value });
+										handleChange4(e);
+									}}
 								/>
 								<div id="the-count" style={{ float: "right", fontSize: 12 }}>
 									<span id="current" style={{ color: color4 }}>
@@ -186,7 +194,7 @@ export const EditLegal = props => {
 						</div>
 						<div className="col-sm-6">
 							<div className="form-group">
-								<label>Criminal Attorneys Name</label>
+								<label>Criminal Attorney&#180;s Name</label>
 								<input
 									type="text"
 									value={legalData.criminalAttorney}
@@ -198,7 +206,7 @@ export const EditLegal = props => {
 						</div>
 						<div className="col-sm-6">
 							<div className="form-group">
-								<label>Criminal Attorney Phone</label>
+								<label>Criminal Attorney&#180;s Phone</label>
 								<input
 									type="text"
 									value={legalData.attorneyPhone}
