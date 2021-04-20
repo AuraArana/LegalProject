@@ -197,6 +197,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(() => getActions().getLedger());
 			},
 
+			//nuevos
+			editServices: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("TableServices")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getTableServices());
+			},
+			editLedger: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("Ledger")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getLedger());
+			},
+
+			deleteLedger: id => {
+				firebase
+					.firestore()
+					.collection("Ledger")
+					.doc(id)
+					.delete()
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getLedger());
+			},
+
+			deleteServices: id => {
+				firebase
+					.firestore()
+					.collection("TableServices")
+					.doc(id)
+					.delete()
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().getTableServices());
+			},
+
+			//nuevos
+
 			getlistOfServices: () => {
 				fetch("https://api.jsonbin.io/b/6064d5f5f2163e5ad3f6e798")
 					.then(res => res.json())
