@@ -4,7 +4,8 @@ import { Context } from "../store/appContext";
 
 export const Ledger = () => {
 	let addBio = "Ledger";
-	let total = 0;
+	let totalfee = 0;
+	let totalpay = 0;
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
@@ -47,7 +48,11 @@ export const Ledger = () => {
 										{store.Ledger &&
 											store.Ledger.map((item, index) => {
 												if (item.caseNo === store.currentCase) {
-													total = total + parseInt(item.Amount);
+													if (item.Transaction === "Service Fee") {
+														totalfee = totalfee + parseInt(item.Amount);
+													} else {
+														totalpay = totalpay + parseInt(item.Amount);
+													}
 
 													return (
 														<tr key={index}>
@@ -64,7 +69,7 @@ export const Ledger = () => {
 							</div>
 						</div>
 					</div>
-					<h2>Balance: {total}</h2>
+					<h2>Balance: {totalfee - totalpay}</h2>
 				</div>
 			</div>
 		</div>

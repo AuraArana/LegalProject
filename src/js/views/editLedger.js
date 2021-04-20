@@ -5,7 +5,8 @@ import { Context } from "../store/appContext";
 export const EditLedger = () => {
 	const params = useParams();
 	let addBio = "Ledger";
-	let total = 0;
+	let totalfee = 0;
+	let totalpay = 0;
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 	let Case = params.case;
@@ -18,7 +19,7 @@ export const EditLedger = () => {
 				<div className="container-fluid">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">List of services</h6>
+							<h6 className="m-0 font-weight-bold text-primary">List of Transaction</h6>
 						</div>
 						<div className="card-body">
 							<div className="table-responsive">
@@ -29,6 +30,7 @@ export const EditLedger = () => {
 											<th>Transaction</th>
 											<th>Service Type</th>
 											<th>Amount</th>
+											<th>Actions</th>
 										</tr>
 									</thead>
 
@@ -36,7 +38,11 @@ export const EditLedger = () => {
 										{store.Ledger &&
 											store.Ledger.map((item, index) => {
 												if (item.caseNo === Case) {
-													total = total + parseInt(item.Amount);
+													if (item.Transaction === "Service Fee") {
+														totalfee = totalfee + parseInt(item.Amount);
+													} else {
+														totalpay = totalpay + parseInt(item.Amount);
+													}
 
 													return (
 														<tr key={index}>
@@ -44,6 +50,20 @@ export const EditLedger = () => {
 															<td>{item.Transaction}</td>
 															<td>{item.ServiceType}</td>
 															<td>{item.Amount}</td>
+															<td>
+																<Link to={"/editLedgerForm/" + item.id}>
+																	<button className="btn">
+																		<i className="fas fa-pencil-alt mr-3" />
+																	</button>
+																</Link>
+																<button
+																	className="btn"
+																	onClick={() => {
+																		actions.deleteLedger(item.id);
+																	}}>
+																	<i className="fas fa-trash-alt" />
+																</button>
+															</td>
 														</tr>
 													);
 												}
@@ -53,7 +73,7 @@ export const EditLedger = () => {
 							</div>
 						</div>
 					</div>
-					<h2>Balance: {total}</h2>
+					<h2>Balance: {totalfee - totalpay}</h2>
 				</div>
 			</div>
 		</div>

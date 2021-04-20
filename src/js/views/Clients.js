@@ -96,6 +96,11 @@ export const Clients = () => {
 																		<i className="fas fa-file-invoice-dollar" />
 																	</button>
 																</Link>
+																<Link to={"/payment/" + item.caseNo}>
+																	<button className="btn" title="Add Payment">
+																		<i className="fas fa-file-invoice-dollar" />
+																	</button>
+																</Link>
 															</div>
 														</div>
 													</div>
@@ -184,6 +189,11 @@ export const Clients = () => {
 															</Link>
 															<Link to={"/editLedger/" + item.caseNo}>
 																<button className="btn" title="Edit Ledger">
+																	<i className="fas fa-file-invoice-dollar" />
+																</button>
+															</Link>
+															<Link to={"/payment/" + item.caseNo}>
+																<button className="btn" title="Add Payment">
 																	<i className="fas fa-file-invoice-dollar" />
 																</button>
 															</Link>

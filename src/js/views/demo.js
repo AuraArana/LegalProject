@@ -248,9 +248,9 @@ export const Demo = props => {
 									className="progress-bar bg-info"
 									role="progressbar"
 									style={{ width: 100 }}
-									aria-valuenow="80"
+									aria-valuenow="800"
 									aria-valuemin="0"
-									aria-valuemax="100"
+									aria-valuemax="10000"
 								/>
 							</div>
 							<h4 className="small font-weight-bold">

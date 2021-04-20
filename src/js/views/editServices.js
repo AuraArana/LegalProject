@@ -45,27 +45,36 @@ export const EditServices = () => {
 										<tr>
 											<th>Contract</th>
 											<th>Intake Date</th>
-											<th>Review Date</th>
-											<th>Filing Date</th>
 											<th>Resolution Date</th>
 											<th>Resolution Outcome</th>
-											<th>Comments</th>
+											<th>Actions</th>
 										</tr>
 									</thead>
 
 									<tbody>
 										{store.TableServices &&
-											store.TableServices.reverse().map((item, index) => {
+											store.TableServices.map((item, index) => {
 												if (item.caseNo === Case) {
 													return (
 														<tr key={index}>
 															<td>{item.Contract}</td>
 															<td>{item.IntakeDate}</td>
-															<td>{item.ReviewDate}</td>
-															<td>{item.FilingDate}</td>
 															<td>{item.ResolutionDate}</td>
 															<td>{item.ResolutionOutcome}</td>
-															<td>{item.Comments}</td>
+															<td>
+																<Link to={"/editServicesForm/" + item.id}>
+																	<button className="btn">
+																		<i className="fas fa-pencil-alt mr-3" />
+																	</button>
+																</Link>
+																<button
+																	className="btn"
+																	onClick={() => {
+																		actions.deleteServices(item.id);
+																	}}>
+																	<i className="fas fa-trash-alt" />
+																</button>
+															</td>
 														</tr>
 													);
 												}

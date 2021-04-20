@@ -16,6 +16,12 @@ import { Services } from "./views/services.js";
 import { AddServices } from "./views/AddServices.js";
 import { AddLedger } from "./views/addLedger.js";
 import { EditServices } from "./views/editServices.js";
+
+//jose
+import { EditServicesForm } from "./views/editServicesForm.js";
+import { EditLedgerForm } from "./views/editLedgerForm.js";
+import { Payment } from "./views/payment.js";
+//jose
 import { ServicesForm } from "./views/ServicesForm.js";
 import { ServicesReport } from "./views/ServicesReport.js";
 
@@ -139,6 +145,38 @@ const Layout = () => {
 									</Route>
 								)}
 
+								{/* //jose */}
+								{isLoggedIn ? (
+									<Route exact path="/editServicesForm/:case">
+										<EditServicesForm />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/editLedgerForm/:case">
+										<EditLedgerForm />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/payment/:case">
+										<Payment />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{/* //jose */}
 								<Route exact path="/single/:theid">
 									<Single />
 								</Route>
