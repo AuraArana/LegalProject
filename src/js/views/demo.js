@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import { Chart } from "react-google-charts";
 
 import "../../styles/demo.scss";
 
@@ -146,9 +147,9 @@ export const Demo = props => {
 			</div>
 
 			<div className="row">
-				<div className="col-xl-4 col-lg-5">
-					<div className="card shadow mb-4">
-						<div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				{/* <div className="col-xl-4 col-lg-5">
+					<div className="card shadow mb-4"> */}
+				{/* <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 							<h6 className="m-0 font-weight-bold text-primary">Revenue Sources</h6>
 							<div className="dropdown no-arrow">
 								<a
@@ -177,9 +178,9 @@ export const Demo = props => {
 									</a>
 								</div>
 							</div>
-						</div>
+						</div> */}
 
-						<div className="card-body">
+				{/* <div className="card-body">
 							<div className="chart-pie pt-4 pb-2">
 								<canvas id="myPieChart" />
 							</div>
@@ -196,7 +197,7 @@ export const Demo = props => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
 				<div className="col-lg-6 mb-4">
 					<div className="card shadow mb-4">
