@@ -37,6 +37,13 @@ export const EditUser = props => {
 		() => {
 			if (!validationLastName && !validationFirstName && validation) {
 				actions.addUserData(userData, id);
+				const obj = {
+					firstName: userData.firstName,
+					lastName: userData.lastName,
+					email: userData.email,
+					userType: userData.userType
+				};
+				actions.setCurrentUser(obj);
 				history.push("/demo");
 				setValidation(false);
 			} else {
