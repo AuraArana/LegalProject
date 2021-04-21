@@ -73,8 +73,8 @@ export const Demo = props => {
 		datasets: [
 			{
 				data: [totalPayment, totalFee],
-				backgroundColor: ["#36A2EB", "#FFCE56"],
-				hoverBackgroundColor: ["#36A2EB", "#FFCE56"]
+				backgroundColor: ["#fbba45", "#154465"],
+				hoverBackgroundColor: ["#fbba45", "#154465"]
 			}
 		]
 	};
@@ -84,8 +84,8 @@ export const Demo = props => {
 		datasets: [
 			{
 				data: [pendingServices, positiveServices, denyServices],
-				backgroundColor: ["#0000FF", "#008000", "#FF0000"],
-				hoverBackgroundColor: ["#0000FF", "#008000", "#FF0000"]
+				backgroundColor: ["#29b6ba", "#136a89", "#172f47"],
+				hoverBackgroundColor: ["#29b6ba", "#136a89", "#172f47"]
 			}
 		]
 	};
