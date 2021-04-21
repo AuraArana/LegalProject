@@ -114,7 +114,7 @@ export const Navbar = () => {
 				""
 			)}
 
-			{store.currentUser.userType != "Client" ? (
+			{store.currentUser.userType === "Admin" ? (
 				<li className="nav-item">
 					<a
 						className="nav-link collapsed"
@@ -126,6 +126,7 @@ export const Navbar = () => {
 						<i className="fas fa-fw fa-wrench" />
 						<span>Utilities</span>
 					</a>
+
 					<div
 						id="collapseUtilities"
 						className="collapse"
@@ -158,10 +159,9 @@ export const Navbar = () => {
 
 			{store.currentUser.userType != "Client" ? (
 				<li className="nav-item">
-					<a className="nav-link" href="charts.html">
-						<i className="fas fa-fw fa-chart-area" />
-						<span>Charts</span>
-					</a>
+					<Link className="nav-link" to="/charts">
+						<i className="fas fa-fw fa-chart-area" /> Charts
+					</Link>
 				</li>
 			) : (
 				""

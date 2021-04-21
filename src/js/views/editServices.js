@@ -62,18 +62,27 @@ export const EditServices = () => {
 															<td>{item.ResolutionDate}</td>
 															<td>{item.ResolutionOutcome}</td>
 															<td>
-																<Link to={"/editServicesForm/" + item.id}>
-																	<button className="btn">
-																		<i className="fas fa-pencil-alt mr-3" />
+																{store.currentUser.userType != "Client" ? (
+																	<Link to={"/editServicesForm/" + item.id}>
+																		<button className="btn">
+																			<i className="fas fa-pencil-alt mr-3" />
+																		</button>
+																	</Link>
+																) : (
+																	""
+																)}
+
+																{store.currentUser.userType === "Admin" ? (
+																	<button
+																		className="btn"
+																		onClick={() => {
+																			actions.deleteServices(item.id);
+																		}}>
+																		<i className="fas fa-trash-alt" />
 																	</button>
-																</Link>
-																<button
-																	className="btn"
-																	onClick={() => {
-																		actions.deleteServices(item.id);
-																	}}>
-																	<i className="fas fa-trash-alt" />
-																</button>
+																) : (
+																	""
+																)}
 															</td>
 														</tr>
 													);

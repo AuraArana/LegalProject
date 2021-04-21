@@ -51,18 +51,27 @@ export const EditLedger = () => {
 															<td>{item.ServiceType}</td>
 															<td>{item.Amount}</td>
 															<td>
-																<Link to={"/editLedgerForm/" + item.id}>
-																	<button className="btn">
-																		<i className="fas fa-pencil-alt mr-3" />
+																{store.currentUser.userType != "Client" ? (
+																	<Link to={"/editLedgerForm/" + item.id}>
+																		<button className="btn">
+																			<i className="fas fa-pencil-alt mr-3" />
+																		</button>
+																	</Link>
+																) : (
+																	""
+																)}
+
+																{store.currentUser.userType === "Admin" ? (
+																	<button
+																		className="btn"
+																		onClick={() => {
+																			actions.deleteLedger(item.id);
+																		}}>
+																		<i className="fas fa-trash-alt" />
 																	</button>
-																</Link>
-																<button
-																	className="btn"
-																	onClick={() => {
-																		actions.deleteLedger(item.id);
-																	}}>
-																	<i className="fas fa-trash-alt" />
-																</button>
+																) : (
+																	""
+																)}
 															</td>
 														</tr>
 													);

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Chart } from "react-google-charts";
+import { Pie } from "react-chartjs-2";
 
 import "../../styles/demo.scss";
 
@@ -15,6 +15,8 @@ export const Demo = props => {
 	let totalFee = 0;
 	let totalPayment = 0;
 	let pendingServices = 0;
+	let positiveServices = 0;
+	let denyServices = 0;
 	let caseN = "";
 
 	for (let i in store.ListClients) {
@@ -41,6 +43,16 @@ export const Demo = props => {
 				pendingServices = pendingServices + 1;
 			}
 		}
+		for (let i in store.TableServices) {
+			if (store.TableServices[i].ResolutionOutcome === "Positive") {
+				positiveServices = pendingServices + 1;
+			}
+		}
+		for (let i in store.TableServices) {
+			if (store.TableServices[i].ResolutionOutcome === "Deny") {
+				denyServices = pendingServices + 1;
+			}
+		}
 	} else {
 		nroCase = 1;
 		for (let i in store.Ledger) {
@@ -61,6 +73,28 @@ export const Demo = props => {
 			}
 		}
 	}
+
+	const data = {
+		labels: ["Payments", "Services Fee"],
+		datasets: [
+			{
+				data: [totalPayment, totalFee],
+				backgroundColor: ["#36A2EB", "#FFCE56"],
+				hoverBackgroundColor: ["#36A2EB", "#FFCE56"]
+			}
+		]
+	};
+
+	const data2 = {
+		labels: ["Ongoing", "Positive", "Deny"],
+		datasets: [
+			{
+				data: [pendingServices, positiveServices, denyServices],
+				backgroundColor: ["#0000FF", "#008000", "#FF0000"],
+				hoverBackgroundColor: ["#0000FF", "#008000", "#FF0000"]
+			}
+		]
+	};
 
 	//alert(store.User);
 	return (
@@ -147,126 +181,24 @@ export const Demo = props => {
 			</div>
 
 			<div className="row">
-				{/* <div className="col-xl-4 col-lg-5">
-					<div className="card shadow mb-4"> */}
-				{/* <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 className="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-							<div className="dropdown no-arrow">
-								<a
-									className="dropdown-toggle"
-									href="#"
-									role="button"
-									id="dropdownMenuLink"
-									data-toggle="dropdown"
-									aria-haspopup="true"
-									aria-expanded="false">
-									<i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400" />
-								</a>
-								<div
-									className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-									aria-labelledby="dropdownMenuLink">
-									<div className="dropdown-header">Dropdown Header:</div>
-									<a className="dropdown-item" href="#">
-										Action
-									</a>
-									<a className="dropdown-item" href="#">
-										Another action
-									</a>
-									<div className="dropdown-divider" />
-									<a className="dropdown-item" href="#">
-										Something else here
-									</a>
-								</div>
-							</div>
-						</div> */}
-
-				{/* <div className="card-body">
-							<div className="chart-pie pt-4 pb-2">
-								<canvas id="myPieChart" />
-							</div>
-							<div className="mt-4 text-center small">
-								<span className="mr-2">
-									<i className="fas fa-circle text-primary" /> Direct
-								</span>
-								<span className="mr-2">
-									<i className="fas fa-circle text-success" /> Social
-								</span>
-								<span className="mr-2">
-									<i className="fas fa-circle text-info" /> Referral
-								</span>
-							</div>
+				<div className="col-lg-6 mb-4">
+					<div className="card shadow mb-4">
+						<div className="card-header py-3">
+							<h6 className="m-0 font-weight-bold text-primary">EARNINGS </h6>
+						</div>
+						<div className="card-body">
+							<Pie data={data} />
 						</div>
 					</div>
-				</div> */}
+				</div>
 
 				<div className="col-lg-6 mb-4">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">Projects</h6>
+							<h6 className="m-0 font-weight-bold text-primary">SERVICES </h6>
 						</div>
 						<div className="card-body">
-							<h4 className="small font-weight-bold">
-								Server Migration <span className="float-right">20%</span>
-							</h4>
-							<div className="progress mb-4">
-								<div
-									className="progress-bar bg-danger"
-									role="progressbar"
-									aria-valuenow="20"
-									aria-valuemin="0"
-									aria-valuemax="100"
-								/>
-							</div>
-							<h4 className="small font-weight-bold">
-								Sales Tracking <span className="float-right">40%</span>
-							</h4>
-							<div className="progress mb-4">
-								<div
-									className="progress-bar bg-warning"
-									role="progressbar"
-									aria-valuenow="40"
-									aria-valuemin="0"
-									aria-valuemax="100"
-								/>
-							</div>
-							<h4 className="small font-weight-bold">
-								Customer Database <span className="float-right">60%</span>
-							</h4>
-							<div className="progress mb-4">
-								<div
-									className="progress-bar"
-									role="progressbar"
-									aria-valuenow="60"
-									aria-valuemin="0"
-									aria-valuemax="100"
-								/>
-							</div>
-							<h4 className="small font-weight-bold">
-								Payout Details <span className="float-right">80%</span>
-							</h4>
-							<div className="progress mb-4">
-								<div
-									className="progress-bar bg-info"
-									role="progressbar"
-									style={{ width: 100 }}
-									aria-valuenow="800"
-									aria-valuemin="0"
-									aria-valuemax="10000"
-								/>
-							</div>
-							<h4 className="small font-weight-bold">
-								Account Setup <span className="float-right">Complete!</span>
-							</h4>
-							<div className="progress">
-								<div
-									className="progress-bar bg-success"
-									role="progressbar"
-									style={{ width: 100 }}
-									aria-valuenow="100"
-									aria-valuemin="0"
-									aria-valuemax="100"
-								/>
-							</div>
+							<Pie data={data2} />
 						</div>
 					</div>
 				</div>
