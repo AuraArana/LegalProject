@@ -30,9 +30,7 @@ export const Demo = props => {
 			if (store.Ledger[i].Transaction === "Service Fee") {
 				totalFee = totalFee + parseInt(store.Ledger[i].Amount);
 			}
-		}
 
-		for (let i in store.Ledger) {
 			if (store.Ledger[i].Transaction === "Payment") {
 				totalPayment = totalPayment + parseInt(store.Ledger[i].Amount);
 			}
@@ -42,15 +40,11 @@ export const Demo = props => {
 			if (store.TableServices[i].ResolutionOutcome === "Ongoing") {
 				pendingServices = pendingServices + 1;
 			}
-		}
-		for (let i in store.TableServices) {
 			if (store.TableServices[i].ResolutionOutcome === "Positive") {
-				positiveServices = pendingServices + 1;
+				positiveServices = positiveServices + 1;
 			}
-		}
-		for (let i in store.TableServices) {
 			if (store.TableServices[i].ResolutionOutcome === "Deny") {
-				denyServices = pendingServices + 1;
+				denyServices = denyServices + 1;
 			}
 		}
 	} else {
@@ -179,30 +173,33 @@ export const Demo = props => {
 					</div>
 				</div>
 			</div>
-
-			<div className="row">
-				<div className="col-lg-6 mb-4">
-					<div className="card shadow mb-4">
-						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">EARNINGS </h6>
+			{store.currentUser.userType != "Client" ? (
+				<div className="row">
+					<div className="col-lg-6 mb-4">
+						<div className="card shadow mb-4">
+							<div className="card-header py-3">
+								<h6 className="m-0 font-weight-bold text-primary">EARNINGS </h6>
+							</div>
+							<div className="card-body">
+								<Pie data={data} />
+							</div>
 						</div>
-						<div className="card-body">
-							<Pie data={data} />
+					</div>
+
+					<div className="col-lg-6 mb-4">
+						<div className="card shadow mb-4">
+							<div className="card-header py-3">
+								<h6 className="m-0 font-weight-bold text-primary">SERVICES </h6>
+							</div>
+							<div className="card-body">
+								<Pie data={data2} />
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div className="col-lg-6 mb-4">
-					<div className="card shadow mb-4">
-						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">SERVICES </h6>
-						</div>
-						<div className="card-body">
-							<Pie data={data2} />
-						</div>
-					</div>
-				</div>
-			</div>
+			) : (
+				""
+			)}
 		</div>
 	);
 };

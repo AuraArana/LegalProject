@@ -37,6 +37,7 @@ import { RepImmigration } from "./views/repImmigration.js";
 import { AddLegal } from "./views/legalRecords.js";
 import { EditLegal } from "./views/editLegal.js";
 import { Clients } from "./views/Clients.js";
+import { ClientsDebt } from "./views/clientsDebt.js";
 import injectContext from "./store/appContext";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "./component/navbar";
@@ -88,6 +89,16 @@ const Layout = () => {
 								{isLoggedIn ? (
 									<Route exact path="/clients/">
 										<Clients />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/Clientsdebt/">
+										<ClientsDebt />
 									</Route>
 								) : (
 									<Route exact path="/">

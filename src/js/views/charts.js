@@ -70,10 +70,10 @@ export const Charts = props => {
 			pendingServices = pendingServices + 1;
 		}
 		if (store.TableServices[i].ResolutionOutcome === "Deny") {
-			denyServices = pendingServices + 1;
+			denyServices = denyServices + 1;
 		}
 		if (store.TableServices[i].ResolutionOutcome === "Positive") {
-			positiveServices = pendingServices + 1;
+			positiveServices = positiveServices + 1;
 		}
 	}
 
