@@ -16,14 +16,14 @@ export const Ledger = () => {
 
 				<nav className="navbar ">
 					<div className="ml-auto text-dark">
-						<button
+						{/* <button
 							type="button"
 							className="btn btn-primary"
 							onClick={() => {
 								history.push("/addLedger");
 							}}>
 							Add Ledger
-						</button>
+						</button> */}
 					</div>
 				</nav>
 
