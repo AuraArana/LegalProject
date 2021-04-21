@@ -186,6 +186,9 @@ export const Navbar = () => {
 						data-parent="#accordionSidebar">
 						<div className="bg-white py-2 collapse-inner rounded">
 							<h6 className="collapse-header">Select a report:</h6>
+							<Link className="collapse-item" to="/clientsdebt">
+								Clients with debts
+							</Link>
 							<Link className="collapse-item" to="/servicesform">
 								Type of Services
 							</Link>
