@@ -35,42 +35,41 @@ export const ServicesForm = () => {
 			<div>
 				<h1 className="text-center mt-5">{addBio}</h1>
 				<form className="user">
-					<div className="row">
-						<div className="col-md-6">
-							<select
-								name="cars"
-								id="cars"
-								className={
-									validationContract
-										? "form-control form-control-user rounded  is-invalid"
-										: "form-control form-control-user rounded"
-								}
-								onClick={e => setservicesData({ ...servicesData, Contract: e.target.value })}
-								multiple
-								style={{ height: "500px", width: "500px" }}>
-								{store.listOfServices &&
-									store.listOfServices.map((item, index) => {
-										return (
-											<option key={index} value={item.TableID}>
-												{item.Desc}
-											</option>
-										);
-									})}
-							</select>
+					<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-10 mx-auto pt-5 pb-5">
+						<div className="row">
+							<div className="col-md-12">
+								<select
+									name="cars"
+									id="cars"
+									className={
+										validationContract
+											? "form-control form-control-user rounded  is-invalid"
+											: "form-control form-control-user rounded"
+									}
+									onClick={e => setservicesData({ ...servicesData, Contract: e.target.value })}
+									multiple
+									style={{ height: "300px", width: "500px" }}>
+									{store.listOfServices &&
+										store.listOfServices.map((item, index) => {
+											return (
+												<option key={index} value={item.TableID}>
+													{item.Desc}
+												</option>
+											);
+										})}
+								</select>
+							</div>
 						</div>
-
-						<div className="col-md-6" />
-
-						<button
-							type="button"
-							className="btn btn-primary mt-2"
-							onClick={() => {
-								setValidationContract(checkInput(servicesData.Contract));
-								setValidation(true);
-							}}>
-							Send
-						</button>
 					</div>
+					<button
+						type="button"
+						className="btn btn-primary mt-2"
+						onClick={() => {
+							setValidationContract(checkInput(servicesData.Contract));
+							setValidation(true);
+						}}>
+						Send
+					</button>
 				</form>
 			</div>
 		</div>

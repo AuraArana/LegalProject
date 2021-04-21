@@ -17,21 +17,22 @@ export const ServiceStatusForm = () => {
 				<h1 className="text-center mt-5">{addBio}</h1>
 				<form className="user">
 					<div className="form-group row">
-						<div className="col-sm-6">
-							<label>Resolution Outcome</label>
-							<select
-								className="form-control rounded  "
-								id="ResolutionOutcome"
-								onChange={e => setbioData({ ...bioData, ResolutionOutcome: e.target.value })}>
-								<option value="">Select a service status</option>
-								<option value="Ongoing">Ongoing</option>
-								<option value="Positive">Positive</option>
-								<option value="Deny">Deny</option>
-								<option value="Close">Close</option>
-							</select>
+						<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-11 mx-auto pt-5 pb-5">
+							<div className="col-sm-6">
+								<label>Resolution Outcome</label>
+								<select
+									className="form-control rounded  "
+									id="ResolutionOutcome"
+									onChange={e => setbioData({ ...bioData, ResolutionOutcome: e.target.value })}>
+									<option value="">Select a service status</option>
+									<option value="Ongoing">Ongoing</option>
+									<option value="Positive">Positive</option>
+									<option value="Deny">Deny</option>
+									<option value="Close">Close</option>
+								</select>
+							</div>
 						</div>
 					</div>
-
 					<button
 						type="button"
 						className="btn btn-primary"
