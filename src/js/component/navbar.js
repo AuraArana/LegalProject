@@ -133,18 +133,18 @@ export const Navbar = () => {
 						data-parent="#accordionSidebar">
 						<div className="bg-white py-2 collapse-inner rounded">
 							<h6 className="collapse-header">Custom Utilities:</h6>
-							<Link className="collapse-item" to="/servicescard">
+							{/* <Link className="collapse-item" to="/servicescard">
 								By type of Services
-							</Link>
+							</Link> */}
 							<Link className="collapse-item" to="/addUser">
 								Add New User
 							</Link>
-							<a className="collapse-item" href="utilities-animation.html">
+							{/* <a className="collapse-item" href="utilities-animation.html">
 								Animations
 							</a>
 							<a className="collapse-item" href="utilities-other.html">
 								Other
-							</a>
+							</a> */}
 						</div>
 					</div>
 				</li>
@@ -198,9 +198,6 @@ export const Navbar = () => {
 							<Link className="collapse-item" to="/reportImmigration">
 								Immigration Information
 							</Link>
-							<a className="collapse-item" href="utilities-other.html">
-								Other
-							</a>
 						</div>
 					</div>
 				</li>
