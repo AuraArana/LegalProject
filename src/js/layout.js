@@ -20,6 +20,7 @@ import { EditServices } from "./views/editServices.js";
 import { EditServicesForm } from "./views/editServicesForm.js";
 import { EditLedgerForm } from "./views/editLedgerForm.js";
 import { Payment } from "./views/payment.js";
+import { AppRequest } from "./views/appointmentRequest.js";
 import { Charts } from "./views/charts.js";
 import { ServicesForm } from "./views/ServicesForm.js";
 import { ServicesReport } from "./views/ServicesReport.js";
@@ -189,6 +190,16 @@ const Layout = () => {
 								{isLoggedIn ? (
 									<Route exact path="/charts/">
 										<Charts />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/appointmentRequest/">
+										<AppRequest />
 									</Route>
 								) : (
 									<Route exact path="/">

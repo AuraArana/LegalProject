@@ -39,7 +39,7 @@ export const Navbar = () => {
 
 			<hr className="sidebar-divider" />
 
-			<div className="sidebar-heading">Interface</div>
+			<div className="sidebar-heading">Clients</div>
 
 			<li className="nav-item">
 				<a
@@ -103,11 +103,21 @@ export const Navbar = () => {
 				</div>
 			</li>
 
+			{store.currentUser.userType != "Client" ? (
+				<li className="nav-item">
+					<Link className="nav-link" to="/appointmentRequest">
+						<i className="far fa-calendar-alt" /> Request Appointment
+					</Link>
+				</li>
+			) : (
+				""
+			)}
+
 			{store.currentUser.userType === "Client" ? (
 				<li className="nav-item">
 					<Link to={"/casereport/" + caseN} className="nav-link">
 						<i className="fas fa-user" />
-						<span>Client information</span>
+						<span>Client Information</span>
 					</Link>
 				</li>
 			) : (
@@ -155,7 +165,7 @@ export const Navbar = () => {
 
 			{store.currentUser.userType != "Client" ? <hr className="sidebar-divider" /> : ""}
 
-			{store.currentUser.userType != "Client" ? <div className="sidebar-heading">Addons</div> : ""}
+			{store.currentUser.userType != "Client" ? <div className="sidebar-heading">Reports</div> : ""}
 
 			{store.currentUser.userType != "Client" ? (
 				<li className="nav-item">
@@ -187,7 +197,7 @@ export const Navbar = () => {
 						<div className="bg-white py-2 collapse-inner rounded">
 							<h6 className="collapse-header">Select a report:</h6>
 							<Link className="collapse-item" to="/clientsdebt">
-								Clients with debts
+								Clients with Debts
 							</Link>
 							<Link className="collapse-item" to="/servicesform">
 								Type of Services

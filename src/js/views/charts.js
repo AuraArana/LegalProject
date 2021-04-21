@@ -82,8 +82,8 @@ export const Charts = props => {
 		datasets: [
 			{
 				data: [countM, countGO, countF],
-				backgroundColor: ["#0000FF", "#008000", "#ff6384"],
-				hoverBackgroundColor: ["#0000FF", "#008000", "#ff6384"]
+				backgroundColor: ["#2373ac", "#162f46", "#d7d7d7"],
+				hoverBackgroundColor: ["#2373ac", "#162f46", "#d7d7d7"]
 			}
 		]
 	};
@@ -93,8 +93,8 @@ export const Charts = props => {
 		datasets: [
 			{
 				data: [countSingle, countMarried, countDivorced, countOther],
-				backgroundColor: ["#00ff99", " #ff9900", "#33001a", "#cc99ff"],
-				hoverBackgroundColor: ["#00ff99", " #ff9900", "#33001a", "#cc99ff"]
+				backgroundColor: ["#00c182", "#b2d5d7", "#003851", "#cfd0d2"],
+				hoverBackgroundColor: ["#00c182", "#b2d5d7", "#003851", "#cfd0d2"]
 			}
 		]
 	};
@@ -104,8 +104,8 @@ export const Charts = props => {
 		datasets: [
 			{
 				data: [totalPayment, totalFee],
-				backgroundColor: ["#36A2EB", "#FFCE56"],
-				hoverBackgroundColor: ["#36A2EB", "#FFCE56"]
+				backgroundColor: ["#fbba45", "#154465"],
+				hoverBackgroundColor: ["#fbba45", "#154465"]
 			}
 		]
 	};
@@ -115,8 +115,8 @@ export const Charts = props => {
 		datasets: [
 			{
 				data: [pendingServices, positiveServices, denyServices],
-				backgroundColor: ["#0000FF", "#008000", "#FF0000"],
-				hoverBackgroundColor: ["#0000FF", "#008000", "#FF0000"]
+				backgroundColor: ["#29b6ba", "#136a89", "#172f47"],
+				hoverBackgroundColor: ["#29b6ba", "#136a89", "#172f47"]
 			}
 		]
 	};
