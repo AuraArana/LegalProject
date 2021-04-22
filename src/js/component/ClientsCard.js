@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import { withRouter } from "react-router-dom";
+import React, { useState, useContext } from "react";
+// import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import MikePhoto from "../../img/Untitled.png";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 
 export const ClientsCard = props => {
-	const { store, actions } = useContext(Context);
-	const params = useParams();
-	const [state, setState] = useState({
-		//initialize state here
-	});
+	const { store } = useContext(Context);
+	// const params = useParams();
+	// const [state, setState] = useState({
+	//initialize state here
+	// });
 
 	return (
 		<li className="list-group-item">

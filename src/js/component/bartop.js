@@ -1,20 +1,20 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+// import { Link } from "react-router-dom";
+// import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Context } from "../store/appContext";
 import { signOut } from "../utilities/signOut";
 import PropTypes from "prop-types";
-import { Clients } from "../views/Clients.js";
+// import { Clients } from "../views/Clients.js";
 
 import Background2 from "../../img/rigo-baby.jpg";
 
 export const BarTop = ({ logOut }) => {
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-	const [state, setState] = useState(null);
+	// const [state, setState] = useState(null);
 	const [valName, setValName] = useState(false);
-	const listClients = store.ListClients;
+	// const listClients = store.ListClients;
 
 	return (
 		<div>

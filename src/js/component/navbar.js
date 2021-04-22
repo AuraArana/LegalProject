@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import HorizontalLogo from "../../img/h-logo.png";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+// import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
