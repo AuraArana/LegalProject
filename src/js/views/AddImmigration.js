@@ -1,12 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "date-fns";
+import Grid from "@material-ui/core/Grid";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from "@material-ui/pickers";
 
 export const AddImmigration = () => {
 	let addImmigrationInfo = "Immigration Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-
+	const [selectedDate, setSelectedDate] = React.useState(new Date("2014-08-18T21:11:54"));
 	const [immigrationData, setImmigrationData] = useState({
 		dateEntry: "",
 		portEntry: "",
@@ -25,6 +29,10 @@ export const AddImmigration = () => {
 	const [validationBirthCity, setValidationBirthCity] = useState(false);
 	const [validationNationality, setValidationNationality] = useState(false);
 	const [validation, setValidation] = useState(false);
+
+	const handleDateChange = date => {
+		setSelectedDate(date);
+	};
 
 	const checkInput = input => {
 		return input === null || !input;
@@ -80,12 +88,23 @@ export const AddImmigration = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<label>Date of Entry to USA</label>
-							<input
-								type="text"
-								required
-								className={validationDateEntry ? "form-control is-invalid" : "form-control"}
-								onChange={e => setImmigrationData({ ...immigrationData, dateEntry: e.target.value })}
-							/>
+							<MuiPickersUtilsProvider utils={DateFnsUtils}>
+								<Grid container justify="space-around">
+									<KeyboardDatePicker
+										disableToolbar
+										variant="inline"
+										format="MM/dd/yyyy"
+										margin="normal"
+										id="date-picker-inline"
+										label="Date picker inline"
+										value={selectedDate}
+										onChange={handleDateChange}
+										KeyboardButtonProps={{
+											"aria-label": "change date"
+										}}
+									/>
+								</Grid>
+							</MuiPickersUtilsProvider>
 						</div>
 						<div className="col-sm-6">
 							<label>Port of Entry to USA</label>

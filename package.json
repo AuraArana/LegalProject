@@ -77,8 +77,13 @@
 		]
 	},
 	"dependencies": {
+		"@date-io/date-fns": "^2.10.8",
+		"@material-ui/core": "^4.11.3",
+		"@material-ui/icons": "^4.11.2",
+		"@material-ui/pickers": "^3.3.10",
 		"bootstrap": "^4.6.0",
 		"chart.js": "^2.9.4",
+		"date-fns": "^2.21.1",
 		"firebase": "^8.3.3",
 		"jquery": "^3.6.0",
 		"popper.js": "^1.16.1",
