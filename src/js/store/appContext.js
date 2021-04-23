@@ -35,6 +35,7 @@ const injectContext = PassedComponent => {
 			state.actions.getCredentials();
 			state.actions.getTableServices();
 			state.actions.getListClients();
+			state.actions.fetcFiles();
 			state.actions.getlistOfServices();
 			state.actions.getimmigrationArr();
 			state.actions.getlegalArr();

@@ -77,9 +77,15 @@ export const Navbar = () => {
 						) : (
 							""
 						)}
-						<Link className="collapse-item" to="/documents">
-							Case Documents
-						</Link>
+						{!caseN ? (
+							<Link className="collapse-item" to={"/documents/" + store.currentCase}>
+								Case Documents
+							</Link>
+						) : (
+							<Link className="collapse-item" to={"/documents/" + caseN}>
+								Case Documents
+							</Link>
+						)}
 						{store.currentUser.userType != "Client" ? (
 							<Link className="collapse-item" to="/services">
 								Services

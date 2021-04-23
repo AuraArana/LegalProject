@@ -21,6 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			isLoggedIn: false,
 			ListClients: [],
 			agenda: [],
+			files: [],
 			Ledger: [],
 			immigrationInfo: [],
 			TableServices: [],
@@ -147,6 +148,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Fin Aura
 
 			//Inicio Jose
+
+			onFileChange: async (caseNo, e, id) => {
+				const store = getStore();
+				const file = e.target.files[0];
+				if (e.target.files[0] != null) {
+					const storageRef = firebase.storage().ref();
+					const fileRef = storageRef.child(file.name);
+					await fileRef.put(file);
+					const fileUrl = await fileRef.getDownloadURL();
+
+					await firebase
+						.firestore()
+						.collection("files")
+						.doc(id)
+						.set({
+							caseNo: caseNo,
+							fileName: file.name,
+							file: fileUrl
+						})
+
+						.catch(error => {
+							alert(error);
+						})
+						.then(() => getActions().fetcFiles());
+				}
+			},
+
+			fetcFiles: async () => {
+				try {
+					const getContact = firebase.firestore().collection("files");
+					const response = await getContact.get();
+
+					let array = [];
+					response.forEach(contact => {
+						array.push({ ...contact.data(), id: contact.id });
+					});
+					setStore({
+						files: array
+					});
+				} catch (e) {
+				} finally {
+				}
+			},
 
 			addBioData: (obj, id) => {
 				firebase
