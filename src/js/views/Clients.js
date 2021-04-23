@@ -86,7 +86,7 @@ export const Clients = () => {
 																		<i className="fas fa-gavel" />
 																	</button>
 																</Link>
-																<Link to={"/editDocuments/" + item.caseNo}>
+																<Link to={"/documents/" + item.caseNo}>
 																	<button className="btn" title="Edit Documents">
 																		<i className="fas fa-file-alt" />
 																	</button>
@@ -182,7 +182,7 @@ export const Clients = () => {
 																	<i className="fas fa-gavel" />
 																</button>
 															</Link>
-															<Link to={"/editDocuments/" + item.caseNo}>
+															<Link to={"/documents/" + item.caseNo}>
 																<button className="btn" title="Edit Documents">
 																	<i className="fas fa-file-alt" />
 																</button>

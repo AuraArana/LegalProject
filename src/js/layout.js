@@ -11,6 +11,7 @@ import { Single } from "./views/single";
 import { AddBio } from "./views/AddBio.js";
 import { ReportBio } from "./views/reportBio.js";
 import { RepBio } from "./views/repBio.js";
+import { Documents } from "./views/documents.js";
 import { EditBio } from "./views/editBio.js";
 import { Services } from "./views/services.js";
 import { AddServices } from "./views/AddServices.js";
@@ -100,6 +101,16 @@ const Layout = () => {
 								{isLoggedIn ? (
 									<Route exact path="/Clientsdebt/">
 										<ClientsDebt />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/documents/:case">
+										<Documents />
 									</Route>
 								) : (
 									<Route exact path="/">
