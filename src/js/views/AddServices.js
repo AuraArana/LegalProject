@@ -72,23 +72,18 @@ export const AddServices = () => {
 								<div className="col-md-10">
 									<div className="input-group mb-3">
 										<input
-											type="text"
+											type="date"
 											className={
-												validationIntakeDate
-													? "form-control form-control-user rounded  is-invalid"
-													: "form-control form-control-user rounded"
+												validationIntakeDate ? "form-control is-invalid" : "form-control"
 											}
 											placeholder="Intake Date"
+											aria-label="Intake Date"
 											onChange={e =>
 												setservicesData({ ...servicesData, IntakeDate: e.target.value })
 											}
 											required
+											aria-describedby="basic-addon2"
 										/>
-										<div className="input-group-append">
-											<span className="input-group-text" id="basic-addon2">
-												<i className="fas fa-calendar-alt" />
-											</span>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -96,7 +91,7 @@ export const AddServices = () => {
 								<div className="col-md-10">
 									<div className="input-group mb-3">
 										<input
-											type="text"
+											type="date"
 											className="form-control"
 											placeholder="Review Date"
 											aria-label="Review Date"
@@ -105,11 +100,6 @@ export const AddServices = () => {
 											}
 											aria-describedby="basic-addon2"
 										/>
-										<div className="input-group-append">
-											<span className="input-group-text" id="basic-addon2">
-												<i className="fas fa-calendar-alt" />
-											</span>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -117,7 +107,7 @@ export const AddServices = () => {
 								<div className="col-md-10">
 									<div className="input-group mb-3">
 										<input
-											type="text"
+											type="date"
 											className="form-control"
 											placeholder="Filing Date"
 											aria-label="Filing Date"
@@ -126,11 +116,6 @@ export const AddServices = () => {
 											}
 											aria-describedby="basic-addon2"
 										/>
-										<div className="input-group-append">
-											<span className="input-group-text" id="basic-addon2">
-												<i className="fas fa-calendar-alt" />
-											</span>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -138,7 +123,7 @@ export const AddServices = () => {
 								<div className="col-md-10">
 									<div className="input-group mb-3">
 										<input
-											type="text"
+											type="date"
 											className="form-control"
 											placeholder="ResolutionDate"
 											aria-label="ResolutionDate"
@@ -147,11 +132,6 @@ export const AddServices = () => {
 											}
 											aria-describedby="basic-addon2"
 										/>
-										<div className="input-group-append">
-											<span className="input-group-text" id="basic-addon2">
-												<i className="fas fa-calendar-alt" />
-											</span>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -183,11 +163,6 @@ export const AddServices = () => {
 											}
 											aria-describedby="basic-addon2"
 										/>
-										<div className="input-group-append">
-											<span className="input-group-text" id="basic-addon2">
-												<i className="fas  fa-comment-alt" />
-											</span>
-										</div>
 									</div>
 								</div>
 							</div>
