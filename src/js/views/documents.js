@@ -13,6 +13,7 @@ export const Documents = () => {
 	const [validationFile, setValidationFile] = useState(false);
 	const [validation, setValidation] = useState(false);
 	let caseNo = params.case;
+	let result = false;
 
 	const checkInput = input => {
 		return input === null || !input;
@@ -20,8 +21,6 @@ export const Documents = () => {
 	useEffect(
 		() => {
 			if (validationFile && validation) {
-				// actions.addContactAgenda(name, phone, email, address);
-				// history.push("/contacts");
 				setValidation(false);
 			} else {
 				setValidation(false);
@@ -70,20 +69,18 @@ export const Documents = () => {
 												onChange={e => {
 													actions.onFileChange(caseNo, e);
 													e.preventDefault();
-
 													setFile(e.target.value);
-													setValidationFile(checkInput(file));
-													setValidation(true);
+													document.getElementById("buttonClose").click();
 												}}
-
-												// onChange={e => {
-												// 	setFileUrl(actions.onFileChange(e));
-												// }}
 											/>
 										</form>
 									</div>
 									<div className="modal-footer">
-										<button type="button" className="btn btn-secondary" data-dismiss="modal">
+										<button
+											type="button"
+											id="buttonClose"
+											className="btn btn-secondary"
+											data-dismiss="modal">
 											Close
 										</button>
 									</div>
@@ -93,29 +90,7 @@ export const Documents = () => {
 					</div>
 				</div>
 			</nav>
-			<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-10 mx-auto pt-5 pb-5">
-				<div className="row">
-					<div className="col-md-12">
-						<form onSubmit={onSubmit}>
-							<input
-								type="file"
-								id="file"
-								onChange={e => {
-									actions.onFileChange(caseNo, e);
 
-									setFile(e.target.value);
-									setValidationFile(checkInput(file));
-									setValidation(true);
-								}}
-
-								// onChange={e => {
-								// 	setFileUrl(actions.onFileChange(e));
-								// }}
-							/>
-						</form>
-					</div>
-				</div>
-			</div>
 			<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-10 mx-auto pt-5 pb-5">
 				<div className="row">
 					<div className="col-md-12">
@@ -123,6 +98,7 @@ export const Documents = () => {
 							{store.files &&
 								store.files.map((item, index) => {
 									if (item.caseNo === caseNo) {
+										result = true;
 										return (
 											<li key={index}>
 												<a href={item.file} Target="_blank">
@@ -132,6 +108,14 @@ export const Documents = () => {
 										);
 									}
 								})}
+
+							{result ? (
+								""
+							) : (
+								<center>
+									<h2>No files uploaded for this client</h2>
+								</center>
+							)}
 						</ul>
 					</div>
 				</div>
