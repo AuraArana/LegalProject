@@ -170,7 +170,7 @@ export const AddBio = () => {
 							<div className="form-group">
 								<label>DOB</label>
 								<input
-									type="text"
+									type="date"
 									className={"form-control form-control-user rounded"}
 									placeholder="Enter DOB"
 									onChange={e => setbioData({ ...bioData, DOB: e.target.value })}

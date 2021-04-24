@@ -62,7 +62,7 @@ export const AddImmigration = () => {
 							<input type="text" required className="form-control" disabled value={store.currentCase} />
 						</div>
 						<div className="col-sm-6">
-							<label>Immigration Status</label>
+							<label>Immigration Status *</label>
 							<select
 								className={validationImmigrationStatus ? "form-control is-invalid" : "form-control"}
 								onChange={e =>
@@ -79,36 +79,34 @@ export const AddImmigration = () => {
 					</div>
 					<div className="form-group row">
 						<div className="col-sm-6">
-							<label>Date of Entry to USA</label>
+							<label>Date of Entry to USA *</label>
 							<input
-								type="text"
-								required
 								className={validationDateEntry ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationData({ ...immigrationData, dateEntry: e.target.value })}
+								type="date"
 							/>
 						</div>
 						<div className="col-sm-6">
-							<label>Port of Entry to USA</label>
+							<label>Port of Entry to USA *</label>
 							<select
 								className={validationPortEntry ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationData({ ...immigrationData, portEntry: e.target.value })}>
 								<option selected />
-								<option value="Key West, Florida">Key West, Florida</option>
+								<option value="Key West, Florida">Key West</option>
 								<option value="Miami International Airport, Florida">
-									Miami International Airport, Florida
+									Miami International Airport
 								</option>
 								<option value="Port Everglades/Fort Lauderdale, Florida">
-									Port Everglades/Fort Lauderdale, Florida
+									Port Everglades/Fort Lauderdale
 								</option>
-								<option value="Key West, Florida">Key West, Florida</option>
-								<option value="West Palm Beach, Florida">West Palm Beach, Florida</option>
-								<option value="Cape Canaveral, Florida">Cape Canaveral, Florida</option>
+								<option value="West Palm Beach, Florida">West Palm Beach</option>
+								<option value="Cape Canaveral, Florida">Cape Canaveral</option>
 							</select>
 						</div>
 					</div>
 					<div className="form-group row">
 						<div className="col-sm-6">
-							<label>Transportation</label>
+							<label>Transportation *</label>
 							<select
 								className={validationTransportation ? "form-control is-invalid" : "form-control"}
 								onChange={e =>
@@ -120,7 +118,7 @@ export const AddImmigration = () => {
 							</select>
 						</div>
 						<div className="col-sm-6">
-							<label>City of Birth</label>
+							<label>City of Birth *</label>
 							<select
 								className={validationBirthCity ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationData({ ...immigrationData, birthCity: e.target.value })}>
@@ -129,14 +127,14 @@ export const AddImmigration = () => {
 								<option value="Bridgetown">Bridgetown</option>
 								<option value="Brasilia">Brasilia</option>
 								<option value="Caracas">Caracas</option>
-								<option value="La Habana">La Habana</option>
+								<option value="Havana">Havana</option>
 								<option value="Montevideo">Montevideo</option>
 							</select>
 						</div>
 					</div>
 					<div className="form-group row">
 						<div className="col-sm-6">
-							<label>Country of Birth</label>
+							<label>Country of Birth *</label>
 							<select
 								className={validationBirthCountry ? "form-control is-invalid" : "form-control"}
 								onChange={e =>
@@ -152,17 +150,17 @@ export const AddImmigration = () => {
 							</select>
 						</div>
 						<div className="col-sm-6">
-							<label>Nationality</label>
+							<label>Nationality *</label>
 							<select
 								className={validationNationality ? "form-control is-invalid" : "form-control"}
 								onChange={e => setImmigrationData({ ...immigrationData, nationality: e.target.value })}>
 								<option selected />
-								<option value="Argentina">Argentina</option>
-								<option value="Barbadense">Barbadense</option>
-								<option value="Brasilero">Brasilero</option>
-								<option value="Cubano">Cubano</option>
-								<option value="Uruguayo">Uruguayo</option>
-								<option value="Venezolano">Venezolano</option>
+								<option value="Argentinian">Argentinian</option>
+								<option value="Barbadian">Barbadian</option>
+								<option value="Brazilian">Brazilian</option>
+								<option value="Cuban">Cuban</option>
+								<option value="Uruguayan">Uruguayan</option>
+								<option value="Venezuelan">Venezuelan</option>
 							</select>
 						</div>
 					</div>

@@ -178,7 +178,7 @@ export const EditBio = props => {
 							<div className="form-group">
 								<label>DOB</label>
 								<input
-									type="text"
+									type="date"
 									value={bioData.DOB}
 									className={"form-control form-control-user rounded"}
 									placeholder="Enter DOB"
