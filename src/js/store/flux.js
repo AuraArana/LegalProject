@@ -277,6 +277,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(() => getActions().getLedger());
 			},
 
+			deleteDocument: id => {
+				firebase
+					.firestore()
+					.collection("files")
+					.doc(id)
+					.delete()
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => getActions().fetcFiles());
+			},
+
 			deleteServices: id => {
 				firebase
 					.firestore()

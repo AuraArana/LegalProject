@@ -101,9 +101,21 @@ export const Documents = () => {
 										result = true;
 										return (
 											<li key={index}>
-												<a href={item.file} Target="_blank">
-													<p>{item.fileName}</p>
-												</a>
+												<div className="row">
+													<div className="d-flex justify-content-start col-md-10">
+														<a href={item.file} Target="_blank">
+															{item.fileName}
+														</a>
+													</div>
+													<div className="col-md-2">
+														<div
+															className="fas fa-trash-alt"
+															onClick={() => {
+																actions.deleteDocument(item.id);
+															}}
+														/>
+													</div>
+												</div>
 											</li>
 										);
 									}
