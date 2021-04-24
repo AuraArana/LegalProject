@@ -56,7 +56,7 @@ export const EditLedgerForm = () => {
 							<div className="form-group">
 								<label>Intake Date</label>
 								<input
-									type="text"
+									type="date"
 									value={servicesData.intakeDate}
 									onChange={e => setservicesData({ ...servicesData, intakeDate: e.target.value })}
 									className={

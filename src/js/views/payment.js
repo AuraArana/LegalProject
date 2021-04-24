@@ -48,7 +48,7 @@ export const Payment = () => {
 								<div className="form-group">
 									<label>Intake Date</label>
 									<input
-										type="text"
+										type="date"
 										onChange={e => setservicesData({ ...servicesData, intakeDate: e.target.value })}
 										className={
 											validationIntakeDate
