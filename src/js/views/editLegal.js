@@ -2,12 +2,15 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EditLegal = props => {
 	const params = useParams();
 	let addLegal = "Legal & Criminal Record";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	toast.configure();
 
 	const [LegalProblem, setLegalProblem] = useState("");
 	const [CaseGoal, setCaseGoal] = useState("");

@@ -91,7 +91,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						alert(error);
 					})
-					.then(() => getActions().getimmigrationArr());
+					.then(() => {
+						toast.success("Record successfully saved");
+						getActions().getimmigrationArr();
+					});
 			},
 
 			addClientUserData: (obj, id) => {
@@ -182,7 +185,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(error => {
 							alert(error);
 						})
-						.then(e => {
+						.then(() => {
 							getActions().fetcFiles();
 							toast.success("File uploaded successfully");
 						});
@@ -233,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						alert(error);
 					})
 					.then(() => {
-						toast.success("Record successfully updated");
+						toast.success("Record successfully saved");
 						getActions().getListClients();
 					});
 			},
@@ -247,7 +250,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						alert(error);
 					})
-					.then(() => getActions().getTableServices());
+					.then(() => {
+						toast.success("Record successfully saved");
+						getActions().getTableServices();
+					});
 
 				const store = getStore();
 				let amount = 0;
@@ -296,7 +302,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						alert(error);
 					})
-					.then(() => getActions().getLedger());
+					.then(() => {
+						toast.success("Record successfully updated");
+						getActions().getLedger();
+					});
 			},
 
 			deleteLedger: id => {
@@ -308,7 +317,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						alert(error);
 					})
-					.then(() => getActions().getLedger());
+					.then(() => {
+						toast.success("Record successfully deleted");
+						getActions().getLedger();
+					});
 			},
 
 			deleteDocument: id => {
@@ -320,7 +332,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						alert(error);
 					})
-					.then(() => getActions().fetcFiles());
+					.then(() => {
+						toast.success("Document successfully deleted");
+						getActions().fetcFiles();
+					});
 			},
 
 			deleteServices: id => {
@@ -332,7 +347,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						alert(error);
 					})
-					.then(() => getActions().getTableServices());
+					.then(() => {
+						toast.success("Record successfully deleted");
+						getActions().getTableServices();
+					});
 			},
 
 			//nuevos

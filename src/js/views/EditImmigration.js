@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EditImmigration = props => {
 	const params = useParams();
@@ -10,6 +12,7 @@ export const EditImmigration = props => {
 	const { store, actions } = useContext(Context);
 	let Case = params.case;
 	let pos = 1000000000;
+	toast.configure();
 
 	for (let i in store.immigrationArr) {
 		if (store.immigrationArr[i].caseNo === Case) {

@@ -1,11 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddImmigration = () => {
 	let addImmigrationInfo = "Immigration Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	toast.configure();
 
 	const [immigrationData, setImmigrationData] = useState({
 		dateEntry: "",
