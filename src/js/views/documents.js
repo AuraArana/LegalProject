@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import firebase from "firebase";
 import "firebase/storage";
 import { Context } from "../store/appContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Documents = () => {
 	const params = useParams();
@@ -14,6 +16,7 @@ export const Documents = () => {
 	const [validation, setValidation] = useState(false);
 	let caseNo = params.case;
 	let result = false;
+	toast.configure();
 
 	const checkInput = input => {
 		return input === null || !input;
@@ -40,12 +43,7 @@ export const Documents = () => {
 		<>
 			<nav className="navbar ">
 				<div className="ml-auto text-dark">
-					<button
-						type="button"
-						className="btn btn-primary"
-						data-toggle="modal"
-						onClick={() => {}}
-						data-target="#exampleModal">
+					<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 						Add Document
 					</button>
 

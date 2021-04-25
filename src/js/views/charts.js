@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 import "../../styles/demo.scss";
 
 export const Charts = props => {
 	let history = useHistory();
-	const { store, actions } = useContext(Context);
+	const { store } = useContext(Context);
 
 	let nroCase = store.ListClients.length;
 	let totalFee = 0;
@@ -99,6 +100,24 @@ export const Charts = props => {
 		]
 	};
 
+	const data5 = {
+		labels: ["Single", "Married", "Divorced", "Other"],
+		datasets: [
+			{
+				label: "Marital Status",
+				backgroundColor: [
+					"rgba(54, 162, 235, 0.5)",
+					"rgba(255, 159, 64, 0.5)",
+					"rgba(255, 205, 86, 0.5)",
+					"rgba(75, 192, 192, 0.5)"
+				],
+				borderColor: "rgba(0,0,0,1)",
+				borderWidth: 0,
+				data: [countSingle, countMarried, countDivorced, countOther]
+			}
+		]
+	};
+
 	const data = {
 		labels: ["Payments", "Services Fee"],
 		datasets: [
@@ -126,9 +145,6 @@ export const Charts = props => {
 		<div className="container-fluid">
 			<div className="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
 				<h1 className="h3 mb-0 text-gray-800">Dashboard Chart</h1>
-				{/* <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-					<i className="fas fa-download fa-sm text-white-50" /> Generate Report
-				</a> */}
 			</div>
 
 			<div className="row">
@@ -149,7 +165,20 @@ export const Charts = props => {
 							<h6 className="m-0 font-weight-bold text-primary">Marital Status </h6>
 						</div>
 						<div className="card-body">
-							<Pie data={data4} />
+							<Bar
+								data={data5}
+								options={{
+									title: {
+										display: false,
+										text: "Marital Status",
+										fontSize: 14
+									},
+									legend: {
+										display: false,
+										position: "right"
+									}
+								}}
+							/>
 						</div>
 					</div>
 				</div>
