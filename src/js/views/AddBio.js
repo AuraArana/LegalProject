@@ -1,13 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddBio = () => {
 	let addBio = "Biographical Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-
-	let caseN = "";
+	toast.configure();
 
 	if (store.currentUser.userType === "Client") {
 		for (let i in store.ListClients) {

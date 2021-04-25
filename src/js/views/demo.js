@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Pie } from "react-chartjs-2";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "../../styles/demo.scss";
 
@@ -11,6 +13,8 @@ export const Demo = props => {
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
+	toast.configure();
+	actions.getMsg2();
 	let nroCase = store.ListClients.length;
 	let totalFee = 0;
 	let totalPayment = 0;

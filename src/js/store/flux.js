@@ -17,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentMaritalStatus: "",
 			currentGender: "",
 			count: [],
+			msg: [],
 			currentCase: "",
 			currentSearch: null,
 			isLoggedIn: false,
@@ -65,6 +66,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				actions.updateCount(obj2, store.count[0].id);
 				setStore({ currentCase: "LAWF-" + c });
+			},
+
+			getMsg2: () => {
+				const store = getStore();
+				for (let i in store.msg) {
+					if (store.msg[i].status === "noShow") {
+						toast.warning("You have a message from:" + store.msg[i].client);
+					}
+				}
 			},
 
 			setCurrentSearch: search => {
@@ -179,6 +189,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			getMsg: async () => {
+				try {
+					const getContact = firebase.firestore().collection("msg");
+					const response = await getContact.get();
+
+					let array = [];
+					response.forEach(contact => {
+						array.push({ ...contact.data(), id: contact.id });
+					});
+					setStore({
+						msg: array
+					});
+				} catch (e) {
+				} finally {
+				}
+			},
+
 			fetcFiles: async () => {
 				try {
 					const getContact = firebase.firestore().collection("files");
@@ -205,7 +232,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						alert(error);
 					})
-					.then(() => getActions().getListClients());
+					.then(() => {
+						toast.success("Record successfully updated");
+						getActions().getListClients();
+					});
 			},
 
 			addServices: (obj, id) => {

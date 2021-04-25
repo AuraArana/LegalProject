@@ -41,6 +41,7 @@ const injectContext = PassedComponent => {
 			state.actions.getlegalArr();
 			state.actions.getLedger();
 			state.actions.getCount();
+			state.actions.getMsg();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
