@@ -1,11 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddLegal = () => {
 	let addLegal = "Legal & Criminal Record";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	toast.configure();
 
 	const [legalData, setLegalData] = useState({
 		legalProblem: "",
