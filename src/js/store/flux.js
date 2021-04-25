@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { toast } from "react-toastify";
 
 const url = "https://assets.breatheco.de/apis/fake/contact/";
 const getState = ({ getStore, getActions, setStore }) => {
@@ -171,7 +172,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch(error => {
 							alert(error);
 						})
-						.then(() => getActions().fetcFiles());
+						.then(e => {
+							getActions().fetcFiles();
+							toast.success("File uploaded successfully");
+						});
 				}
 			},
 

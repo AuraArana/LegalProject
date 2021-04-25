@@ -2,13 +2,15 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EditBio = props => {
 	const params = useParams();
 	let addBio = "Biographical Information";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
-
+	toast.configure();
 	let Case = params.case;
 	let pos = 1000000000000;
 
@@ -307,26 +309,25 @@ export const EditBio = props => {
 							</div>
 						</div>
 					</div>
-
-					<button
-						type="button"
-						className="btn btn-primary form-control"
-						onClick={() => {
-							setValidationLastName(checkInput(bioData.LastName));
-							setValidationFirstName(checkInput(bioData.FirstName));
-
-							setValidationCity(checkInput(bioData.City));
-							setValidationState(checkInput(bioData.State));
-							setValidationZipCode(checkInput(bioData.ZipCode));
-							setValidationEmail(checkInput(bioData.Email));
-							setValidationAddress(checkInput(bioData.address));
-							setValidationHomePhone(checkInput(bioData.HomePhone));
-							setValidation(true);
-						}}>
-						save
-					</button>
 				</form>
 			</div>
+			<button
+				type="button"
+				className="btn btn-primary"
+				onClick={() => {
+					setValidationLastName(checkInput(bioData.LastName));
+					setValidationFirstName(checkInput(bioData.FirstName));
+
+					setValidationCity(checkInput(bioData.City));
+					setValidationState(checkInput(bioData.State));
+					setValidationZipCode(checkInput(bioData.ZipCode));
+					setValidationEmail(checkInput(bioData.Email));
+					setValidationAddress(checkInput(bioData.address));
+					setValidationHomePhone(checkInput(bioData.HomePhone));
+					setValidation(true);
+				}}>
+				save
+			</button>
 		</div>
 	);
 };
