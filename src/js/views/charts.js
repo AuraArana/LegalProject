@@ -89,17 +89,6 @@ export const Charts = props => {
 		]
 	};
 
-	const data4 = {
-		labels: ["Single", "Married", "Divorced", "Other"],
-		datasets: [
-			{
-				data: [countSingle, countMarried, countDivorced, countOther],
-				backgroundColor: ["#00c182", "#b2d5d7", "#003851", "#cfd0d2"],
-				hoverBackgroundColor: ["#00c182", "#b2d5d7", "#003851", "#cfd0d2"]
-			}
-		]
-	};
-
 	const data5 = {
 		labels: ["Single", "Married", "Divorced", "Other"],
 		datasets: [
