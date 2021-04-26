@@ -14,7 +14,11 @@ export const Demo = props => {
 	const { store, actions } = useContext(Context);
 
 	toast.configure();
-	actions.getMsg2();
+
+	if (store.currentUser.userType != "Client") {
+		actions.getMsg2();
+	}
+
 	let nroCase = store.ListClients.length;
 	let totalFee = 0;
 	let totalPayment = 0;

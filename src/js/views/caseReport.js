@@ -9,7 +9,7 @@ import MikePhoto from "../../img/Untitled.png";
 import Nav from "react-bootstrap/Nav";
 
 export const CaseReport = () => {
-	const [track, setTrack] = useState(true);
+	const [track, setTrack] = useState(1);
 
 	let addBio = "Case";
 	const params = useParams();
@@ -96,7 +96,7 @@ export const CaseReport = () => {
 		[track]
 	);
 	const updatePills = () => {
-		if (track) {
+		if (track === 1) {
 			return (
 				<div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
 					<div
@@ -156,7 +156,7 @@ export const CaseReport = () => {
 					</div>
 				</div>
 			);
-		} else {
+		} else if (track === 2) {
 			return (
 				<div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
 					<div
@@ -205,6 +205,84 @@ export const CaseReport = () => {
 									</th>
 									<td className="small">{attorneyPhone}</td>
 								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			);
+		} else if (track === 3) {
+			return (
+				<div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
+					<div
+						className="tab-pane fade show active card shadow mb-4"
+						id="immigration"
+						role="tabpanel"
+						aria-labelledby="immigration-tab">
+						<div className="card-header center py-3">
+							<h6 className="m-0 font-weight-bold text-primary">Services</h6>
+						</div>
+						<div className="card-body">
+							<table className="table">
+								<thead>
+									<tr>
+										<th>Contract</th>
+										<th>Intake Date</th>
+										<th>Resolution Date</th>
+										<th>Resolution Outcome</th>
+									</tr>
+								</thead>
+								{store.TableServices &&
+									store.TableServices.map((item, index) => {
+										if (item.caseNo === id) {
+											return (
+												<tr key={index}>
+													<td>{item.Contract}</td>
+													<td>{item.IntakeDate}</td>
+													<td>{item.ResolutionDate}</td>
+													<td>{item.ResolutionOutcome}</td>
+												</tr>
+											);
+										}
+									})}
+							</table>
+						</div>
+					</div>
+				</div>
+			);
+		} else if (track === 4) {
+			return (
+				<div className="tab-content col-lg-10 mb-5 mt-4 mx-auto" id="myTabContent">
+					<div
+						className="tab-pane fade show active card shadow mb-4"
+						id="immigration"
+						role="tabpanel"
+						aria-labelledby="immigration-tab">
+						<div className="card-header center py-3">
+							<h6 className="m-0 font-weight-bold text-primary">Ledger</h6>
+						</div>
+						<div className="card-body">
+							<table className="table">
+								<thead>
+									<tr>
+										<th>Intake Date</th>
+										<th>Transaction</th>
+										<th>Service Type</th>
+										<th>Amount</th>
+									</tr>
+								</thead>
+								{store.Ledger &&
+									store.Ledger.map((item, index) => {
+										if (item.caseNo === id) {
+											return (
+												<tr key={index}>
+													<td>{item.intakeDate}</td>
+													<td>{item.Transaction}</td>
+													<td>{item.ServiceType}</td>
+													<td>{item.Amount}</td>
+												</tr>
+											);
+										}
+									})}
 							</table>
 						</div>
 					</div>
@@ -336,7 +414,7 @@ export const CaseReport = () => {
 									color: "#2c7596"
 								}}
 								onClick={e => {
-									setTrack(true);
+									setTrack(1);
 									e.preventDefault();
 								}}>
 								{" "}
@@ -352,10 +430,40 @@ export const CaseReport = () => {
 									color: "#2c7596"
 								}}
 								onClick={e => {
-									setTrack(false);
+									setTrack(2);
 									e.preventDefault();
 								}}>
 								Legal &amp; Criminal Record
+							</span>
+						</Nav.Link>
+					</Nav.Item>
+					<Nav.Item>
+						<Nav.Link>
+							{" "}
+							<span
+								style={{
+									color: "#2c7596"
+								}}
+								onClick={e => {
+									setTrack(3);
+									e.preventDefault();
+								}}>
+								Services
+							</span>
+						</Nav.Link>
+					</Nav.Item>
+					<Nav.Item>
+						<Nav.Link>
+							{" "}
+							<span
+								style={{
+									color: "#2c7596"
+								}}
+								onClick={e => {
+									setTrack(4);
+									e.preventDefault();
+								}}>
+								Ledger
 							</span>
 						</Nav.Link>
 					</Nav.Item>
