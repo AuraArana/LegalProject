@@ -71,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getMsg2: () => {
 				const store = getStore();
 				for (let i in store.appRequest) {
-					if (store.appRequest[i].status === "noShow") {
+					if (store.appRequest[i].status === "Pending") {
 						toast.warning("You have an appointment from: " + store.appRequest[i].firstName);
 					}
 				}

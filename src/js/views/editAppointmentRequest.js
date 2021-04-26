@@ -6,14 +6,16 @@ export const EditAppRequest = () => {
 	let addApp = "Appointment Request";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	const params = useParams();
+	let pos = 1000000000000;
 
-	let id = params.lastName;
+	let id = params.id;
 	for (let i in store.appRequest) {
-		if (store.appRequest[i].appRequest === firstName) {
+		if (store.appRequest[i].id === id) {
 			pos = i;
 		}
 	}
-	const appRequest = store.appRequest[id];
+	const appRequest = store.appRequest[pos];
 	const [addAppointment, setAddAppointment] = useState({
 		firstName: appRequest ? appRequest.firstName : "",
 		lastName: appRequest ? appRequest.lastName : "",
@@ -21,7 +23,8 @@ export const EditAppRequest = () => {
 		Email: appRequest ? appRequest.Email : "",
 		serviceNeeded: appRequest ? appRequest.serviceNeeded : "",
 		Contact: appRequest ? appRequest.Contact : "",
-		helpNeeded: appRequest ? appRequest.helpNeeded : ""
+		helpNeeded: appRequest ? appRequest.helpNeeded : "",
+		status: appRequest ? appRequest.status : ""
 	});
 
 	const [value, setValue] = useState(0);

@@ -191,7 +191,7 @@ const Layout = () => {
 								)}
 
 								{isLoggedIn ? (
-									<Route exact path="/editAppointmentRequest/">
+									<Route exact path="/editAppointmentRequest/:id">
 										<EditAppRequest />
 									</Route>
 								) : (

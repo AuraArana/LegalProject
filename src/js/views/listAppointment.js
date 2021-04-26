@@ -36,7 +36,7 @@ export const ListAppointment = () => {
 									<tbody>
 										{store.appRequest &&
 											store.appRequest.map((item, index) => {
-												if (item.status === "noShow") {
+												if (item.status === "Pending") {
 													return (
 														<tr key={index}>
 															<td>{item.firstName}</td>
@@ -45,10 +45,7 @@ export const ListAppointment = () => {
 															<td>{item.Email}</td>
 															<td>
 																{store.currentUser.userType != "Client" ? (
-																	<Link
-																		to={
-																			"/editAppointmentRequest/" + item.firstName
-																		}>
+																	<Link to={"/editAppointmentRequest/" + item.id}>
 																		<button className="btn">
 																			<i className="fas fa-pencil-alt mr-3" />
 																		</button>
@@ -61,7 +58,7 @@ export const ListAppointment = () => {
 																	<button
 																		className="btn"
 																		onClick={() => {
-																			actions.deleteAppointment(item.firstName);
+																			actions.deleteAppointment(item.id);
 																		}}>
 																		<i className="fas fa-trash-alt" />
 																	</button>
