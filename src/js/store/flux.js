@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			credentials: [],
 			immigrationArr: [],
 			legalArr: [],
+			appRequest: [],
 			currentUser: null,
 			currentPortEntry: "",
 			currentResolutionOutcome: "",
@@ -17,7 +18,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentMaritalStatus: "",
 			currentGender: "",
 			count: [],
-			msg: [],
 			currentCase: "",
 			currentSearch: null,
 			isLoggedIn: false,
@@ -70,9 +70,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getMsg2: () => {
 				const store = getStore();
-				for (let i in store.msg) {
-					if (store.msg[i].status === "noShow") {
-						toast.warning("You have a message from:" + store.msg[i].client);
+				for (let i in store.appRequest) {
+					if (store.appRequest[i].status === "noShow") {
+						toast.warning("You have an appointment from: " + store.appRequest[i].firstName);
 					}
 				}
 			},
@@ -141,8 +141,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Fin Heidys
 
 			//Inicio Aura
-			addLegalData: obj => {
-				setStore({ legalArr: [...getStore().legalArr, obj] });
+
+			addLegalData: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("legarArr")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => {
+						toast.success("Record successfully saved");
+						getActions().getlegalArr();
+					});
 			},
 
 			getlegalArr: async () => {
@@ -155,6 +167,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 
 					setStore({ legalArr: array });
+				} catch (e) {
+				} finally {
+				}
+			},
+
+			addAddAppointment: (obj, id) => {
+				firebase
+					.firestore()
+					.collection("Appointment")
+					.doc(id)
+					.set(obj)
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => {
+						toast.success("Record successfully saved");
+						getActions().getappRequest();
+					});
+			},
+
+			getappRequest: async () => {
+				try {
+					const getContact = firebase.firestore().collection("Appointment");
+					const response = await getContact.get();
+					let array = [];
+					response.forEach(contact => {
+						array.push({ ...contact.data(), id: contact.id });
+					});
+
+					setStore({ appRequest: array });
 				} catch (e) {
 				} finally {
 				}
@@ -189,23 +231,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 							getActions().fetcFiles();
 							toast.success("File uploaded successfully");
 						});
-				}
-			},
-
-			getMsg: async () => {
-				try {
-					const getContact = firebase.firestore().collection("msg");
-					const response = await getContact.get();
-
-					let array = [];
-					response.forEach(contact => {
-						array.push({ ...contact.data(), id: contact.id });
-					});
-					setStore({
-						msg: array
-					});
-				} catch (e) {
-				} finally {
 				}
 			},
 
@@ -320,6 +345,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(() => {
 						toast.success("Record successfully deleted");
 						getActions().getLedger();
+					});
+			},
+
+			deleteAppointment: id => {
+				firebase
+					.firestore()
+					.collection("Appointment")
+					.doc(id)
+					.delete()
+					.catch(error => {
+						alert(error);
+					})
+					.then(() => {
+						toast.success("Record successfully deleted");
+						getActions().getappRequest();
 					});
 			},
 

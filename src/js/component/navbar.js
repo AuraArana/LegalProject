@@ -217,6 +217,9 @@ export const Navbar = () => {
 							<Link className="collapse-item" to="/reportImmigration">
 								Immigration Information
 							</Link>
+							<Link className="collapse-item" to="/listAppointment/">
+								List of Appointments
+							</Link>
 						</div>
 					</div>
 				</li>
