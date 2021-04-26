@@ -48,6 +48,8 @@ import { Footer } from "./component/footer";
 import { AddClientUser } from "./views/AddClientUser";
 import { AddUser } from "./views/AddUser";
 import { EditUser } from "./views/EditUser";
+import { ListAppointment } from "./views/listAppointment";
+import { EditAppRequest } from "./views/editAppointmentRequest";
 
 //create your first component
 const Layout = () => {
@@ -171,6 +173,26 @@ const Layout = () => {
 								{isLoggedIn ? (
 									<Route exact path="/editServicesForm/:case">
 										<EditServicesForm />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/listAppointment/">
+										<ListAppointment />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/editAppointmentRequest/">
+										<EditAppRequest />
 									</Route>
 								) : (
 									<Route exact path="/">

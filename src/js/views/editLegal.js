@@ -49,6 +49,8 @@ export const EditLegal = props => {
 		caseNo: legalArr ? legalArr.caseNo : Case
 	});
 
+	const [id, setId] = useState(legalArr ? legalArr.id : "");
+
 	const checkInput = input => {
 		return input === null || !input;
 	};
@@ -223,7 +225,10 @@ export const EditLegal = props => {
 					<button
 						type="button"
 						className="btn btn-primary form-control col-3 mb-5"
-						style={{ float: "right" }}>
+						style={{ float: "right" }}
+						onClick={() => {
+							actions.addLegalData(legalData, id);
+						}}>
 						Save
 					</button>
 				</form>

@@ -1,21 +1,27 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const AppRequest = () => {
+export const EditAppRequest = () => {
 	let addApp = "Appointment Request";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
+	let id = params.lastName;
+	for (let i in store.appRequest) {
+		if (store.appRequest[i].appRequest === firstName) {
+			pos = i;
+		}
+	}
+	const appRequest = store.appRequest[id];
 	const [addAppointment, setAddAppointment] = useState({
-		firstName: "",
-		lastName: "",
-		phoneNumber: "",
-		Email: "",
-		serviceNeeded: "",
-		Contact: "",
-		helpNeeded: "",
-		status: "noShow"
+		firstName: appRequest ? appRequest.firstName : "",
+		lastName: appRequest ? appRequest.lastName : "",
+		phoneNumber: appRequest ? appRequest.phoneNumber : "",
+		Email: appRequest ? appRequest.Email : "",
+		serviceNeeded: appRequest ? appRequest.serviceNeeded : "",
+		Contact: appRequest ? appRequest.Contact : "",
+		helpNeeded: appRequest ? appRequest.helpNeeded : ""
 	});
 
 	const [value, setValue] = useState(0);
@@ -199,9 +205,9 @@ export const AppRequest = () => {
 							className="btn btn-primary form-control col-3 mb-5"
 							style={{ float: "right" }}
 							onClick={() => {
-								actions.addAddAppointment(addAppointment);
+								actions.addAddAppointment(addAppointment, id);
 							}}>
-							Submit Request
+							Save
 						</button>
 					</Link>
 				</form>
