@@ -57,9 +57,10 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 	const [isLoggedIn, setLoggedIn] = useState(false);
-
+	const [name, setName] = useState("");
 	// let isLoggedIn = true;
 	//console.log("isLoggedIn", isLoggedIn);
+	console.log("Name", name);
 	return (
 		<div className="">
 			<BrowserRouter basename={basename}>
@@ -232,7 +233,7 @@ const Layout = () => {
 
 								{isLoggedIn ? (
 									<Route exact path="/appointmentRequest/">
-										<AppRequest />
+										<AppRequest name={name} />
 									</Route>
 								) : (
 									<Route exact path="/">
@@ -312,7 +313,9 @@ const Layout = () => {
 								)}
 
 								{isLoggedIn ? (
-									<Route exact path="/casereport/:case" component={CaseReport} />
+									<Route exact path="/casereport/:case">
+										<CaseReport firstName={e => setName(e)} />
+									</Route>
 								) : (
 									<Route exact path="/">
 										<Home />
