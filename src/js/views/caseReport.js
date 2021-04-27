@@ -8,7 +8,7 @@ import male from "../../img/male.png";
 import MikePhoto from "../../img/Untitled.png";
 import Nav from "react-bootstrap/Nav";
 
-export const CaseReport = () => {
+export const CaseReport = ({ firstName }) => {
 	const [track, setTrack] = useState(1);
 
 	let addBio = "Case";
@@ -95,6 +95,7 @@ export const CaseReport = () => {
 		},
 		[track]
 	);
+
 	const updatePills = () => {
 		if (track === 1) {
 			return (
@@ -290,6 +291,7 @@ export const CaseReport = () => {
 			);
 		}
 	};
+	firstName(FirstName);
 	return (
 		<div className="container">
 			<h1 className="h3 text-gray-800 mt-5 text-center">{params.case}</h1>
@@ -473,4 +475,7 @@ export const CaseReport = () => {
 			</div>
 		</div>
 	);
+};
+CaseReport.propTypes = {
+	firstName: PropTypes.func
 };

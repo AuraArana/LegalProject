@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 
 export const ListAppointment = () => {
 	const params = useParams();
-	let addBio = "List of Appointments";
+	let addBio = "List of Pending Appointments";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
@@ -13,12 +13,10 @@ export const ListAppointment = () => {
 	return (
 		<div className="container">
 			<div>
-				<h1 className="text-center mt-5">{addBio}</h1>
-
 				<div className="container-fluid">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">List of Appointments</h6>
+							<h6 className="m-0 font-weight-bold text-primary">List of Pending Appointments</h6>
 						</div>
 						<div className="card-body">
 							<div className="table-responsive">
@@ -29,6 +27,7 @@ export const ListAppointment = () => {
 											<th>Last Name</th>
 											<th>Phone Number</th>
 											<th>Email</th>
+											<th>Contact</th>
 											<th>Actions</th>
 										</tr>
 									</thead>
@@ -43,6 +42,7 @@ export const ListAppointment = () => {
 															<td>{item.lastName}</td>
 															<td>{item.phoneNumber}</td>
 															<td>{item.Email}</td>
+															<td>{item.Contact}</td>
 															<td>
 																{store.currentUser.userType != "Client" ? (
 																	<Link to={"/editAppointmentRequest/" + item.id}>

@@ -102,6 +102,7 @@ export const EditAppRequest = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
+									value={addAppointment.lastName}
 									onChange={e => setAddAppointment({ ...addAppointment, lastName: e.target.value })}
 								/>
 							</div>
@@ -113,6 +114,7 @@ export const EditAppRequest = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
+									value={addAppointment.firstName}
 									onChange={e => setAddAppointment({ ...addAppointment, firstName: e.target.value })}
 								/>
 							</div>
@@ -124,6 +126,7 @@ export const EditAppRequest = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
+									value={addAppointment.phoneNumber}
 									onChange={e =>
 										setAddAppointment({ ...addAppointment, phoneNumber: e.target.value })
 									}
@@ -137,24 +140,22 @@ export const EditAppRequest = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
+									value={addAppointment.Email}
 									onChange={e => setAddAppointment({ ...addAppointment, Email: e.target.value })}
 								/>
 							</div>
 						</div>
-						<div className="col-sm-12 mb-4">
+						<div className="col-sm-6">
 							<label>What is the best and safest way to contact you?</label>
-							<div className="form-check ml-5">
-								<input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-								<label className="form-check-label">Cell Phone</label>
-							</div>
-							<div className="form-check ml-5">
-								<input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-								<label className="form-check-label">Email</label>
-							</div>
-							<div className="form-check ml-5">
-								<input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-								<label className="form-check-label">WhatsApp</label>
-							</div>
+							<select
+								className="form-control"
+								value={addAppointment.Contact}
+								onChange={e => setAddAppointment({ ...addAppointment, Contact: e.target.value })}>
+								<option value="">Select Contact</option>
+								<option value="Cell Phone">Cell Phone</option>
+								<option value="Email">Email</option>
+								<option value="WhatsApp">WhatsApp</option>
+							</select>
 						</div>
 						<div className="col-sm-12">
 							<div className="form-group">
@@ -164,6 +165,7 @@ export const EditAppRequest = () => {
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
+									value={addAppointment.serviceNeeded}
 									onChange={e => {
 										setAddAppointment({ ...addAppointment, serviceNeeded: e.target.value });
 										handleChange(e);
@@ -188,6 +190,7 @@ export const EditAppRequest = () => {
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
+									value={appRequest.helpNeeded}
 									onChange={e => {
 										setAddAppointment({ ...addAppointment, helpNeeded: e.target.value });
 										handleChange2(e);
@@ -202,17 +205,27 @@ export const EditAppRequest = () => {
 							</div>
 						</div>
 					</div>
-					<Link to={"/demo"}>
-						<button
-							type="button"
-							className="btn btn-primary form-control col-3 mb-5"
-							style={{ float: "right" }}
-							onClick={() => {
-								actions.addAddAppointment(addAppointment, id);
-							}}>
-							Save
-						</button>
-					</Link>
+					<div className="col-sm-6 pb-3">
+						<label className="row">Status</label>
+						<select
+							className="form-control"
+							value={appRequest.Contact}
+							onChange={e => setAddAppointment({ ...addAppointment, status: e.target.value })}>
+							<option selected />
+							<option value="Pending">Pending</option>
+							<option value="Confirmed">Confirmed</option>
+						</select>
+					</div>
+					<button
+						type="button"
+						className="btn btn-primary form-control col-3 mb-5"
+						style={{ float: "right" }}
+						onClick={() => {
+							actions.addAddAppointment(addAppointment, id);
+							history.push("/demo");
+						}}>
+						Save
+					</button>
 				</form>
 			</div>
 		</div>

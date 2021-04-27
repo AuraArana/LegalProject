@@ -1,21 +1,22 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const AppRequest = () => {
+export const AppRequest = ({ name }) => {
 	let addApp = "Appointment Request";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
 
 	const [addAppointment, setAddAppointment] = useState({
-		firstName: "",
+		firstName: name,
 		lastName: "",
 		phoneNumber: "",
 		Email: "",
 		serviceNeeded: "",
 		Contact: "",
 		helpNeeded: "",
-		status: "noShow"
+		status: "Pending"
 	});
 
 	const [value, setValue] = useState(0);
@@ -90,6 +91,7 @@ export const AppRequest = () => {
 							<div className="form-group">
 								<label>Last Name</label>
 								<input
+									value={store.currentUser.lastName}
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
@@ -102,6 +104,7 @@ export const AppRequest = () => {
 								<label>First Name</label>
 								<input
 									type="text"
+									value={store.currentUser.firstName}
 									className="form-control"
 									aria-describedby="basic-addon1"
 									onChange={e => setAddAppointment({ ...addAppointment, firstName: e.target.value })}
@@ -115,6 +118,7 @@ export const AppRequest = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
+									value={store.currentUser.HomePhone}
 									onChange={e =>
 										setAddAppointment({ ...addAppointment, phoneNumber: e.target.value })
 									}
@@ -128,24 +132,21 @@ export const AppRequest = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
+									value={store.currentUser.Email}
 									onChange={e => setAddAppointment({ ...addAppointment, Email: e.target.value })}
 								/>
 							</div>
 						</div>
-						<div className="col-sm-12 mb-4">
+						<div className="col-sm-6">
 							<label>What is the best and safest way to contact you?</label>
-							<div className="form-check ml-5">
-								<input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-								<label className="form-check-label">Cell Phone</label>
-							</div>
-							<div className="form-check ml-5">
-								<input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-								<label className="form-check-label">Email</label>
-							</div>
-							<div className="form-check ml-5">
-								<input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-								<label className="form-check-label">WhatsApp</label>
-							</div>
+							<select
+								className="form-control"
+								onChange={e => setAddAppointment({ ...addAppointment, Contact: e.target.value })}>
+								<option selected />
+								<option value="Cell Phone">Cell Phone</option>
+								<option value="Email">Email</option>
+								<option value="WhatsApp">WhatsApp</option>
+							</select>
 						</div>
 						<div className="col-sm-12">
 							<div className="form-group">
@@ -193,19 +194,21 @@ export const AppRequest = () => {
 							</div>
 						</div>
 					</div>
-					<Link to={"/demo"}>
-						<button
-							type="button"
-							className="btn btn-primary form-control col-3 mb-5"
-							style={{ float: "right" }}
-							onClick={() => {
-								actions.addAddAppointment(addAppointment);
-							}}>
-							Submit Request
-						</button>
-					</Link>
+					<button
+						type="button"
+						className="btn btn-primary form-control col-3 mb-5"
+						style={{ float: "right" }}
+						onClick={() => {
+							actions.addAddAppointment(addAppointment);
+							history.push("/demo");
+						}}>
+						Submit Request
+					</button>
 				</form>
 			</div>
 		</div>
 	);
+};
+AppRequest.propTypes = {
+	name: PropTypes.string
 };
