@@ -9,14 +9,19 @@ export const AppRequest = ({ name }) => {
 	const { store, actions } = useContext(Context);
 
 	const [addAppointment, setAddAppointment] = useState({
-		firstName: name,
-		lastName: "",
-		phoneNumber: "",
-		Email: "",
+		firstName: store.currentUser.firstName,
+		lastName: store.currentUser.lastName,
+		phoneNumber: store.currentUser.email,
+		Email: store.currentUser.HomePhone,
+		emailStaff: "",
 		serviceNeeded: "",
 		Contact: "",
 		helpNeeded: "",
-		status: "Pending"
+		status: "Pending",
+		startDateTime: "",
+		endDateTime: "",
+		classes: "color-1",
+		name: "Meeting with " + store.currentUser.firstName + " " + store.currentUser.lastName
 	});
 
 	const [value, setValue] = useState(0);
@@ -92,6 +97,7 @@ export const AppRequest = ({ name }) => {
 								<label>Last Name</label>
 								<input
 									value={store.currentUser.lastName}
+									disabled
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
@@ -104,6 +110,7 @@ export const AppRequest = ({ name }) => {
 								<label>First Name</label>
 								<input
 									type="text"
+									disabled
 									value={store.currentUser.firstName}
 									className="form-control"
 									aria-describedby="basic-addon1"
@@ -116,6 +123,7 @@ export const AppRequest = ({ name }) => {
 								<label>Phone Number</label>
 								<input
 									type="text"
+									disabled
 									className="form-control"
 									aria-describedby="basic-addon1"
 									value={store.currentUser.HomePhone}
@@ -130,9 +138,10 @@ export const AppRequest = ({ name }) => {
 								<label>Email</label>
 								<input
 									type="text"
+									disabled
 									className="form-control"
 									aria-describedby="basic-addon1"
-									value={store.currentUser.Email}
+									value={store.currentUser.email}
 									onChange={e => setAddAppointment({ ...addAppointment, Email: e.target.value })}
 								/>
 							</div>

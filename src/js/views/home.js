@@ -20,6 +20,7 @@ export const Home = ({ validCredentials }) => {
 	let FirstName = "";
 	let LastName = "";
 	let UserType = "";
+	let HomePhone = "";
 
 	const checkLogin = async (email, password) => {
 		try {
@@ -30,6 +31,7 @@ export const Home = ({ validCredentials }) => {
 					LastName = store.credentials[i].lastName;
 					email = store.credentials[i].email;
 					UserType = store.credentials[i].userType;
+					HomePhone = store.credentials[i].HomePhone;
 				}
 			}
 
@@ -37,7 +39,8 @@ export const Home = ({ validCredentials }) => {
 				firstName: FirstName,
 				lastName: LastName,
 				email: email,
-				userType: UserType
+				userType: UserType,
+				HomePhone: HomePhone
 			};
 
 			actions.setCurrentUser(obj);

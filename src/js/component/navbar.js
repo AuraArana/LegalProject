@@ -115,6 +115,17 @@ export const Navbar = () => {
 				</Link>
 			</li>
 
+			{store.currentUser.userType != "Client" ? (
+				<li className="nav-item">
+					<Link to={"/calendar/"} className="nav-link">
+						<i className="fas fa-calendar-alt" />
+						<span>Calendar</span>
+					</Link>
+				</li>
+			) : (
+				""
+			)}
+
 			{store.currentUser.userType === "Client" ? (
 				<li className="nav-item">
 					<Link to={"/casereport/" + caseN} className="nav-link">
