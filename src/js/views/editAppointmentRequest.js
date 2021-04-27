@@ -24,7 +24,12 @@ export const EditAppRequest = () => {
 		serviceNeeded: appRequest ? appRequest.serviceNeeded : "",
 		Contact: appRequest ? appRequest.Contact : "",
 		helpNeeded: appRequest ? appRequest.helpNeeded : "",
-		status: appRequest ? appRequest.status : ""
+		status: appRequest ? appRequest.status : "",
+		emailStaff: store.currentUser.email,
+		startDateTime: appRequest ? appRequest.startDateTime : "",
+		endDateTime: appRequest ? appRequest.endDateTime : "",
+		classes: appRequest ? appRequest.classes : "",
+		name: appRequest ? appRequest.name : ""
 	});
 
 	const [value, setValue] = useState(0);
@@ -190,7 +195,7 @@ export const EditAppRequest = () => {
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									value={appRequest.helpNeeded}
+									value={addAppointment.helpNeeded}
 									onChange={e => {
 										setAddAppointment({ ...addAppointment, helpNeeded: e.target.value });
 										handleChange2(e);
@@ -209,12 +214,33 @@ export const EditAppRequest = () => {
 						<label className="row">Status</label>
 						<select
 							className="form-control"
-							value={appRequest.Contact}
+							value={addAppointment.status}
 							onChange={e => setAddAppointment({ ...addAppointment, status: e.target.value })}>
 							<option selected />
 							<option value="Pending">Pending</option>
 							<option value="Confirmed">Confirmed</option>
 						</select>
+					</div>
+					<div className="col-sm-6 pb-3">
+						<label className="row">Start Appointment</label>
+						<input
+							type="datetime-local"
+							value={addAppointment.startDateTime}
+							className={"form-control form-control-user rounded"}
+							placeholder="Enter scheduled Day"
+							onChange={e => setAddAppointment({ ...addAppointment, startDateTime: e.target.value })}
+						/>
+					</div>
+
+					<div className="col-sm-6 pb-3">
+						<label className="row">End Appointment</label>
+						<input
+							type="datetime-local"
+							value={addAppointment.endDateTime}
+							className={"form-control form-control-user rounded"}
+							placeholder="Enter scheduled Day"
+							onChange={e => setAddAppointment({ ...addAppointment, endDateTime: e.target.value })}
+						/>
 					</div>
 					<button
 						type="button"

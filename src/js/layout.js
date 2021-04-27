@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-
 import { Home } from "./views/home";
 import { Dashboard } from "./views/dashboard";
 import { Demo } from "./views/demo";
@@ -17,7 +16,7 @@ import { Services } from "./views/services.js";
 import { AddServices } from "./views/AddServices.js";
 import { AddLedger } from "./views/addLedger.js";
 import { EditServices } from "./views/editServices.js";
-
+import { Calendar } from "./views/calendar.js";
 import { EditServicesForm } from "./views/editServicesForm.js";
 import { EditLedgerForm } from "./views/editLedgerForm.js";
 import { Payment } from "./views/payment.js";
@@ -58,9 +57,7 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 	const [isLoggedIn, setLoggedIn] = useState(false);
 	const [name, setName] = useState("");
-	// let isLoggedIn = true;
-	//console.log("isLoggedIn", isLoggedIn);
-	console.log("Name", name);
+
 	return (
 		<div className="">
 			<BrowserRouter basename={basename}>
@@ -184,6 +181,16 @@ const Layout = () => {
 								{isLoggedIn ? (
 									<Route exact path="/listAppointment/">
 										<ListAppointment />
+									</Route>
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{isLoggedIn ? (
+									<Route exact path="/calendar/">
+										<Calendar />
 									</Route>
 								) : (
 									<Route exact path="/">
