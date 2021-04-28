@@ -22,12 +22,14 @@ export const EditUser = props => {
 	const [userData, setUserData] = useState({
 		firstName: credentials ? credentials.firstName : "",
 		lastName: credentials ? credentials.lastName : "",
+		HomePhone: credentials ? credentials.HomePhone : "",
 		email: Email,
 		userType: store.currentUser.userType
 	});
 	const [id, setId] = useState(credentials ? credentials.id : "");
 	const [validationFirstName, setValidationFirstName] = useState(false);
 	const [validationLastName, setValidationLastName] = useState(false);
+	const [validationHomePhone, setvalidationHomePhone] = useState(false);
 	const [validation, setValidation] = useState(false);
 
 	const checkInput = input => {
@@ -35,13 +37,14 @@ export const EditUser = props => {
 	};
 	useEffect(
 		() => {
-			if (!validationLastName && !validationFirstName && validation) {
+			if (!validationLastName && !validationFirstName && !validationHomePhone && validation) {
 				actions.addUserData(userData, id);
 				const obj = {
 					firstName: userData.firstName,
 					lastName: userData.lastName,
 					email: userData.email,
-					userType: userData.userType
+					userType: userData.userType,
+					HomePhone: userData.HomePhone
 				};
 				actions.setCurrentUser(obj);
 				history.push("/demo");
@@ -83,12 +86,22 @@ export const EditUser = props => {
 							placeholder="Last Name"
 						/>
 					</div>
-
+					<div className="mb-3 mt-3">
+						<input
+							type="tel"
+							pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+							value={userData.HomePhone}
+							onChange={e => setUserData({ ...userData, HomePhone: e.target.value })}
+							className={validationHomePhone ? "form-control is-invalid" : "form-control"}
+							placeholder="Home Phone"
+						/>
+					</div>
 					<button
 						className="btn btn-primary col-12 rounded-pill"
 						onClick={e => {
 							setValidationFirstName(checkInput(userData.firstName));
 							setValidationLastName(checkInput(userData.lastName));
+							setvalidationHomePhone(checkInput(userData.HomePhone));
 							setValidation(true);
 							e.preventDefault();
 						}}>
