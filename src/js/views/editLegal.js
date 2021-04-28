@@ -40,7 +40,7 @@ export const EditLegal = props => {
 	}
 
 	const legalArr = store.legalArr[pos];
-	const [legalData, setlegalData] = useState({
+	const [legalData, setLegalData] = useState({
 		legalProblem: legalArr ? legalArr.legalProblem : "",
 		caseGoal: legalArr ? legalArr.caseGoal : "",
 		followUp: legalArr ? legalArr.followUp : "",
@@ -98,7 +98,7 @@ export const EditLegal = props => {
 									maxLength="500"
 									value={legalData.legalProblem}
 									onChange={e => {
-										setlegalData({ ...legalData, legalProblem: e.target.value });
+										setLegalData({ ...legalData, legalProblem: e.target.value });
 										handleChange(e);
 									}}
 								/>
@@ -129,7 +129,7 @@ export const EditLegal = props => {
 									value={legalData.caseGoal}
 									maxLength="500"
 									onChange={e => {
-										setlegalData({ ...legalData, caseGoal: e.target.value });
+										setLegalData({ ...legalData, caseGoal: e.target.value });
 										handleChange2(e);
 									}}
 								/>
@@ -158,7 +158,7 @@ export const EditLegal = props => {
 									value={legalData.followUp}
 									maxLength="500"
 									onChange={e => {
-										setlegalData({ ...legalData, followUp: e.target.value });
+										setLegalData({ ...legalData, followUp: e.target.value });
 										handleChange3(e);
 									}}
 								/>
@@ -191,7 +191,7 @@ export const EditLegal = props => {
 									value={legalData.arrestRecord}
 									maxLength="500"
 									onChange={e => {
-										setlegalData({ ...legalData, arrestRecord: e.target.value });
+										setLegalData({ ...legalData, arrestRecord: e.target.value });
 										handleChange4(e);
 									}}
 								/>
@@ -211,7 +211,7 @@ export const EditLegal = props => {
 									value={legalData.criminalAttorney}
 									className="form-control"
 									aria-describedby="basic-addon1"
-									onChange={e => setlegalData({ ...legalData, criminalAttorney: e.target.value })}
+									onChange={e => setLegalData({ ...legalData, criminalAttorney: e.target.value })}
 								/>
 							</div>
 						</div>
@@ -223,7 +223,7 @@ export const EditLegal = props => {
 									value={legalData.attorneyPhone}
 									className="form-control"
 									aria-describedby="basic-addon1"
-									onChange={e => setlegalData({ ...legalData, attorneyPhone: e.target.value })}
+									onChange={e => setLegalData({ ...legalData, attorneyPhone: e.target.value })}
 								/>
 							</div>
 						</div>
@@ -233,7 +233,7 @@ export const EditLegal = props => {
 						className="btn btn-primary form-control col-3 mb-5"
 						style={{ float: "right" }}
 						onClick={() => {
-							actions.addlegalData(legalData, id);
+							actions.addLegalData(legalData, id);
 						}}>
 						Save
 					</button>
