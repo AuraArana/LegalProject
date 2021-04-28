@@ -26,7 +26,8 @@ export const QuickApp = () => {
 		startDateTime: "",
 		endDateTime: "",
 		classes: "color-1",
-		additionalInformation: ""
+		additionalInformation: "",
+		name: "Quick Appointment"
 	});
 
 	const [value, setValue] = useState(0);
