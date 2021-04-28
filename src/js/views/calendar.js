@@ -34,12 +34,14 @@ export const Calendar = () => {
 			let day2 = store.appRequest[i].endDateTime.substr(8, 2);
 			let hou1 = store.appRequest[i].startDateTime.substr(11, 2);
 			let hou2 = store.appRequest[i].endDateTime.substr(11, 2);
+			let min1 = store.appRequest[i].startDateTime.substr(14, 2);
+			let min2 = store.appRequest[i].endDateTime.substr(14, 2);
 
 			const obj2 = {
 				_id: store.appRequest[i].id,
 				name: store.appRequest[i].name,
-				startDateTime: new Date(year1, parseInt(moth1) - 1, day1, hou1, 0),
-				endDateTime: new Date(year2, parseInt(moth2) - 1, day2, hou2, 0),
+				startDateTime: new Date(year1, parseInt(moth1) - 1, day1, hou1, min1),
+				endDateTime: new Date(year2, parseInt(moth2) - 1, day2, hou2, min2),
 				classes: store.appRequest[i].classes
 			};
 
