@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
-import { Link, useParams } from "react-router-dom";
-import { updateUser } from "../utilities/updateUser";
+import { useParams } from "react-router-dom";
 
 export const EditUser = props => {
 	const params = useParams();
@@ -89,11 +88,13 @@ export const EditUser = props => {
 					<div className="mb-3 mt-3">
 						<input
 							type="tel"
-							pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 							value={userData.HomePhone}
 							onChange={e => setUserData({ ...userData, HomePhone: e.target.value })}
 							className={validationHomePhone ? "form-control is-invalid" : "form-control"}
 							placeholder="Home Phone"
+							minLength="10"
+							maxLength="10"
 						/>
 					</div>
 					<button
