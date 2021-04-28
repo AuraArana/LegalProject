@@ -38,18 +38,24 @@ export const EditLegal = props => {
 			pos = i;
 		}
 	}
+
 	const legalArr = store.legalArr[pos];
-	const [legalData, setLegalData] = useState({
+	const [legalData, setlegalData] = useState({
 		legalProblem: legalArr ? legalArr.legalProblem : "",
 		caseGoal: legalArr ? legalArr.caseGoal : "",
 		followUp: legalArr ? legalArr.followUp : "",
 		arrestRecord: legalArr ? legalArr.arrestRecord : "",
 		criminalAttorney: legalArr ? legalArr.criminalAttorney : "",
 		attorneyPhone: legalArr ? legalArr.attorneyPhone : "",
-		caseNo: legalArr ? legalArr.caseNo : Case
+		caseNo: legalArr ? legalArr.caseNo : ""
 	});
 
 	const [id, setId] = useState(legalArr ? legalArr.id : "");
+
+	const handleChange = e => {
+		var input = e.target.value;
+		setChars(input.length);
+	};
 
 	const checkInput = input => {
 		return input === null || !input;
@@ -227,7 +233,7 @@ export const EditLegal = props => {
 						className="btn btn-primary form-control col-3 mb-5"
 						style={{ float: "right" }}
 						onClick={() => {
-							actions.addLegalData(legalData, id);
+							actions.addlegalData(legalData, id);
 						}}>
 						Save
 					</button>

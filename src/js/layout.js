@@ -24,6 +24,7 @@ import { AppRequest } from "./views/appointmentRequest.js";
 import { Charts } from "./views/charts.js";
 import { ServicesForm } from "./views/ServicesForm.js";
 import { ServicesReport } from "./views/ServicesReport.js";
+import { QuickApp } from "./views/quickApp.js";
 
 import { ServiceStatusReport } from "./views/serviceStatusReport.js";
 import { ServiceStatusForm } from "./views/serviceStatusForm.js";
@@ -375,6 +376,14 @@ const Layout = () => {
 
 								{!isLoggedIn ? (
 									<Route exact path="/addClientUser" component={AddClientUser} />
+								) : (
+									<Route exact path="/">
+										<Home />
+									</Route>
+								)}
+
+								{!isLoggedIn ? (
+									<Route exact path="/quickApp" component={QuickApp} />
 								) : (
 									<Route exact path="/">
 										<Home />

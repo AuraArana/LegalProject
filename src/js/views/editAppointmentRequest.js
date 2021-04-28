@@ -29,7 +29,8 @@ export const EditAppRequest = () => {
 		startDateTime: appRequest ? appRequest.startDateTime : "",
 		endDateTime: appRequest ? appRequest.endDateTime : "",
 		classes: appRequest ? appRequest.classes : "",
-		name: appRequest ? appRequest.name : ""
+		name: appRequest ? appRequest.name : "",
+		additionalInformation: appRequest ? appRequest.additionalInformation : ""
 	});
 
 	const [value, setValue] = useState(0);
@@ -162,17 +163,31 @@ export const EditAppRequest = () => {
 								<option value="WhatsApp">WhatsApp</option>
 							</select>
 						</div>
+						<div className="col-sm-6 mb-3">
+							<label>What immigration service do you require?</label>
+							<select
+								className="form-control"
+								value={addAppointment.serviceNeeded}
+								onChange={e => setAddAppointment({ ...addAppointment, serviceNeeded: e.target.value })}>
+								<option selected />
+								<option value="Temporary Work Visas">Temporary Work Visas</option>
+								<option value="Resident Status">Resident Status (Immigrant Visas/Green Cards)</option>
+								<option value="Corporate Matters">Corporate Matters</option>
+								<option value="Citizenship">Citizenship</option>
+								<option value="Other U.S. Immigration Matters">Other U.S. Immigration Matters</option>
+							</select>
+						</div>
 						<div className="col-sm-12">
 							<div className="form-group">
-								<label>What immigration service do you require?</label>
+								<label>Please provide additional information on the service you require:</label>
 								<textarea
 									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
-									value={addAppointment.serviceNeeded}
+									value={addAppointment.additionalInformation}
 									onChange={e => {
-										setAddAppointment({ ...addAppointment, serviceNeeded: e.target.value });
+										setAddAppointment({ ...addAppointment, additionalInformation: e.target.value });
 										handleChange(e);
 									}}
 								/>
@@ -209,38 +224,38 @@ export const EditAppRequest = () => {
 								</div>
 							</div>
 						</div>
-					</div>
-					<div className="col-sm-6 pb-3">
-						<label className="row">Status</label>
-						<select
-							className="form-control"
-							value={addAppointment.status}
-							onChange={e => setAddAppointment({ ...addAppointment, status: e.target.value })}>
-							<option selected />
-							<option value="Pending">Pending</option>
-							<option value="Confirmed">Confirmed</option>
-						</select>
-					</div>
-					<div className="col-sm-6 pb-3">
-						<label className="row">Start Appointment</label>
-						<input
-							type="datetime-local"
-							value={addAppointment.startDateTime}
-							className={"form-control form-control-user rounded"}
-							placeholder="Enter scheduled Day"
-							onChange={e => setAddAppointment({ ...addAppointment, startDateTime: e.target.value })}
-						/>
-					</div>
+						<div className="col-sm-4">
+							<label>Status</label>
+							<select
+								className="form-control"
+								value={addAppointment.status}
+								onChange={e => setAddAppointment({ ...addAppointment, status: e.target.value })}>
+								<option selected />
+								<option value="Pending">Pending</option>
+								<option value="Confirmed">Confirmed</option>
+							</select>
+						</div>
+						<div className="col-sm-4">
+							<label>Start Appointment</label>
+							<input
+								type="datetime-local"
+								value={addAppointment.startDateTime}
+								className={"form-control form-control-user rounded"}
+								placeholder="Enter scheduled Day"
+								onChange={e => setAddAppointment({ ...addAppointment, startDateTime: e.target.value })}
+							/>
+						</div>
 
-					<div className="col-sm-6 pb-3">
-						<label className="row">End Appointment</label>
-						<input
-							type="datetime-local"
-							value={addAppointment.endDateTime}
-							className={"form-control form-control-user rounded"}
-							placeholder="Enter scheduled Day"
-							onChange={e => setAddAppointment({ ...addAppointment, endDateTime: e.target.value })}
-						/>
+						<div className="col-sm-4">
+							<label>End Appointment</label>
+							<input
+								type="datetime-local"
+								value={addAppointment.endDateTime}
+								className={"form-control form-control-user rounded"}
+								placeholder="Enter scheduled Day"
+								onChange={e => setAddAppointment({ ...addAppointment, endDateTime: e.target.value })}
+							/>
+						</div>
 					</div>
 					<button
 						type="button"
@@ -248,7 +263,7 @@ export const EditAppRequest = () => {
 						style={{ float: "right" }}
 						onClick={() => {
 							actions.addAddAppointment(addAppointment, id);
-							history.push("/demo");
+							history.push("/listAppointment");
 						}}>
 						Save
 					</button>

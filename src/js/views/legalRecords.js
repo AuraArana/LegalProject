@@ -10,7 +10,7 @@ export const AddLegal = () => {
 	const { store, actions } = useContext(Context);
 	toast.configure();
 
-	const [legalData, setLegalData] = useState({
+	const [legalData, setlegalData] = useState({
 		legalProblem: "",
 		caseGoal: "",
 		followUp: "",
@@ -157,7 +157,7 @@ export const AddLegal = () => {
 									rows="3"
 									maxLength="500"
 									onChange={e => {
-										setLegalData({ ...legalData, legalProblem: e.target.value });
+										setlegalData({ ...legalData, legalProblem: e.target.value });
 										handleChange(e);
 									}}
 								/>
@@ -187,7 +187,7 @@ export const AddLegal = () => {
 									rows="3"
 									maxLength="500"
 									onChange={e => {
-										setLegalData({ ...legalData, caseGoal: e.target.value });
+										setlegalData({ ...legalData, caseGoal: e.target.value });
 										handleChange2(e);
 									}}
 								/>
@@ -215,7 +215,7 @@ export const AddLegal = () => {
 									rows="3"
 									maxLength="500"
 									onChange={e => {
-										setLegalData({ ...legalData, followUp: e.target.value });
+										setlegalData({ ...legalData, followUp: e.target.value });
 										handleChange3(e);
 									}}
 								/>
@@ -247,7 +247,7 @@ export const AddLegal = () => {
 									rows="3"
 									maxLength="500"
 									onChange={e => {
-										setLegalData({ ...legalData, arrestRecord: e.target.value });
+										setlegalData({ ...legalData, arrestRecord: e.target.value });
 										handleChange4(e);
 									}}
 								/>
@@ -266,7 +266,7 @@ export const AddLegal = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
-									onChange={e => setLegalData({ ...legalData, criminalAttorney: e.target.value })}
+									onChange={e => setlegalData({ ...legalData, criminalAttorney: e.target.value })}
 								/>
 							</div>
 						</div>
@@ -277,7 +277,7 @@ export const AddLegal = () => {
 									type="text"
 									className="form-control"
 									aria-describedby="basic-addon1"
-									onChange={e => setLegalData({ ...legalData, attorneyPhone: e.target.value })}
+									onChange={e => setlegalData({ ...legalData, attorneyPhone: e.target.value })}
 								/>
 							</div>
 						</div>
@@ -288,7 +288,7 @@ export const AddLegal = () => {
 							className="btn btn-primary form-control col-3 mb-5"
 							style={{ float: "right" }}
 							onClick={() => {
-								actions.addLegalData(legalData);
+								actions.addlegalData(legalData, id);
 							}}>
 							Save + Next Page: Services
 						</button>
