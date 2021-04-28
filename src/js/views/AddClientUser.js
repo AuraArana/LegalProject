@@ -83,7 +83,7 @@ export const AddClientUser = () => {
 				<div className="d-flex flex-col position-relative col-6">
 					<div
 						className="position-absolute top-50 start-50 translate-middle mt-5"
-						style={{ paddingTop: "20%", paddingLeft: "30%" }}>
+						style={{ paddingTop: "18%", paddingLeft: "30%" }}>
 						<h2 className="text-center" style={{ color: "#1d3652", width: 300 }}>
 							CREATE NEW ACCOUNT
 						</h2>
@@ -101,7 +101,7 @@ export const AddClientUser = () => {
 								width: 300,
 								position: "absolute"
 							}}>
-							<div className="mb-3 mt-3">
+							<div className="mb-3">
 								<input
 									type="text"
 									className={validationFirstName ? "form-control is-invalid" : "form-control"}

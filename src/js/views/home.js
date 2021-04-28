@@ -8,7 +8,7 @@ import { signIn } from "../utilities/signIn";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
-import { AddClientUser } from "../views/AddClientUser.js";
+import { quickApp } from "../views/quickApp.js";
 
 export const Home = ({ validCredentials }) => {
 	const { store, actions } = useContext(Context);
@@ -80,17 +80,26 @@ export const Home = ({ validCredentials }) => {
 				<div className="d-flex flex-col position-relative col-6">
 					<div
 						className="position-absolute top-50 start-50 translate-middle mt-5"
-						style={{ paddingTop: "30%", paddingLeft: "30%" }}>
-						<h2 className="text-center" style={{ color: "#1d3652", marginLeft: 90 }}>
+						style={{ paddingTop: "25%", paddingLeft: "30%" }}>
+						<h2 className="text-center" style={{ color: "#1d3652", width: 300 }}>
 							SIGN IN
 						</h2>
+						<p
+							className="text-center 
+                            mt-2"
+							style={{ color: "#50bfc3", width: 300 }}
+							onClick={() => {
+								history.push("/addClientUser");
+							}}>
+							Create an Account
+						</p>
 						<form
 							className="user"
 							style={{
 								width: 300,
 								position: "absolute"
 							}}>
-							<div className="mb-3 mt-3">
+							<div className="mb-3">
 								<input
 									type="email"
 									onChange={e => setEmail(e.target.value)}
@@ -113,21 +122,21 @@ export const Home = ({ validCredentials }) => {
 								</label>
 							</div> */}
 							<button
-								className="btn btn-primary col-12 rounded-pill"
+								className="btn btn-primary col-12 mb-2 rounded-pill"
 								onClick={e => {
 									checkLogin(email, password);
 									e.preventDefault();
 								}}>
 								Sign In
 							</button>
-							<p
-								className="text-center mt-2"
-								style={{ color: "#50bfc3" }}
+							<button
+								className="btn btn-primary col-12 rounded-pill"
+								style={{ backgroundColor: "#2c7596", outlineColor: "#2c7596" }}
 								onClick={() => {
-									history.push("/addClientUser");
+									history.push("/quickApp");
 								}}>
-								Create an Account
-							</p>
+								Request Appointment
+							</button>
 						</form>
 					</div>
 				</div>

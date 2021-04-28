@@ -21,6 +21,7 @@ export const AppRequest = ({ name }) => {
 		startDateTime: "",
 		endDateTime: "",
 		classes: "color-1",
+		additionalInformation: "",
 		name: "Meeting with " + store.currentUser.firstName + " " + store.currentUser.lastName
 	});
 
@@ -146,7 +147,7 @@ export const AppRequest = ({ name }) => {
 								/>
 							</div>
 						</div>
-						<div className="col-sm-6">
+						<div className="col-sm-6 mb-3">
 							<label>What is the best and safest way to contact you?</label>
 							<select
 								className="form-control"
@@ -157,16 +158,29 @@ export const AppRequest = ({ name }) => {
 								<option value="WhatsApp">WhatsApp</option>
 							</select>
 						</div>
+						<div className="col-sm-6 mb-3">
+							<label>What immigration service do you require?</label>
+							<select
+								className="form-control"
+								onChange={e => setAddAppointment({ ...addAppointment, serviceNeeded: e.target.value })}>
+								<option selected />
+								<option value="Temporary Work Visas">Temporary Work Visas</option>
+								<option value="Resident Status">Resident Status (Immigrant Visas/Green Cards)</option>
+								<option value="Corporate Matters">Corporate Matters</option>
+								<option value="Citizenship">Citizenship</option>
+								<option value="Other U.S. Immigration Matters">Other U.S. Immigration Matters</option>
+							</select>
+						</div>
 						<div className="col-sm-12">
 							<div className="form-group">
-								<label>What immigration service do you require?</label>
+								<label>Please provide additional information on the service you require:</label>
 								<textarea
 									className="form-control"
 									id="exampleFormControlTextarea1"
 									rows="3"
 									maxLength="500"
 									onChange={e => {
-										setAddAppointment({ ...addAppointment, serviceNeeded: e.target.value });
+										setAddAppointment({ ...addAppointment, additionalInformation: e.target.value });
 										handleChange(e);
 									}}
 								/>
