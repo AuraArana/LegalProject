@@ -16,9 +16,10 @@ export const AddClientUser = () => {
 		password: "",
 		firstName: "",
 		lastName: "",
+		HomePhone: "",
 		userType: "Client"
 	});
-
+	const [validationHomePhone, setvalidationHomePhone] = useState(false);
 	const [validationEmail, setValidationEmail] = useState(false);
 	const [validationPassword, setValidationPassword] = useState(false);
 	const [validationFirstName, setValidationFirstName] = useState(false);
@@ -30,7 +31,14 @@ export const AddClientUser = () => {
 	};
 	useEffect(
 		() => {
-			if (!validationEmail && !validationPassword && !validationLastName && !validationFirstName && validation) {
+			if (
+				!validationEmail &&
+				!validationPassword &&
+				!validationLastName &&
+				!validationFirstName &&
+				!validationHomePhone &&
+				validation
+			) {
 				createAcc(clientUserData.email, clientUserData.password);
 				setValidation(false);
 			} else {
@@ -125,6 +133,15 @@ export const AddClientUser = () => {
 									placeholder="Password"
 								/>
 							</div>
+							<div className="mb-3 mt-3">
+								<input
+									type="tel"
+									pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+									onChange={e => setClientUserData({ ...clientUserData, HomePhone: e.target.value })}
+									className={validationHomePhone ? "form-control is-invalid" : "form-control"}
+									placeholder="Home Phone"
+								/>
+							</div>
 							<button
 								className="btn btn-primary col-12 rounded-pill"
 								onClick={e => {
@@ -132,6 +149,7 @@ export const AddClientUser = () => {
 									setValidationLastName(checkInput(clientUserData.lastName));
 									setValidationEmail(checkInput(clientUserData.email));
 									setValidationPassword(checkInput(clientUserData.password));
+									setvalidationHomePhone(checkInput(clientUserData.HomePhone));
 									setValidation(true);
 									e.preventDefault();
 								}}>

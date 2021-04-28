@@ -16,8 +16,10 @@ export const AddUser = () => {
 		password: "",
 		firstName: "",
 		lastName: "",
-		userType: ""
+		userType: "",
+		HomePhone: ""
 	});
+	const [validationHomePhone, setvalidationHomePhone] = useState(false);
 	const [validationEmail, setValidationEmail] = useState(false);
 	const [validationPassword, setValidationPassword] = useState(false);
 	const [validationFirstName, setValidationFirstName] = useState(false);
@@ -36,6 +38,7 @@ export const AddUser = () => {
 				!validationLastName &&
 				!validationFirstName &&
 				!validationUserType &&
+				!validationHomePhone &&
 				validation
 			) {
 				createAcc(userData.email, userData.password);
@@ -103,6 +106,15 @@ export const AddUser = () => {
 						/>
 					</div>
 					<div className="mb-3 mt-3">
+						<input
+							type="tel"
+							pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+							onChange={e => setUserData({ ...userData, HomePhone: e.target.value })}
+							className={validationHomePhone ? "form-control is-invalid" : "form-control"}
+							placeholder="Home Phone"
+						/>
+					</div>
+					<div className="mb-3 mt-3">
 						<select
 							className={validationUserType ? "form-control is-invalid" : "form-control"}
 							onChange={e => setUserData({ ...userData, userType: e.target.value })}>
@@ -120,6 +132,7 @@ export const AddUser = () => {
 							setValidationEmail(checkInput(userData.email));
 							setValidationPassword(checkInput(userData.password));
 							setValidationUserType(checkInput(userData.userType));
+							setvalidationHomePhone(checkInput(userData.HomePhone));
 							setValidation(true);
 							e.preventDefault();
 						}}>
