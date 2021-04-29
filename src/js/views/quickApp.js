@@ -12,6 +12,8 @@ export const QuickApp = () => {
 	let addApp = "Appointment Request";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	const services = ["", ...store.listOfServices];
+	console.log("services", services);
 
 	const [addAppointment, setAddAppointment] = useState({
 		firstName: "",
@@ -173,11 +175,12 @@ export const QuickApp = () => {
 								<div className="col-sm-12 mb-3">
 									<label>What is the best and safest way to contact you?</label>
 									<select
+										defaultValue=""
 										className="form-control"
 										onChange={e =>
 											setAddAppointment({ ...addAppointment, Contact: e.target.value })
 										}>
-										<option selected />
+										{/* <option selected /> */}
 										<option value="Cell Phone">Cell Phone</option>
 										<option value="Email">Email</option>
 										<option value="WhatsApp">WhatsApp</option>
@@ -186,20 +189,18 @@ export const QuickApp = () => {
 								<div className="col-sm-12 mb-3">
 									<label>What immigration service do you require?</label>
 									<select
+										defaultValue=""
 										className="form-control"
 										onChange={e =>
 											setAddAppointment({ ...addAppointment, serviceNeeded: e.target.value })
 										}>
-										<option selected />
-										<option value="Temporary Work Visas">Temporary Work Visas</option>
-										<option value="Resident Status">
-											Resident Status (Immigrant Visas/Green Cards)
-										</option>
-										<option value="Corporate Matters">Corporate Matters</option>
-										<option value="Citizenship">Citizenship</option>
-										<option value="Other U.S. Immigration Matters">
-											Other U.S. Immigration Matters
-										</option>
+										{services.map((service, index) => {
+											return (
+												<option key={index} value={service.Desc}>
+													{service.Desc}
+												</option>
+											);
+										})}
 									</select>
 								</div>
 								<div className="col-sm-12">

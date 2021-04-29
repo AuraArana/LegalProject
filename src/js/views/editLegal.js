@@ -61,6 +61,80 @@ export const EditLegal = props => {
 		return input === null || !input;
 	};
 
+	useEffect(
+		() => {
+			if (chars < 500 && chars > 490) {
+				setColor("red");
+			}
+			if (chars < 489 && chars > 480) {
+				setColor("orange");
+			}
+			if (chars < 479 && chars > 0) {
+				setColor("grey");
+			}
+		},
+		[chars]
+	);
+
+	const handleChange2 = e => {
+		var input = e.target.value;
+		setChars2(input.length);
+	};
+
+	useEffect(
+		() => {
+			if (chars2 < 500 && chars2 > 490) {
+				setColor2("red");
+			}
+			if (chars2 < 489 && chars2 > 480) {
+				setColor2("orange");
+			}
+			if (chars2 < 479 && chars2 > 0) {
+				setColor2("grey");
+			}
+		},
+		[chars2]
+	);
+
+	const handleChange3 = e => {
+		var input = e.target.value;
+		setChars3(input.length);
+	};
+
+	useEffect(
+		() => {
+			if (chars3 < 500 && chars3 > 490) {
+				setColor3("red");
+			}
+			if (chars3 < 489 && chars3 > 480) {
+				setColor3("orange");
+			}
+			if (chars3 < 479 && chars3 > 0) {
+				setColor3("grey");
+			}
+		},
+		[chars3]
+	);
+
+	const handleChange4 = e => {
+		var input = e.target.value;
+		//console.log("input.length", input.length);
+		setChars4(input.length);
+	};
+
+	useEffect(
+		() => {
+			if (chars4 < 500 && chars4 > 490) {
+				setColor4("red");
+			} else if (chars4 < 489 && chars4 > 480) {
+				setColor4("orange");
+			} else if (chars4 < 479 && chars4 > 0) {
+				setColor4("grey");
+			}
+		},
+		[chars4]
+	);
+
 	return (
 		<div className="container">
 			<div>
