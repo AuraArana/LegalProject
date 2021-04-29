@@ -288,7 +288,7 @@ export const AddLegal = () => {
 							className="btn btn-primary form-control col-3 mb-5"
 							style={{ float: "right" }}
 							onClick={() => {
-								actions.addlegalData(legalData, id);
+								actions.addLegalData(legalData);
 							}}>
 							Save + Next Page: Services
 						</button>

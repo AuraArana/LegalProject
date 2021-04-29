@@ -108,12 +108,15 @@ export const Navbar = () => {
 					</div>
 				</div>
 			</li>
-
-			<li className="nav-item">
-				<Link className="nav-link" to="/appointmentRequest">
-					<i className="far fa-calendar-alt" /> Request Appointment
-				</Link>
-			</li>
+			{store.currentUser.userType === "Client" ? (
+				<li className="nav-item">
+					<Link className="nav-link" to="/appointmentRequest">
+						<i className="far fa-calendar-alt" /> Request Appointment
+					</Link>
+				</li>
+			) : (
+				""
+			)}
 
 			{store.currentUser.userType != "Client" ? (
 				<li className="nav-item">

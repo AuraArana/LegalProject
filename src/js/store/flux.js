@@ -145,7 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addLegalData: (obj, id) => {
 				firebase
 					.firestore()
-					.collection("legarArr")
+					.collection("legalArr")
 					.doc(id)
 					.set(obj)
 					.catch(error => {
