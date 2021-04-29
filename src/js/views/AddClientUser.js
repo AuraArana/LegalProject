@@ -60,6 +60,53 @@ export const AddClientUser = () => {
 		}
 	};
 
+	function validar_clave(e) {
+		let caract_invalido = " ";
+		let caract_longitud = 6;
+		let cla1 = $("#register-form #password").val();
+		let cla2 = $("#register-form #confirmPassword").val();
+		const mensaje = " ";
+		if (cla1 == "" || cla2 == "") {
+			<div className="alert alert-danger" role="alert">
+				Enter your password
+				<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
+			</div>;
+			//alert("Debes introducir tu clave en los dos campos.");
+			e.preventDefault();
+			return false;
+		}
+		if (cla1.length < caract_longitud) {
+			<div className="alert alert-danger" role="alert">
+				Your password must be at least 6 characters long
+				<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
+			</div>;
+			// alert("Tu clave debe constar de " + caract_longitud + " caracteres.");
+			e.preventDefault();
+			return false;
+		}
+		if (cla1.indexOf(caract_invalido) > -1) {
+			<div className="alert alert-danger" role="alert">
+				Your password cannot have blank spaces
+				<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
+			</div>;
+			//alert("Las claves no pueden contener espacios");
+			e.preventDefault();
+			return false;
+		} else {
+			if (cla1 != cla2) {
+				<div className="alert alert-danger" role="alert">
+					The passwords are not the same
+					<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
+				</div>;
+				// alert("Las claves introducidas no son iguales");
+				e.preventDefault();
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}
+
 	return (
 		<div className="">
 			<div className="row">
@@ -97,6 +144,7 @@ export const AddClientUser = () => {
 						</p>
 						<form
 							className="user"
+							id="register-form"
 							style={{
 								width: 300,
 								position: "absolute"
@@ -131,12 +179,22 @@ export const AddClientUser = () => {
 									onChange={e => setClientUserData({ ...clientUserData, password: e.target.value })}
 									className={validationPassword ? "form-control is-invalid" : "form-control"}
 									placeholder="Password"
+									id="password"
+								/>
+							</div>
+							<div className="mb-3 mt-3">
+								<input
+									type="password"
+									//onChange={e => setClientUserData({ ...clientUserData, passwordConfirm: e.target.value })}
+									className={validationPassword ? "form-control is-invalid" : "form-control"}
+									placeholder="Confirm Password"
+									id="confirmPassword"
 								/>
 							</div>
 							<div className="mb-3 mt-3">
 								<input
 									type="tel"
-									pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+									//pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 									onChange={e => setClientUserData({ ...clientUserData, HomePhone: e.target.value })}
 									className={validationHomePhone ? "form-control is-invalid" : "form-control"}
 									placeholder="Home Phone"
@@ -152,6 +210,7 @@ export const AddClientUser = () => {
 									setValidationEmail(checkInput(clientUserData.email));
 									setValidationPassword(checkInput(clientUserData.password));
 									setvalidationHomePhone(checkInput(clientUserData.HomePhone));
+									validar_clave(e);
 									setValidation(true);
 									e.preventDefault();
 								}}>
