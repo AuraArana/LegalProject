@@ -152,6 +152,7 @@ export const AppRequest = ({ name }) => {
 						<div className="col-sm-6 mb-3">
 							<label>What is the best and safest way to contact you?</label>
 							<select
+								defaultValue=""
 								className="form-control"
 								onChange={e => setAddAppointment({ ...addAppointment, Contact: e.target.value })}>
 								{/* <option selected /> */}
