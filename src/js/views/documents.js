@@ -43,49 +43,30 @@ export const Documents = () => {
 		<>
 			<nav className="navbar ">
 				<div className="ml-auto text-dark">
-					<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+					<button
+						type="button"
+						className="btn btn-primary"
+						onClick={() => {
+							document.getElementById("file").click();
+						}}>
 						Add Document
 					</button>
 
-					<div
-						className="modal fade bd-example-modal-xl"
-						id="exampleModal"
-						aria-labelledby="exampleModalLabel">
-						<div className="modal-dialog ">
-							<div className="modal-content">
-								<div className="modal-header">
-									<h5 className="modal-title  text-dark" id="exampleModalLabel">
-										New Document
-									</h5>
-								</div>
-								<div className="modal-body text-dark">
-									<div className="row">
-										<form onSubmit={onSubmit}>
-											<input
-												type="file"
-												id="file"
-												onChange={e => {
-													actions.onFileChange(caseNo, e);
-													e.preventDefault();
-													setFile(e.target.value);
-													document.getElementById("buttonClose").click();
-												}}
-											/>
-										</form>
-									</div>
-									<div className="modal-footer">
-										<button
-											type="button"
-											id="buttonClose"
-											className="btn btn-secondary"
-											data-dismiss="modal">
-											Close
-										</button>
-									</div>
-								</div>
-							</div>
+					<form onSubmit={onSubmit}>
+						<div className="form-group">
+							<input
+								type="file"
+								id="file"
+								hidden
+								onChange={e => {
+									actions.onFileChange(caseNo, e);
+									e.preventDefault();
+									setFile(e.target.value);
+								}}
+								className="form-control-file"
+							/>
 						</div>
-					</div>
+					</form>
 				</div>
 			</nav>
 
