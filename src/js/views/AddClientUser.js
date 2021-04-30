@@ -10,12 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const AddClientUser = () => {
 	let history = useHistory();
-	const { store, actions } = useContext(Context);
+	const { actions } = useContext(Context);
 	toast.configure();
 	const [clientUserData, setClientUserData] = useState({
 		email: "",
 		password: "",
-		confirmPassword: "",
+		passwordConfirm: "",
 		firstName: "",
 		lastName: "",
 		HomePhone: "",
@@ -24,6 +24,7 @@ export const AddClientUser = () => {
 	const [validationHomePhone, setvalidationHomePhone] = useState(false);
 	const [validationEmail, setValidationEmail] = useState(false);
 	const [validationPassword, setValidationPassword] = useState(false);
+	const [validationPasswordConfirm, setvalidationPasswordConfirm] = useState(false);
 	const [validationFirstName, setValidationFirstName] = useState(false);
 	const [validationLastName, setValidationLastName] = useState(false);
 	const [validation, setValidation] = useState(false);
@@ -35,7 +36,8 @@ export const AddClientUser = () => {
 		() => {
 			if (clientUserData.password.length < 6 && clientUserData.password.length > 0) {
 				toast.error("Your password must be at least 6 characters long");
-			} else if (clientUserData.password != clientUserData.confirmPassword) {
+				console.log("pass");
+			} else if (clientUserData.password != clientUserData.passwordConfirm) {
 				toast.error("The passwords are not the same");
 			} else if (
 				!validationEmail &&
@@ -46,10 +48,8 @@ export const AddClientUser = () => {
 				validation
 			) {
 				createAcc(clientUserData.email, clientUserData.password);
-				setValidation(false);
-			} else {
-				setValidation(false);
 			}
+			setValidation(false);
 		},
 		[validation]
 	);
@@ -147,7 +147,7 @@ export const AddClientUser = () => {
 									onChange={e =>
 										setClientUserData({ ...clientUserData, passwordConfirm: e.target.value })
 									}
-									className={validationPassword ? "form-control is-invalid" : "form-control"}
+									className={validationPasswordConfirm ? "form-control is-invalid" : "form-control"}
 									placeholder="Confirm Password"
 									id="confirmPassword"
 								/>
@@ -169,6 +169,7 @@ export const AddClientUser = () => {
 									setValidationLastName(checkInput(clientUserData.lastName));
 									setValidationEmail(checkInput(clientUserData.email));
 									setValidationPassword(checkInput(clientUserData.password));
+									setvalidationPasswordConfirm(checkInput(clientUserData.passwordConfirm));
 									setvalidationHomePhone(checkInput(clientUserData.HomePhone));
 									setValidation(true);
 									e.preventDefault();
