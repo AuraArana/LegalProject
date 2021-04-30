@@ -11,7 +11,7 @@ export const EditServicesForm = () => {
 	let id = params.case;
 	let pos = 1000000000000;
 
-	for (let i in store.ListClients) {
+	for (let i in store.TableServices) {
 		if (store.TableServices[i].id === id) {
 			pos = i;
 		}
