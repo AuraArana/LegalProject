@@ -59,7 +59,7 @@ export const Ledger = () => {
 															<td>{item.intakeDate}</td>
 															<td>{item.Transaction}</td>
 															<td>{item.ServiceType}</td>
-															<td>{item.Amount}</td>
+															<td>{" $" + parseInt(item.Amount).toFixed(2)}</td>
 														</tr>
 													);
 												}

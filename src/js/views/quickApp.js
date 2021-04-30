@@ -267,7 +267,7 @@ export const QuickApp = () => {
 								style={{ float: "right" }}
 								onClick={() => {
 									actions.addAddAppointment(addAppointment);
-									history.push("/demo");
+									history.push("/");
 								}}>
 								Submit Request
 							</button>

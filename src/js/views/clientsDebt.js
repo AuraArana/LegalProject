@@ -92,7 +92,7 @@ export const ClientsDebt = () => {
 														<td>{item.fullName}</td>
 														<td>{item.phone}</td>
 
-														<td>{item.total}</td>
+														<td>{" $" + parseInt(item.total).toFixed(2)}</td>
 													</tr>
 												);
 											})}

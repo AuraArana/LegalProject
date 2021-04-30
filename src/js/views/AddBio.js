@@ -48,7 +48,9 @@ export const AddBio = () => {
 	const [validationPhone, setValidationPhone] = useState(false);
 	const [validationAddress, setValidationAddress] = useState(false);
 	const [validation, setValidation] = useState(false);
-
+	const styles = {
+		selectOptions: { height: "calc(1.5em + 0.75rem + 13px)" }
+	};
 	const checkInput = input => {
 		return input === null || !input;
 	};
@@ -147,7 +149,8 @@ export const AddBio = () => {
 							<select
 								className="form-control rounded  "
 								id="Gender"
-								onChange={e => setbioData({ ...bioData, Gender: e.target.value })}>
+								onChange={e => setbioData({ ...bioData, Gender: e.target.value })}
+								style={styles.selectOptions}>
 								<option value="">Select a Gender</option>
 								<option value="Male">Male</option>
 								<option value="Female">Female</option>
@@ -159,7 +162,8 @@ export const AddBio = () => {
 							<select
 								className="form-control rounded "
 								id="Gender"
-								onChange={e => setbioData({ ...bioData, MaritalStatus: e.target.value })}>
+								onChange={e => setbioData({ ...bioData, MaritalStatus: e.target.value })}
+								style={styles.selectOptions}>
 								<option value="">Select a Marital Status</option>
 								<option value="Single">Single</option>
 								<option value="Married">Married</option>
