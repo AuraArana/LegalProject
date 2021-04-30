@@ -9,8 +9,6 @@ export const EditServices = () => {
 	const { store, actions } = useContext(Context);
 	let Case = params.case;
 
-	//console.log("store.TableServices", store.TableServices);
-
 	return (
 		<div className="container">
 			<div>
@@ -23,7 +21,7 @@ export const EditServices = () => {
 								type="button"
 								className="btn btn-primary"
 								onClick={() => {
-									history.push("/addservices");
+									history.push("/editservicesf/" + Case);
 								}}>
 								Add services
 							</button>
