@@ -5,13 +5,17 @@ import Logo from "../../img/logo.png";
 import { Context } from "../store/appContext";
 import { createAccount } from "../utilities/createAccount";
 import "../../styles/home.scss";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddClientUser = () => {
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	toast.configure();
 	const [clientUserData, setClientUserData] = useState({
 		email: "",
 		password: "",
+		confirmPassword: "",
 		firstName: "",
 		lastName: "",
 		HomePhone: "",
@@ -29,7 +33,11 @@ export const AddClientUser = () => {
 	};
 	useEffect(
 		() => {
-			if (
+			if (clientUserData.password.length < 6 && clientUserData.password.length > 0) {
+				toast.error("Your password must be at least 6 characters long");
+			} else if (clientUserData.password != clientUserData.confirmPassword) {
+				toast.error("The passwords are not the same");
+			} else if (
 				!validationEmail &&
 				!validationPassword &&
 				!validationLastName &&
@@ -50,59 +58,13 @@ export const AddClientUser = () => {
 			await createAccount(email, password);
 			actions.addClientUserData(clientUserData);
 			history.push("/");
-			alert("Cuenta creada");
+			toast.success("Account created");
 			return true;
 		} catch (e) {
 			alert(e.message);
 			return false;
 		}
 	};
-
-	function validatePassword(e) {
-		let invalidCharacter = " ";
-		let longCharacter = 6;
-		let pass1 = $("#register-form #password").val();
-		let pass2 = $("#register-form #confirmPassword").val();
-		const mensaje = document.getElementById("register-form");
-		if (pass1 == "" || pass2 == "") {
-			mensaje.innerHTML = `<div className="alert alert-danger" role="alert">
-				Enter your password
-				<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
-			</div>`;
-			e.preventDefault();
-			return false;
-		}
-		if (pass1.length < longCharacter) {
-			mensaje.innerHTML = `<div className="alert alert-danger" role="alert">
-				Your password must be at least 6 characters long
-				<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
-			</div>;`;
-			e.preventDefault();
-			return false;
-		}
-		if (pass1.indexOf(invalidCharacter) > -1) {
-			mensaje.innerHTML = `<div className="alert alert-danger" role="alert">
-				Your password cannot have blank spaces
-				<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
-			</div>`;
-			e.preventDefault();
-			return false;
-		} else {
-			if (pass1 != pass2) {
-				mensaje.innerHTML = `<div className="alert alert-danger" role="alert">
-					The passwords are not the same
-					<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
-				</div>`;
-				e.preventDefault();
-				return false;
-			} else {
-				return true;
-			}
-		}
-		setTimeout(() => {
-			mensaje.innerHTML = "";
-		}, 2500);
-	}
 
 	return (
 		<div className="">
@@ -182,7 +144,9 @@ export const AddClientUser = () => {
 							<div className="mb-3 mt-3">
 								<input
 									type="password"
-									//onChange={e => setClientUserData({ ...clientUserData, passwordConfirm: e.target.value })}
+									onChange={e =>
+										setClientUserData({ ...clientUserData, passwordConfirm: e.target.value })
+									}
 									className={validationPassword ? "form-control is-invalid" : "form-control"}
 									placeholder="Confirm Password"
 									id="confirmPassword"
@@ -191,7 +155,6 @@ export const AddClientUser = () => {
 							<div className="mb-3 mt-3">
 								<input
 									type="tel"
-									//pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 									onChange={e => setClientUserData({ ...clientUserData, HomePhone: e.target.value })}
 									className={validationHomePhone ? "form-control is-invalid" : "form-control"}
 									placeholder="Home Phone"
@@ -207,7 +170,6 @@ export const AddClientUser = () => {
 									setValidationEmail(checkInput(clientUserData.email));
 									setValidationPassword(checkInput(clientUserData.password));
 									setvalidationHomePhone(checkInput(clientUserData.HomePhone));
-									validatePassword(e);
 									setValidation(true);
 									e.preventDefault();
 								}}>
