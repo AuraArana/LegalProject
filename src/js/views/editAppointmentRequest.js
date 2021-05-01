@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EditAppRequest = () => {
 	let addApp = "Appointment Request";
@@ -8,6 +10,8 @@ export const EditAppRequest = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	let pos = 1000000000000;
+
+	toast.configure();
 
 	let id = params.id;
 	for (let i in store.appRequest) {
@@ -68,6 +72,15 @@ export const EditAppRequest = () => {
 		},
 		[chars]
 	);
+
+	const compareDate = () => {
+		if (addAppointment.startDateTime >= addAppointment.endDateTime) {
+			actions.addAddAppointment(addAppointment, id);
+			history.push("/listAppointment");
+		} else {
+			toast.error("The passwords are not the same");
+		}
+	};
 
 	const handleChange2 = e => {
 		var input = e.target.value;
@@ -267,8 +280,7 @@ export const EditAppRequest = () => {
 						className="btn btn-primary form-control col-3 mb-5"
 						style={{ float: "right" }}
 						onClick={() => {
-							actions.addAddAppointment(addAppointment, id);
-							history.push("/listAppointment");
+							compareDate();
 						}}>
 						Save
 					</button>
