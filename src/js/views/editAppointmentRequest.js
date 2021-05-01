@@ -75,10 +75,10 @@ export const EditAppRequest = () => {
 
 	const compareDate = () => {
 		if (addAppointment.startDateTime >= addAppointment.endDateTime) {
+			toast.error("If you try to put an end date earlier than the start date, you will get an error.");
+		} else {
 			actions.addAddAppointment(addAppointment, id);
 			history.push("/listAppointment");
-		} else {
-			toast.error("The passwords are not the same");
 		}
 	};
 
