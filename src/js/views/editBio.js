@@ -20,6 +20,10 @@ export const EditBio = props => {
 		}
 	}
 
+	const styles = {
+		selectOptions: { height: "calc(1.5em + 0.75rem + 13px)" }
+	};
+
 	let ListClients = store.ListClients[pos];
 	const [bioData, setbioData] = useState({
 		AlienNo: ListClients ? ListClients.AlienNo : "",
@@ -155,7 +159,8 @@ export const EditBio = props => {
 								className="form-control rounded "
 								value={bioData.Gender}
 								id="Gender"
-								onChange={e => setbioData({ ...bioData, Gender: e.target.value })}>
+								onChange={e => setbioData({ ...bioData, Gender: e.target.value })}
+								style={styles.selectOptions}>
 								<option value="">Select a Gender</option>
 								<option value="Male">Male</option>
 								<option value="Female">Female</option>
@@ -168,7 +173,8 @@ export const EditBio = props => {
 								className="form-control rounded "
 								id="MaritalStatus"
 								value={bioData.MaritalStatus}
-								onChange={e => setbioData({ ...bioData, MaritalStatus: e.target.value })}>
+								onChange={e => setbioData({ ...bioData, MaritalStatus: e.target.value })}
+								style={styles.selectOptions}>
 								<option value="">Select a Marital Status</option>
 								<option value="Single">Single</option>
 								<option value="Married">Married</option>
@@ -313,7 +319,8 @@ export const EditBio = props => {
 			</div>
 			<button
 				type="button"
-				className="btn btn-primary"
+				className="btn btn-primary form-control col-3 mb-5"
+				style={{ float: "right" }}
 				onClick={() => {
 					setValidationLastName(checkInput(bioData.LastName));
 					setValidationFirstName(checkInput(bioData.FirstName));

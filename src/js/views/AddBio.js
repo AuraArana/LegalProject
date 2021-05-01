@@ -299,7 +299,8 @@ export const AddBio = () => {
 
 					<button
 						type="button"
-						className="btn btn-primary form-control"
+						className="btn btn-primary form-control col-3 mb-5"
+						style={{ float: "right" }}
 						onClick={() => {
 							setValidationLastName(checkInput(bioData.LastName));
 							setValidationFirstName(checkInput(bioData.FirstName));
