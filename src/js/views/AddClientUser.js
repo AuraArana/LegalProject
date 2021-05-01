@@ -28,16 +28,16 @@ export const AddClientUser = () => {
 	const [validationFirstName, setValidationFirstName] = useState(false);
 	const [validationLastName, setValidationLastName] = useState(false);
 	const [validation, setValidation] = useState(false);
+	const [countRender, setCountRender] = useState(0);
 
 	const checkInput = input => {
 		return input === null || !input;
 	};
 	useEffect(
 		() => {
-			if (clientUserData.password.length < 6 && clientUserData.password.length > 0) {
+			if (clientUserData.password.length < 6 && clientUserData.password.length > 0 && countRender === 1) {
 				toast.error("Your password must be at least 6 characters long");
-				console.log("pass");
-			} else if (clientUserData.password != clientUserData.passwordConfirm) {
+			} else if (clientUserData.password !== clientUserData.passwordConfirm && countRender === 1) {
 				toast.error("The passwords are not the same");
 			} else if (
 				!validationEmail &&
@@ -49,8 +49,10 @@ export const AddClientUser = () => {
 			) {
 				createAcc(clientUserData.email, clientUserData.password);
 			}
+			setCountRender(countRender + 1);
 			setValidation(false);
 		},
+
 		[validation]
 	);
 	const createAcc = async (email, password) => {
@@ -151,6 +153,7 @@ export const AddClientUser = () => {
 									placeholder="Confirm Password"
 									id="confirmPassword"
 								/>
+								{validationPasswordConfirm && <p style={{ color: "red" }}>Please Confirm Password</p>}
 							</div>
 							<div className="mb-3 mt-3">
 								<input
