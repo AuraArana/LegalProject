@@ -290,7 +290,7 @@ export const AddLegal = () => {
 							onClick={() => {
 								actions.addLegalData(legalData);
 							}}>
-							Save + Next Page: Services
+							Save
 						</button>
 					</Link>
 				</form>

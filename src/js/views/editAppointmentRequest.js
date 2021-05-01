@@ -33,6 +33,10 @@ export const EditAppRequest = () => {
 		additionalInformation: appRequest ? appRequest.additionalInformation : ""
 	});
 
+	const styles = {
+		selectOptions: { height: "calc(1.5em + 0.75rem + 13px)" }
+	};
+
 	const [value, setValue] = useState(0);
 	const [chars, setChars] = useState(0);
 	const [maxChars, setMaxChars] = useState(500);
@@ -229,7 +233,8 @@ export const EditAppRequest = () => {
 							<select
 								className="form-control"
 								value={addAppointment.status}
-								onChange={e => setAddAppointment({ ...addAppointment, status: e.target.value })}>
+								onChange={e => setAddAppointment({ ...addAppointment, status: e.target.value })}
+								style={styles.selectOptions}>
 								<option selected />
 								<option value="Pending">Pending</option>
 								<option value="Confirmed">Confirmed</option>
