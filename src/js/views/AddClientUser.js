@@ -4,16 +4,18 @@ import Background from "../../img/login-background.png";
 import Logo from "../../img/logo.png";
 import { Context } from "../store/appContext";
 import { createAccount } from "../utilities/createAccount";
-import PropTypes from "prop-types";
 import "../../styles/home.scss";
-import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddClientUser = () => {
 	let history = useHistory();
-	const { store, actions } = useContext(Context);
+	const { actions } = useContext(Context);
+	toast.configure();
 	const [clientUserData, setClientUserData] = useState({
 		email: "",
 		password: "",
+		passwordConfirm: "",
 		firstName: "",
 		lastName: "",
 		HomePhone: "",
@@ -25,25 +27,29 @@ export const AddClientUser = () => {
 	const [validationFirstName, setValidationFirstName] = useState(false);
 	const [validationLastName, setValidationLastName] = useState(false);
 	const [validation, setValidation] = useState(false);
+	const [validationPasswordConfirm, setvalidationPasswordConfirm] = useState(false);
+	const [countRender, setCountRender] = useState(0);
 
 	const checkInput = input => {
 		return input === null || !input;
 	};
 	useEffect(
 		() => {
-			if (
+			if (clientUserData.password !== clientUserData.passwordConfirm && countRender === 1) {
+				toast.error("The passwords are not the same");
+			} else if (
 				!validationEmail &&
 				!validationPassword &&
+				!validationPasswordConfirm &&
 				!validationLastName &&
 				!validationFirstName &&
 				!validationHomePhone &&
 				validation
 			) {
 				createAcc(clientUserData.email, clientUserData.password);
-				setValidation(false);
-			} else {
-				setValidation(false);
 			}
+			setCountRender(countRender + 1);
+			setValidation(false);
 		},
 		[validation]
 	);
@@ -52,7 +58,7 @@ export const AddClientUser = () => {
 			await createAccount(email, password);
 			actions.addClientUserData(clientUserData);
 			history.push("/");
-			alert("Cuenta creada");
+			toast.success("Account created");
 			return true;
 		} catch (e) {
 			alert(e.message);
@@ -131,12 +137,24 @@ export const AddClientUser = () => {
 									onChange={e => setClientUserData({ ...clientUserData, password: e.target.value })}
 									className={validationPassword ? "form-control is-invalid" : "form-control"}
 									placeholder="Password"
+									id="password"
 								/>
 							</div>
 							<div className="mb-3 mt-3">
 								<input
+									type="password"
+									onChange={e =>
+										setClientUserData({ ...clientUserData, passwordConfirm: e.target.value })
+									}
+									className={validationPasswordConfirm ? "form-control is-invalid" : "form-control"}
+									placeholder="Confirm Password"
+									id="confirmPassword"
+								/>
+								{validationPasswordConfirm && <p style={{ color: "red" }}>Please Confirm Password</p>}
+							</div>
+							<div className="mb-3 mt-3">
+								<input
 									type="tel"
-									pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 									onChange={e => setClientUserData({ ...clientUserData, HomePhone: e.target.value })}
 									className={validationHomePhone ? "form-control is-invalid" : "form-control"}
 									placeholder="Home Phone"
@@ -151,6 +169,7 @@ export const AddClientUser = () => {
 									setValidationLastName(checkInput(clientUserData.lastName));
 									setValidationEmail(checkInput(clientUserData.email));
 									setValidationPassword(checkInput(clientUserData.password));
+									setvalidationPasswordConfirm(checkInput(clientUserData.passwordConfirm));
 									setvalidationHomePhone(checkInput(clientUserData.HomePhone));
 									setValidation(true);
 									e.preventDefault();
