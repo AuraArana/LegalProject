@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import Background from "../../img/login-background.png";
-import Logo from "../../img/logo.png";
 import { Context } from "../store/appContext";
-import PropTypes from "prop-types";
 import "../../styles/home.scss";
-import { Link, useParams } from "react-router-dom";
 import { createAccount } from "../utilities/createAccount";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddUser = () => {
 	let history = useHistory();
-	const { store, actions } = useContext(Context);
+	const { actions } = useContext(Context);
+	toast.configure();
 	const [userData, setUserData] = useState({
 		email: "",
 		password: "",
+		passwordConfirm: "",
 		firstName: "",
 		lastName: "",
 		userType: "",
@@ -25,6 +25,8 @@ export const AddUser = () => {
 	const [validationFirstName, setValidationFirstName] = useState(false);
 	const [validationLastName, setValidationLastName] = useState(false);
 	const [validationUserType, setValidationUserType] = useState(false);
+	const [validationPasswordConfirm, setvalidationPasswordConfirm] = useState(false);
+	const [countRender, setCountRender] = useState(0);
 	const [validation, setValidation] = useState(false);
 
 	const checkInput = input => {
@@ -32,20 +34,21 @@ export const AddUser = () => {
 	};
 	useEffect(
 		() => {
-			if (
+			if (userData.password !== userData.passwordConfirm && countRender === 1) {
+				toast.error("The passwords are not the same");
+			} else if (
 				!validationEmail &&
 				!validationPassword &&
+				!validationPasswordConfirm &&
 				!validationLastName &&
 				!validationFirstName &&
-				!validationUserType &&
 				!validationHomePhone &&
 				validation
 			) {
 				createAcc(userData.email, userData.password);
-				setValidation(false);
-			} else {
-				setValidation(false);
 			}
+			setCountRender(countRender + 1);
+			setValidation(false);
 		},
 		[validation]
 	);
@@ -54,6 +57,7 @@ export const AddUser = () => {
 			await createAccount(email, password);
 			actions.addUserData(userData);
 			history.push("/demo");
+			toast.success("Account created");
 			return true;
 		} catch (e) {
 			alert(e.message);
@@ -107,8 +111,16 @@ export const AddUser = () => {
 					</div>
 					<div className="mb-3 mt-3">
 						<input
+							type="password"
+							onChange={e => setUserData({ ...userData, passwordConfirm: e.target.value })}
+							className={validationPasswordConfirm ? "form-control is-invalid" : "form-control"}
+							placeholder="Confirm Password"
+						/>
+						{validationPasswordConfirm && <p style={{ color: "red" }}>Please Confirm Password</p>}
+					</div>
+					<div className="mb-3 mt-3">
+						<input
 							type="tel"
-							pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 							onChange={e => setUserData({ ...userData, HomePhone: e.target.value })}
 							className={validationHomePhone ? "form-control is-invalid" : "form-control"}
 							placeholder="Home Phone"
@@ -133,6 +145,7 @@ export const AddUser = () => {
 							setValidationLastName(checkInput(userData.lastName));
 							setValidationEmail(checkInput(userData.email));
 							setValidationPassword(checkInput(userData.password));
+							setvalidationPasswordConfirm(checkInput(userData.passwordConfirm));
 							setValidationUserType(checkInput(userData.userType));
 							setvalidationHomePhone(checkInput(userData.HomePhone));
 							setValidation(true);
