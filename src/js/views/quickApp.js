@@ -181,6 +181,7 @@ export const QuickApp = () => {
 											setAddAppointment({ ...addAppointment, Contact: e.target.value })
 										}>
 										{/* <option selected /> */}
+										<option value="">Select Contact</option>
 										<option value="Cell Phone">Cell Phone</option>
 										<option value="Email">Email</option>
 										<option value="WhatsApp">WhatsApp</option>
