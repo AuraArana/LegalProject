@@ -140,7 +140,7 @@ export const Charts = props => {
 				<div className="col-lg-6 mb-4">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">Gender </h6>
+							<h6 className="m-0 font-weight-bold text-primary">GENDER </h6>
 						</div>
 						<div className="card-body">
 							<Pie data={data3} />
@@ -151,7 +151,7 @@ export const Charts = props => {
 				<div className="col-lg-6 mb-4">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">Marital Status </h6>
+							<h6 className="m-0 font-weight-bold text-primary">MARITAL STATUS </h6>
 						</div>
 						<div className="card-body">
 							<Bar

@@ -62,14 +62,14 @@ export const ClientsDebt = () => {
 				<div className="container-fluid">
 					<div className="card shadow mb-4">
 						<div className="card-header py-3">
-							<h6 className="m-0 font-weight-bold text-primary">List of clientes</h6>
+							<h6 className="m-0 font-weight-bold text-primary">List of Clients</h6>
 						</div>
 						<div className="card-body">
 							<div className="table-responsive">
 								<table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
 									<thead>
 										<tr>
-											<th>Case Nro</th>
+											<th>Case No.</th>
 											<th>Full Name</th>
 											<th>Phone</th>
 

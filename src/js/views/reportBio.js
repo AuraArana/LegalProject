@@ -49,11 +49,12 @@ export const ReportBio = () => {
 					<button
 						type="button"
 						className="btn btn-primary"
+						style={{ marginLeft: "42px" }}
 						onClick={() => {
 							actions.setCurrentReportBio(bioData.Gender, bioData.MaritalStatus);
 							history.push("/repbio");
 						}}>
-						Accept
+						Submit
 					</button>
 				</form>
 			</div>
