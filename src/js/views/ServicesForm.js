@@ -64,11 +64,13 @@ export const ServicesForm = () => {
 					<button
 						type="button"
 						className="btn btn-primary mt-2"
+						style={{ marginLeft: "90px" }}
 						onClick={() => {
 							setValidationContract(checkInput(servicesData.Contract));
 							setValidation(true);
 						}}>
-						Send
+						{" "}
+						Submit
 					</button>
 				</form>
 			</div>

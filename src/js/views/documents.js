@@ -42,7 +42,7 @@ export const Documents = () => {
 	return (
 		<>
 			<nav className="navbar ">
-				<div className="ml-auto text-dark">
+				<div className="mt-4 ml-auto ml-auto text-dark" style={{ marginRight: "80px" }}>
 					<button
 						type="button"
 						className="btn btn-primary"
@@ -70,7 +70,7 @@ export const Documents = () => {
 				</div>
 			</nav>
 
-			<div className="row mb-4 mt-4 card shadow border-left-primary col-lg-10 mx-auto pt-5 pb-5">
+			<div className="row mb-4 card shadow border-left-primary col-lg-10 mx-auto pt-5 pb-5">
 				<div className="row">
 					<div className="col-md-12">
 						<ul>

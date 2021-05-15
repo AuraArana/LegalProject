@@ -36,11 +36,12 @@ export const ServiceStatusForm = () => {
 					<button
 						type="button"
 						className="btn btn-primary"
+						style={{ marginLeft: "33px" }}
 						onClick={() => {
 							actions.setCurrentReportSE(bioData.ResolutionOutcome);
 							history.push("/servicestatusreport");
 						}}>
-						Accept
+						Submit
 					</button>
 				</form>
 			</div>
