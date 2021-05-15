@@ -8,6 +8,8 @@ export const EditAppRequest = () => {
 	let addApp = "Appointment Request";
 	let history = useHistory();
 	const { store, actions } = useContext(Context);
+	const services = ["", ...store.listOfServices];
+	console.log("services", services);
 	const params = useParams();
 	let pos = 1000000000000;
 
@@ -186,12 +188,13 @@ export const EditAppRequest = () => {
 								className="form-control"
 								value={addAppointment.serviceNeeded}
 								onChange={e => setAddAppointment({ ...addAppointment, serviceNeeded: e.target.value })}>
-								<option selected />
-								<option value="Temporary Work Visas">Temporary Work Visas</option>
-								<option value="Resident Status">Resident Status (Immigrant Visas/Green Cards)</option>
-								<option value="Corporate Matters">Corporate Matters</option>
-								<option value="Citizenship">Citizenship</option>
-								<option value="Other U.S. Immigration Matters">Other U.S. Immigration Matters</option>
+								{services.map((service, index) => {
+									return (
+										<option key={index} value={service.Desc}>
+											{service.Desc}
+										</option>
+									);
+								})}
 							</select>
 						</div>
 						<div className="col-sm-12">
