@@ -82,7 +82,10 @@ export const EditLedger = () => {
 							</div>
 						</div>
 					</div>
-					<h2>Balance: {totalfee - totalpay}</h2>
+					<h2>
+						Balance: ${totalfee - totalpay}
+						.00
+					</h2>
 				</div>
 			</div>
 		</div>

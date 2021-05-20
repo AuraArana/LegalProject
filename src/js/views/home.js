@@ -87,7 +87,7 @@ export const Home = ({ validCredentials }) => {
 						<p
 							className="text-center 
                             mt-2"
-							style={{ color: "#50bfc3", width: 300 }}
+							style={{ color: "#50bfc3", width: 300, cursor: "pointer" }}
 							onClick={() => {
 								history.push("/addClientUser");
 							}}>
