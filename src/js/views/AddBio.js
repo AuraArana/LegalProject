@@ -111,7 +111,7 @@ export const AddBio = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<div className="form-group">
-								<label>Last Name</label>
+								<label>Last Name *</label>
 								<input
 									type="text"
 									className={
@@ -127,7 +127,7 @@ export const AddBio = () => {
 						</div>
 						<div className="col-sm-6">
 							<div className="form-group">
-								<label>First Name</label>
+								<label>First Name *</label>
 								<input
 									type="text"
 									className={
@@ -188,7 +188,7 @@ export const AddBio = () => {
 					<div className="form-group row">
 						<div className="col-sm-6">
 							<div className="form-group">
-								<label>HomePhone</label>
+								<label>HomePhone *</label>
 								<input
 									type="phone"
 									className={
@@ -217,7 +217,7 @@ export const AddBio = () => {
 					</div>
 
 					<div className="form-group">
-						<label>Email</label>
+						<label>Email *</label>
 						<input
 							type="email"
 							className={
@@ -232,7 +232,7 @@ export const AddBio = () => {
 					</div>
 
 					<div className="form-group">
-						<label>Address</label>
+						<label>Address *</label>
 						<input
 							type="text"
 							className={
@@ -249,7 +249,7 @@ export const AddBio = () => {
 					<div className="form-group row">
 						<div className="col-sm-4">
 							<div className="form-group">
-								<label>City</label>
+								<label>City *</label>
 								<input
 									type="text"
 									className={
@@ -265,7 +265,7 @@ export const AddBio = () => {
 						</div>
 						<div className="col-sm-4">
 							<div className="form-group">
-								<label>State</label>
+								<label>State *</label>
 								<input
 									type="text"
 									className={
@@ -281,7 +281,7 @@ export const AddBio = () => {
 						</div>
 						<div className="col-sm-4">
 							<div className="form-group">
-								<label>Zip Code</label>
+								<label>Zip Code *</label>
 								<input
 									type="text"
 									className={
